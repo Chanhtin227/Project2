@@ -600,7 +600,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &606336799
 Canvas:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ Canvas:
   m_GameObject: {fileID: 606336796}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -633,7 +633,7 @@ RectTransform:
   m_GameObject: {fileID: 606336796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2126673750}
@@ -644,9 +644,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1172501474
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +659,7 @@ GameObject:
   - component: {fileID: 1172501478}
   - component: {fileID: 1172501477}
   - component: {fileID: 1172501476}
+  - component: {fileID: 1172501479}
   m_Layer: 5
   m_Name: SoundToggle_Button
   m_TagString: Untagged
@@ -728,7 +729,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1172501477}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172501479}
+        m_TargetAssemblyTypeName: MusicButtonToggle, Assembly-CSharp
+        m_MethodName: ToggleMusicButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1172501477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,6 +780,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172501474}
   m_CullTransparentMesh: 1
+--- !u!114 &1172501479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172501474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3777899e3c925024489e2093ebecfe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonMusic: {fileID: 4798912266660078404, guid: 8b42c00c1dcad3c40b577346338651ec, type: 3}
+  buttonMusicOff: {fileID: -1678873450638335418, guid: 74ae70ff4156bfa40b139408a2ddf52d, type: 3}
 --- !u!1 &1191047779
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +1024,7 @@ GameObject:
   - component: {fileID: 2126673753}
   - component: {fileID: 2126673752}
   - component: {fileID: 2126673751}
+  - component: {fileID: 2126673754}
   m_Layer: 5
   m_Name: MusicToggle_Button
   m_TagString: Untagged
@@ -1066,7 +1094,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2126673752}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2126673754}
+        m_TargetAssemblyTypeName: SoundButtonToggle, Assembly-CSharp
+        m_MethodName: ToggleSoundButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2126673752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,6 +1145,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126673749}
   m_CullTransparentMesh: 1
+--- !u!114 &2126673754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126673749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516ec9f0efaeebd48823110d7f2dd4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSound: {fileID: -504011266852211015, guid: 1b60ce9e111d73947b779869f9580177, type: 3}
+  buttonSoundOff: {fileID: -1197317344785566424, guid: 48f3dc2d14ec8814282858f35cdf5238, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
