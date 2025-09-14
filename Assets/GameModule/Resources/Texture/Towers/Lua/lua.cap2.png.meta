@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lua.cap2_0: -334501723685138242
+      lua.cap2_1: -3508037179813923908
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

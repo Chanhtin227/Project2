@@ -1022,7 +1022,43 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1_effect_stone_017_0: 5400995283554524255
+      1_effect_stone_017_1: 911145982167031227
+      1_effect_stone_017_10: 8484450567158363560
+      1_effect_stone_017_11: 6243197220099013315
+      1_effect_stone_017_12: -211061028723295970
+      1_effect_stone_017_13: -5814113487092392290
+      1_effect_stone_017_14: 3391450691915735693
+      1_effect_stone_017_15: 1194978732711122782
+      1_effect_stone_017_16: 3617327373282512912
+      1_effect_stone_017_17: -4081651571895470702
+      1_effect_stone_017_18: -339424422055478721
+      1_effect_stone_017_19: -2086516568939139037
+      1_effect_stone_017_2: -6531762548045617490
+      1_effect_stone_017_20: -3966783540039373086
+      1_effect_stone_017_21: -5679518685185010494
+      1_effect_stone_017_22: 4700000598957442090
+      1_effect_stone_017_23: 6142175265442167429
+      1_effect_stone_017_24: -4373863696788246870
+      1_effect_stone_017_25: -2490193075722837899
+      1_effect_stone_017_26: 8704187510390309223
+      1_effect_stone_017_27: 4652785992524099843
+      1_effect_stone_017_28: 8879295549273648596
+      1_effect_stone_017_29: 4302401463810090652
+      1_effect_stone_017_3: 5528113487474986791
+      1_effect_stone_017_30: -5000881381083359821
+      1_effect_stone_017_31: -8965871219652647885
+      1_effect_stone_017_32: 6956058881370898628
+      1_effect_stone_017_33: -950400126312280144
+      1_effect_stone_017_34: 3514476882191871616
+      1_effect_stone_017_35: -7095008464598131490
+      1_effect_stone_017_4: -5838410144578828627
+      1_effect_stone_017_5: -8573903044598634181
+      1_effect_stone_017_6: -581489930413427581
+      1_effect_stone_017_7: 3554655240765800807
+      1_effect_stone_017_8: -5491996595247026660
+      1_effect_stone_017_9: -547951263605658394
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

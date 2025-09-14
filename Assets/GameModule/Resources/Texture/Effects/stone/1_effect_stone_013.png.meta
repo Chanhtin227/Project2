@@ -397,7 +397,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1_effect_stone_013_0: 4784139845967559633
+      1_effect_stone_013_1: -6934799115860785864
+      1_effect_stone_013_10: 8028641006748136952
+      1_effect_stone_013_2: -7459627982879312197
+      1_effect_stone_013_3: 6586120567775417893
+      1_effect_stone_013_4: -5059055525610525532
+      1_effect_stone_013_5: -5922031660781874496
+      1_effect_stone_013_6: -3844374420432403289
+      1_effect_stone_013_7: 4816856172135126313
+      1_effect_stone_013_8: 8368498517039366003
+      1_effect_stone_013_9: 2224733049747818882
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

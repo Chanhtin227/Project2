@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hotro.cap2_0_0: 5742020565160776040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

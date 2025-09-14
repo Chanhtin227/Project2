@@ -747,7 +747,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1_effect_freeze_004_0: -8747427909709015893
+      1_effect_freeze_004_1: 8716072137459218867
+      1_effect_freeze_004_10: 1584408469817855094
+      1_effect_freeze_004_11: 4662262227024651707
+      1_effect_freeze_004_12: 2539627384903107891
+      1_effect_freeze_004_13: 9046711573967062398
+      1_effect_freeze_004_14: 5880265183587828120
+      1_effect_freeze_004_15: 5807213804713541645
+      1_effect_freeze_004_16: -1256823408256739372
+      1_effect_freeze_004_17: 4618910462736471547
+      1_effect_freeze_004_18: 4559425431531659040
+      1_effect_freeze_004_19: -8780610779573448094
+      1_effect_freeze_004_2: -1402814963127162273
+      1_effect_freeze_004_20: 7133754457721986526
+      1_effect_freeze_004_21: 377527837603194583
+      1_effect_freeze_004_22: -1630495975725089794
+      1_effect_freeze_004_23: -4545511947948372595
+      1_effect_freeze_004_24: 5054612080750723369
+      1_effect_freeze_004_3: -1550960673828490748
+      1_effect_freeze_004_4: -7593385542314246965
+      1_effect_freeze_004_5: 8108183337057205557
+      1_effect_freeze_004_6: -5545365663282653579
+      1_effect_freeze_004_7: 8134465504588332879
+      1_effect_freeze_004_8: -8401316466951361158
+      1_effect_freeze_004_9: 3025976763377861394
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

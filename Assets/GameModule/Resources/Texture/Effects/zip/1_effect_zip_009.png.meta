@@ -597,7 +597,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1_effect_zip_009_0: -4499008864729326780
+      1_effect_zip_009_1: -1400166371366788030
+      1_effect_zip_009_10: 7439871007481298237
+      1_effect_zip_009_11: 8436221506569493960
+      1_effect_zip_009_12: -6299058335252494801
+      1_effect_zip_009_13: 6200030155583894817
+      1_effect_zip_009_14: 7502322561784011199
+      1_effect_zip_009_15: -649006358479424154
+      1_effect_zip_009_16: -686264400811589265
+      1_effect_zip_009_17: -3455246453073614221
+      1_effect_zip_009_18: -8453265767454244534
+      1_effect_zip_009_2: 8890028647360895408
+      1_effect_zip_009_3: 5823944277969960570
+      1_effect_zip_009_4: -3863760572775418370
+      1_effect_zip_009_5: 6762971576071365976
+      1_effect_zip_009_6: -2559682634214298900
+      1_effect_zip_009_7: 8785671737948860681
+      1_effect_zip_009_8: -8375570561846772214
+      1_effect_zip_009_9: -5795483670094470937
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5159791412370969365, guid: cc5a44a3ea0dced458c84819ce3d368a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e69a23bdf2da1e4988b8c1fa75e0808, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -319,7 +319,6 @@ GameObject:
   m_Component:
   - component: {fileID: 146144424}
   - component: {fileID: 146144427}
-  - component: {fileID: 146144429}
   - component: {fileID: 146144426}
   - component: {fileID: 146144425}
   - component: {fileID: 146144428}
@@ -413,7 +412,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5628002278266893520, guid: 14eae607badb7e54696d3556622ae70a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca809cf678919c448ac36e4761c11512, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -476,20 +475,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &146144429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146144423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408466ebbfb02f34096b06724e1fcbb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Music_Slider: {fileID: 0}
-  holdSpeed: 50
 --- !u!1 &324660592
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +551,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 8551550694609821527, guid: 603e0143dce34cb4bba1d84d086ad429, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aebfccab3582e544f8e138218cac36ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -634,7 +619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5156776694448688124, guid: 684e436d72711ce4a805585fdbbb85f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33c07fea5ebea104bb81b8f749568bb8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -709,7 +694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5156776694448688124, guid: 684e436d72711ce4a805585fdbbb85f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33c07fea5ebea104bb81b8f749568bb8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -739,6 +724,7 @@ GameObject:
   - component: {fileID: 475711323}
   - component: {fileID: 475711322}
   - component: {fileID: 475711321}
+  - component: {fileID: 475711324}
   m_Layer: 5
   m_Name: StartGame_Button
   m_TagString: Untagged
@@ -841,7 +827,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5400878772334970634, guid: 5f34c3c0c28c4cc468550f43d8fde8ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4744950807fb614cb452c70d64715e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -859,6 +845,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475711319}
   m_CullTransparentMesh: 1
+--- !u!114 &475711324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475711319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509a4af0b5794be4da3199d9ebaf11fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &531533664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7540231731931389959, guid: 27ecb2234a7c19340add245a5deed9d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d4a2be6b0706f4499083bc12b5409dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1093,7 +1091,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 560668542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94926f57bb5762548980b539779e4e78, type: 3}
+  m_Script: {fileID: 11500000, guid: 03011b409c3f4d245927ad53d9b2ccf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   settingPanel: {fileID: 1318443669}
@@ -1279,7 +1277,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 8551550694609821527, guid: 603e0143dce34cb4bba1d84d086ad429, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aebfccab3582e544f8e138218cac36ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1401,7 +1399,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 902835121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408466ebbfb02f34096b06724e1fcbb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 614bce09e48a5d647b6e98663a6fdd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Music_Slider: {fileID: 902835123}
@@ -1482,7 +1480,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 12
-  m_Sprite: {fileID: 1141625592594208221, guid: 4ff85dc59e70a02449d8c23bde8a3ec6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3371a60b345f4224b8911e4b44e02d76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1577,8 +1575,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1172501479}
-        m_TargetAssemblyTypeName: SoundButtonToggle, Assembly-CSharp
-        m_MethodName: ToggleSoundButton
+        m_TargetAssemblyTypeName: MusicButtonToggle, Assembly-CSharp
+        m_MethodName: ToggleMusicButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1608,7 +1606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4798912266660078404, guid: 7edb04281cdcbc94ca470316ee800fb8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1a8186f93983f344bb2e33241266037, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1635,11 +1633,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1172501474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce7f248fe05efd4c9e40c5b5a09975e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e81efa42a1be98429d3a95bb7d31479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSound: {fileID: 4798912266660078404, guid: 7edb04281cdcbc94ca470316ee800fb8, type: 3}
-  buttonSoundOff: {fileID: -1678873450638335418, guid: f81f9a5a6f5d8f441a9b619d44e02ebb, type: 3}
+  buttonMusic: {fileID: 21300000, guid: f1a8186f93983f344bb2e33241266037, type: 3}
+  buttonMusicOff: {fileID: 21300000, guid: 3cd3e3ac2e01f704b9d5d537e34dc3f6, type: 3}
 --- !u!1 &1191047779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,7 +1664,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1191047779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5429a688f4ce9d4597e27bc60a6ccd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 509a4af0b5794be4da3199d9ebaf11fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1191047781
@@ -1732,7 +1730,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1219545671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94926f57bb5762548980b539779e4e78, type: 3}
+  m_Script: {fileID: 11500000, guid: 03011b409c3f4d245927ad53d9b2ccf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   settingPanel: {fileID: 1318443669}
@@ -1812,7 +1810,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7201076378965984031, guid: 161fe44dcdb7bd8488e4e2cc82f33c5b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d7f1bc1da563a24fbdddbebabef5137, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1891,7 +1889,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
-  m_Sprite: {fileID: -4364034832326165938, guid: 2990dfb74b41d2d448856e0554bb23f4, type: 3}
+  m_Sprite: {fileID: -4364034832326165938, guid: ceab4809260f55c4fbc19b1e5cf156a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1986,7 +1984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8841490917199087839, guid: 2c2920ea6b665b04f9454322a8fd94f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3003475ff69b7746886552487a48d8d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2232,7 +2230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7722166434220295849, guid: b3f89d7361a8aa3488bf40f88690ba32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 810da85fb5736954d8ac1969b8677103, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2371,7 +2369,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1457689949933816326, guid: 87ee9835bdb0a3045bf5cbedf3c3bd2e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cdcfa1b981da64442ba2c28e73bf0fb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2451,7 +2449,7 @@ SpriteRenderer:
   m_Size: {x: 9.34, y: 3.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1834391274
@@ -2571,7 +2569,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7722166434220295849, guid: b3f89d7361a8aa3488bf40f88690ba32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 810da85fb5736954d8ac1969b8677103, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2646,7 +2644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5159791412370969365, guid: cc5a44a3ea0dced458c84819ce3d368a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e69a23bdf2da1e4988b8c1fa75e0808, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2766,7 +2764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5628002278266893520, guid: 14eae607badb7e54696d3556622ae70a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca809cf678919c448ac36e4761c11512, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2841,7 +2839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5127677810029623791, guid: 6ee29f9529034dd48a838d1519d342f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3660498ff96afc44a9edcc36a9705be, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2974,7 +2972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -504011266852211015, guid: 5639e171f184ce447ab3dec5d0c38b5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3a77d16e42fab042ba32897e7b387d3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3001,11 +2999,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2126673749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce7f248fe05efd4c9e40c5b5a09975e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d8fb3c021b86874b8d8bf8dafd965a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSound: {fileID: -504011266852211015, guid: 5639e171f184ce447ab3dec5d0c38b5c, type: 3}
-  buttonSoundOff: {fileID: -1197317344785566424, guid: 230dd96f13e34944ab6cb79a22b91d26, type: 3}
+  buttonSound: {fileID: 21300000, guid: f3a77d16e42fab042ba32897e7b387d3, type: 3}
+  buttonSoundOff: {fileID: 21300000, guid: b53b648b18acea548be00a58f5bd5cdb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

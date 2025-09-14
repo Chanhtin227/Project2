@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bang.cap2_0: 3297031881384159282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

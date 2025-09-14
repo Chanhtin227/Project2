@@ -722,7 +722,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1_effect_rain_021_0: 4454975846722404937
+      1_effect_rain_021_1: 6689629147852914944
+      1_effect_rain_021_10: -9076230348332420587
+      1_effect_rain_021_11: 6242433837656398550
+      1_effect_rain_021_12: 74928562386270332
+      1_effect_rain_021_13: -3067002285316404660
+      1_effect_rain_021_14: 1872167277608630923
+      1_effect_rain_021_15: -8147169876257035220
+      1_effect_rain_021_16: 3115934078812122788
+      1_effect_rain_021_17: 8849362634218814366
+      1_effect_rain_021_18: 4581131503023467812
+      1_effect_rain_021_19: -129371563952318132
+      1_effect_rain_021_2: 6915225223740053880
+      1_effect_rain_021_20: -4486491736217675175
+      1_effect_rain_021_21: 8047718897899183990
+      1_effect_rain_021_22: 4576935335171056545
+      1_effect_rain_021_23: -5208787535706697505
+      1_effect_rain_021_3: 8220267388593663102
+      1_effect_rain_021_4: -4418964024593316457
+      1_effect_rain_021_5: -186490313166533762
+      1_effect_rain_021_6: -4099920544064933101
+      1_effect_rain_021_7: -2586715348588068709
+      1_effect_rain_021_8: -7817330331794658766
+      1_effect_rain_021_9: -5224988357798377273
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
