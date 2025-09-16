@@ -53,5 +53,8 @@ TagManager:
   - name: Towers
     uniqueID: 955750763
     locked: 0
+  - name: Projectiles
+    uniqueID: 1125507503
+    locked: 0
   m_RenderingLayers:
   - Default
