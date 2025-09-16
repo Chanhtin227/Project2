@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83baf9a795774054f8325217fcb8d396, type: 3}
-  m_Name: NewTowerData
+  m_Name: LightningData
   m_EditorClassIdentifier: 
   towerName: Lightning Tower
   icon: {fileID: -6221032456971345432, guid: dba57cee569c0834f823f252e2c3ec82, type: 3}

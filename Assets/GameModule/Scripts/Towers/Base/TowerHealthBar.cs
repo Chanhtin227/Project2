@@ -23,9 +23,9 @@ public class TowerHealthBar : MonoBehaviour
         // cập nhật fill theo máu
         fillImage.fillAmount = Mathf.Clamp01(tower.CurrentHealth / tower.MaxHealth);
 
-        // xoay UI luôn hướng về camera
-        if (cam != null)
-            transform.rotation = cam.transform.rotation;
+        // // xoay UI luôn hướng về camera
+        // if (cam != null)
+        //     transform.rotation = cam.transform.rotation;
 
         // offset vị trí
         transform.position = tower.transform.position + offset;

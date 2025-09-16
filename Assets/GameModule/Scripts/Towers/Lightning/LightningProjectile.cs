@@ -3,37 +3,47 @@ using UnityEngine;
 
 public class LightningProjectile : MonoBehaviour
 {
-    public LineRenderer linePrefab;   // Prefab chứa LineRenderer + material
+    [Header("Visual")]
+    public LineRenderer line;
+    public float duration = 0.1f;
+    public int segments = 6;
+    public float jaggedness = 0.2f;
+
+    [Header("Damage")]
     public float damage = 10f;
-    public float duration = 0.1f;     // thời gian tồn tại tia sét
-    public int segments = 6;          // số đoạn zigzag
-    public float jaggedness = 0.2f;   // độ lệch zigzag
     public LayerMask enemyLayer;
+
+    private Coroutine running;
 
     public void Initialize(Transform start, Transform target, float dmg, int chain, float radius, LayerMask enemyMask)
     {
         damage = dmg;
         enemyLayer = enemyMask;
-        StartCoroutine(DoLightning(start.position, target.position));
-        
-        // gây damage cho enemy
-        enemy enemy = target.GetComponent<enemy>();
-        if (enemy != null)
-            enemy.TakeDamage((int)damage);
+
+        if (running != null) StopCoroutine(running);
+        running = StartCoroutine(DoLightning(start.position, target.position, target));
     }
 
-    private IEnumerator DoLightning(Vector3 start, Vector3 end)
+    private IEnumerator DoLightning(Vector3 start, Vector3 end, Transform target)
     {
-        LineRenderer line = Instantiate(linePrefab, Vector3.zero, Quaternion.identity);
+        DrawZigZag(start, end);
+        line.enabled = true;
 
-        DrawZigZag(line, start, end);
+        if (target != null)
+        {
+            enemy en = target.GetComponent<enemy>();
+            if (en != null) en.TakeDamage((int)damage);
+        }
 
         yield return new WaitForSeconds(duration);
 
-        Destroy(line.gameObject);
+        line.enabled = false;
+        running = null;
+
+        PoolManager.Instance.Return(gameObject, "Lightning");
     }
 
-    private void DrawZigZag(LineRenderer line, Vector3 start, Vector3 end)
+    private void DrawZigZag(Vector3 start, Vector3 end)
     {
         line.positionCount = segments + 1;
         Vector3 dir = (end - start) / segments;
@@ -41,13 +51,19 @@ public class LightningProjectile : MonoBehaviour
         for (int i = 0; i <= segments; i++)
         {
             Vector3 pos = start + dir * i;
-
-            if (i > 0 && i < segments) // chỉ zigzag ở giữa
-            {
+            if (i > 0 && i < segments)
                 pos += (Vector3)Random.insideUnitCircle * jaggedness;
-            }
-
             line.SetPosition(i, pos);
         }
+    }
+
+    private void OnDisable()
+    {
+        if (running != null)
+        {
+            StopCoroutine(running);
+            running = null;
+        }
+        if (line != null) line.enabled = false;
     }
 }
