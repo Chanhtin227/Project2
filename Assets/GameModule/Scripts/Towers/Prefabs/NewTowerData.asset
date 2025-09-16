@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83baf9a795774054f8325217fcb8d396, type: 3}
+  m_Name: NewTowerData
+  m_EditorClassIdentifier: 
+  towerName: Lightning Tower
+  icon: {fileID: -6221032456971345432, guid: dba57cee569c0834f823f252e2c3ec82, type: 3}
+  prefab: {fileID: 1708928340201248494, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
+  levels:
+  - name: Lightning 1
+    damage: 10
+    range: 10
+    fireRate: 1
+    cost: 100
+    maxHealth: 100
+  - name: Lightning 2
+    damage: 50
+    range: 100
+    fireRate: 5
+    cost: 200
+    maxHealth: 200
+  - name: Lightning 3
+    damage: 100
+    range: 100
+    fireRate: 8
+    cost: 250
+    maxHealth: 300
