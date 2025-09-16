@@ -17,20 +17,20 @@ MonoBehaviour:
   prefab: {fileID: 1708928340201248494, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
   levels:
   - name: Lightning 1
-    damage: 10
-    range: 10
-    fireRate: 1
-    cost: 100
-    maxHealth: 100
-  - name: Lightning 2
-    damage: 50
-    range: 100
-    fireRate: 5
-    cost: 200
-    maxHealth: 200
-  - name: Lightning 3
-    damage: 100
-    range: 100
-    fireRate: 8
-    cost: 250
+    damage: 20
+    range: 3.5
+    fireRate: 0.5
+    cost: 120
     maxHealth: 300
+  - name: Lightning 2
+    damage: 35
+    range: 4
+    fireRate: 0.7
+    cost: 200
+    maxHealth: 480
+  - name: Lightning 3
+    damage: 55
+    range: 6
+    fireRate: 1
+    cost: 350
+    maxHealth: 750

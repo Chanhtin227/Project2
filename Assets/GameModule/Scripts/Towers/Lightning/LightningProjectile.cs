@@ -40,7 +40,6 @@ public class LightningProjectile : MonoBehaviour
         line.enabled = false;
         running = null;
 
-        // Chain to next targets
         if (chains > 0 && target != null)
         {
             Collider2D[] hits = Physics2D.OverlapCircleAll(target.position, radius, enemyLayer);
@@ -50,7 +49,6 @@ public class LightningProjectile : MonoBehaviour
                 if (chainsLeft <= 0) break;
                 if (hit.transform == target || alreadyHit.Contains(hit.transform)) continue;
 
-                // Spawn new lightning for each chain
                 LightningProjectile zap = PoolManager.Instance.Get<LightningProjectile>("Lightning");
                 if (zap != null)
                 {

@@ -10,18 +10,16 @@ public abstract class BaseTower : MonoBehaviour
     protected float damage;
     protected float fireRate;
 
-    [Header("Targeting")]
-    public LayerMask enemyLayer;
-    public Transform firePoint;
-
-
     [Header("Health")]
-    public float maxHealth = 100f;
-    protected float currentHealth;
+    protected float maxHealth;
+    public float currentHealth;
     public bool isDestroyed { get; private set; }
     public float CurrentHealth => currentHealth;
     public float MaxHealth => maxHealth;
 
+    [Header("Targeting")]
+    public LayerMask enemyLayer;
+    public Transform firePoint;
 
     protected Transform target;
     float fireCooldown;
@@ -122,11 +120,10 @@ public abstract class BaseTower : MonoBehaviour
         range = lvl.range;
         damage = lvl.damage;
         fireRate = lvl.fireRate;
-        maxHealth = lvl.maxHealth;   // 🆕 Lấy máu từ TowerData
+        maxHealth = lvl.maxHealth; 
         currentHealth = maxHealth;
     }
 
-    // 🆕 Thêm hàm nhận damage
     public virtual void TakeDamage(float amount)
     {
         if (isDestroyed) return;
