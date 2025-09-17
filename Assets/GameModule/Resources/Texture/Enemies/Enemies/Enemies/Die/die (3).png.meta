@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eff4ad3851559e84a9bb3322464f2c16
+guid: 4bfbb48719769d44baab9484f888e38c
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: die (3)_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 12
-        width: 157
-        height: 209
+        x: 21
+        y: 16
+        width: 208
+        height: 272
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
