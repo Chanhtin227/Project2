@@ -8,7 +8,7 @@ public class PoolManager : MonoBehaviour
     [System.Serializable]
     public class PoolItem
     {
-        public string key;                // ví dụ "Lightning", "Bullet"
+        public string key;
         public GameObject prefab;
         public int initialSize = 10;
     }
