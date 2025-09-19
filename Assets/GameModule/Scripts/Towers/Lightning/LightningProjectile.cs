@@ -31,7 +31,7 @@ public class LightningProjectile : MonoBehaviour
         if (alreadyHit == null) alreadyHit = new HashSet<Transform>();
         if (target != null && !alreadyHit.Contains(target))
         {
-            enemy en = target.GetComponent<enemy>();
+            Enemy en = target.GetComponent<Enemy>();
             if (en != null) en.TakeDamage((int)damage);
             alreadyHit.Add(target);
         }
