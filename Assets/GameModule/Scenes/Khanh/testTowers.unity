@@ -1048,7 +1048,7 @@ GameObject:
   - component: {fileID: 2065400389}
   - component: {fileID: 2065400390}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Enemy(Normal)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1132,7 +1132,7 @@ Transform:
   m_GameObject: {fileID: 2065400384}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.88, y: -3.99, z: 0}
+  m_LocalPosition: {x: -4.54, y: -5.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
