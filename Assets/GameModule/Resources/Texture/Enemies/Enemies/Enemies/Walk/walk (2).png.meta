@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 53bd6560ff7c3dc4c88e95b67fb2ec19
+guid: f8511b3e7945fd643be663d4b3ca6b46
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: walk (2)_0
       rect:
         serializedVersion: 2
-        x: 56
-        y: 12
-        width: 173
-        height: 210
+        x: 39
+        y: 31
+        width: 169
+        height: 277
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
