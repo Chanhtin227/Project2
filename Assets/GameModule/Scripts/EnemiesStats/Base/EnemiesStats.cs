@@ -19,7 +19,7 @@ public class EnemyStats : ScriptableObject
     [Header("Basic Stats")]
     public string enemyName;
     public int health;
-    public float moveSpeed = 1f;
+    public float moveSpeed;
     public int armor;
     public int damageTower;
     public int goldReward;
