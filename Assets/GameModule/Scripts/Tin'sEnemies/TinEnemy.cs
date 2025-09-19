@@ -1,12 +1,14 @@
 using UnityEngine;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyStats stats;
-    [SerializeField] private int pathId = 0; 
+    [SerializeField] private int pathId = 0;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private Animator _anim;
 
     private Transform[] path;
     private Transform checkpoint;
@@ -17,6 +19,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
         currentHP = stats.health;
     }
 
@@ -28,6 +31,7 @@ public class Enemy : MonoBehaviour
         {
             checkpoint = path[index];
         }
+
     }
 
     void Update()
@@ -73,9 +77,19 @@ public class Enemy : MonoBehaviour
     // Xử lý khi quái chết
     private void Die()
     {
+        _anim.SetTrigger("isDead");
         // Cộng vàng cho người chơi
         Debug.Log($"{stats.enemyName} chết, nhận {stats.goldReward} vàng!");
 
+        StartCoroutine(DestroyAfterAnimation());
+        GetComponent<Collider2D>().enabled = false;
+        rb.linearVelocity = Vector2.zero;
+        this.enabled = false;
+    }
+    
+    private IEnumerator DestroyAfterAnimation()
+    {
+        yield return new WaitForSeconds(_anim.GetCurrentAnimatorClipInfo(0).Length); // Giả sử animation chết dài 1 giây
         Destroy(gameObject);
     }
 }
