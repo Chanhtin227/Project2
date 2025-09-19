@@ -11,8 +11,9 @@ public class TowerData : ScriptableObject
         public float range = 3f;
         public float fireRate = 1f;
         public int cost = 50;
-        public float maxHealth = 100f; // 🆕 Máu cho tower
+        public float maxHealth = 100f; // 🆕 Máu cho tower    
     }
+
 
     [Header("Tower Info")]
     public string towerName = "Basic Tower";

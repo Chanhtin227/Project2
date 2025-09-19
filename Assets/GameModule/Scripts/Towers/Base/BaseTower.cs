@@ -6,6 +6,7 @@ public abstract class BaseTower : MonoBehaviour
     public TowerData data;
     public int currentLevel = 0;
 
+
     protected float range;
     protected float damage;
     protected float fireRate;
@@ -23,6 +24,14 @@ public abstract class BaseTower : MonoBehaviour
 
     protected Transform target;
     float fireCooldown;
+
+    [Header("Visual (2D)")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite[] levelSprites;
+
+    [Header("Sell Settings")]
+    [Range(0f, 1f)]
+    public float refundPercent = 0.5f; // 1f = hoàn 100%, 0.5f = hoàn 50%
 
     protected virtual void Start()
     {
@@ -120,9 +129,21 @@ public abstract class BaseTower : MonoBehaviour
         range = lvl.range;
         damage = lvl.damage;
         fireRate = lvl.fireRate;
-        maxHealth = lvl.maxHealth; 
+        maxHealth = lvl.maxHealth;
         currentHealth = maxHealth;
+
+        UpdateVisual(currentLevel);
     }
+
+    void UpdateVisual(int level)
+    {
+        if (spriteRenderer != null && level < levelSprites.Length)
+        {
+            spriteRenderer.sprite = levelSprites[level];
+        }
+    }
+
+
 
     public virtual void TakeDamage(float amount)
     {
@@ -135,11 +156,32 @@ public abstract class BaseTower : MonoBehaviour
         }
     }
 
+    public int GetRefund()
+    {
+        if (data == null || data.levels == null || currentLevel >= data.levels.Length)
+            return 0;
+
+        int currentCost = data.levels[currentLevel].cost;
+        return Mathf.RoundToInt(currentCost * refundPercent);
+    }
+
+
+    public void Sell()
+    {
+        int refund = GetRefund();
+
+        if (GoldManager.Instance != null)
+            GoldManager.Instance.AddGold(refund);
+
+        Debug.Log($"{data.towerName} sold for {refund} gold (level {currentLevel + 1}).");
+
+        Destroy(gameObject); // hoặc trả về pool nếu dùng pooling
+    }
+
     protected virtual void Die()
     {
         isDestroyed = true;
         Debug.Log($"{data.towerName} đã bị phá hủy!");
-        // TODO: spawn hiệu ứng nổ, remove khỏi TowerManager, refund 1 phần cost, v.v.
         Destroy(gameObject);
     }
 
