@@ -6,7 +6,6 @@ public abstract class BaseTower : MonoBehaviour
     public TowerData data;
     public int currentLevel = 0;
 
-
     protected float range;
     protected float damage;
     protected float fireRate;
@@ -31,7 +30,12 @@ public abstract class BaseTower : MonoBehaviour
 
     [Header("Sell Settings")]
     [Range(0f, 1f)]
-    public float refundPercent = 0.5f; // 1f = hoàn 100%, 0.5f = hoàn 50%
+
+    public BuildSpot buildSpot { get; private set; }
+    public void AssignBuildSpot(BuildSpot spot)
+    {
+        buildSpot = spot;
+    }
 
     protected virtual void Start()
     {
@@ -115,6 +119,8 @@ public abstract class BaseTower : MonoBehaviour
         if (currentLevel + 1 < data.levels.Length)
         {
             currentLevel++;
+            AudioManager.Instance.PlaySfx(data.upgradeSfx);
+            Debug.Log($"{data.towerName} upgraded to level {currentLevel + 1}.");
             ApplyStats();
         }
         else
@@ -162,7 +168,7 @@ public abstract class BaseTower : MonoBehaviour
             return 0;
 
         int currentCost = data.levels[currentLevel].cost;
-        return Mathf.RoundToInt(currentCost * refundPercent);
+        return Mathf.RoundToInt(currentCost * data.sellRefundPercentage);
     }
 
 
@@ -172,8 +178,10 @@ public abstract class BaseTower : MonoBehaviour
 
         if (GoldManager.Instance != null)
             GoldManager.Instance.AddGold(refund);
+        AudioManager.Instance.PlaySfx(data.sellSfx);
 
         Debug.Log($"{data.towerName} sold for {refund} gold (level {currentLevel + 1}).");
+        if (buildSpot != null) buildSpot.isOccupied = false;
 
         Destroy(gameObject); // hoặc trả về pool nếu dùng pooling
     }
@@ -182,6 +190,7 @@ public abstract class BaseTower : MonoBehaviour
     {
         isDestroyed = true;
         Debug.Log($"{data.towerName} đã bị phá hủy!");
+        if (buildSpot != null) buildSpot.isOccupied = false;
         Destroy(gameObject);
     }
 

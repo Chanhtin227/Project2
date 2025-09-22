@@ -163,7 +163,6 @@ MonoBehaviour:
   - {fileID: -6221032456971345432, guid: dba57cee569c0834f823f252e2c3ec82, type: 3}
   - {fileID: 760579807508905958, guid: dba4c245221fbac4f932f7f2016eaa23, type: 3}
   - {fileID: -8874039799228910662, guid: 6f5925d33d73ba446a59e0aa0476d6d5, type: 3}
-  refundPercent: 0.5
   lightningPrefab: {fileID: 216573333901881047}
   maxChains: 2
   chainRange: 1.5
@@ -544,24 +543,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 2447833108401674070}
     m_Modifications:
     - target: {fileID: 2281119412713978419, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2281119412713978419, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
       propertyPath: m_SortingOrder
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2281119412713978419, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1125507503
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787936762426021772, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
-      propertyPath: line
-      value: 
-      objectReference: {fileID: 1631754415411176728}
-    - target: {fileID: 3787936762426021772, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
-      propertyPath: duration
-      value: 0.2
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4090136371841098650, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -615,11 +598,6 @@ PrefabInstance:
 --- !u!1 &216573333901881047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4779328024336981887, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
-  m_PrefabInstance: {fileID: 4707099200505508264}
-  m_PrefabAsset: {fileID: 0}
---- !u!120 &1631754415411176728 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 6338779325330216112, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
   m_PrefabInstance: {fileID: 4707099200505508264}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8760042873008263730 stripped

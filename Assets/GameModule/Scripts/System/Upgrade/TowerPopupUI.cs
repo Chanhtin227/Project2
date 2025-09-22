@@ -40,9 +40,26 @@ public class TowerPopupUI : MonoBehaviour
 
         if (cam == null) cam = Camera.main;
         if (cam == null) cam = FindAnyObjectByType<Camera>();
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
 
-        Vector3 screenPos = cam.WorldToScreenPoint(tower.transform.position);
-        transform.position = screenPos + new Vector3(0, 80f, 0);
+        if (parentCanvas != null && parentCanvas.renderMode == RenderMode.ScreenSpaceCamera)
+        {
+            Vector3 screenPoint = cam.WorldToScreenPoint(tower.transform.position);
+            Vector2 localPoint;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                parentCanvas.transform as RectTransform,
+                screenPoint,
+                parentCanvas.worldCamera,
+                out localPoint
+            );
+
+            transform.localPosition = localPoint + new Vector2(0, 80f);
+        }
+        else
+        {
+            Vector3 screenPos = cam.WorldToScreenPoint(tower.transform.position);
+            transform.position = screenPos + new Vector3(0, 80f, 0);
+        }
 
         Time.timeScale = 0.2f;
     }
