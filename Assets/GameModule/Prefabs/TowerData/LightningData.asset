@@ -34,3 +34,7 @@ MonoBehaviour:
     fireRate: 1
     cost: 350
     maxHealth: 750
+  sellRefundPercentage: 0.5
+  shootSfx: {fileID: 8300000, guid: 8569c9a668156cb4da78c82d125a87f4, type: 3}
+  upgradeSfx: {fileID: 8300000, guid: 9dd8da7c8f4cbfd4585d1357ff867fe7, type: 3}
+  sellSfx: {fileID: 8300000, guid: 2f2f266f00f889b4aa99b80f5f1f0975, type: 3}

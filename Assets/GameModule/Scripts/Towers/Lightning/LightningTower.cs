@@ -15,6 +15,7 @@ public class LightningTower : BaseTower
         if (zap != null)
         {
             zap.Initialize(firePoint != null ? firePoint : transform, target, damage, maxChains, chainRange, enemyLayer);
+            AudioManager.Instance.PlaySfx(data.shootSfx);
         }
     }
 }

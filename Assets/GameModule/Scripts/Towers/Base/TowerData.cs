@@ -20,4 +20,10 @@ public class TowerData : ScriptableObject
     public Sprite icon;
     public GameObject prefab; // prefab trụ trong game
     public TowerLevel[] levels;
+    public float sellRefundPercentage = 0.5f; // Tỉ lệ hoàn tiền khi bán trụ (0.5 = 50%)
+
+    [Header("Sound FX")]
+    public AudioClip shootSfx;
+    public AudioClip upgradeSfx;
+    public AudioClip sellSfx;
 }
