@@ -16,7 +16,7 @@ MonoBehaviour:
   health: 300
   moveSpeed: 0.8
   armor: 6
-  damageTower: 100
+  damageTower: 200
   goldReward: 0
   specialType: 7
   specialValue: 0

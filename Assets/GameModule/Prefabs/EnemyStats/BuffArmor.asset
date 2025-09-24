@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e57c7737af096e4f934631ce31831ea, type: 3}
-  m_Name: BuffSpeed
+  m_Name: BuffArmor
   m_EditorClassIdentifier: 
-  enemyName: BuffSpeed
-  health: 150
-  moveSpeed: 1
-  armor: 2
-  damageTower: 100
+  enemyName: BuffArmor
+  health: 200
+  moveSpeed: 0.7
+  armor: 8
+  damageTower: 150
   goldReward: 0
-  specialType: 3
-  specialValue: 1.5
-  cooldown: 3
+  specialType: 4
+  specialValue: 10
+  cooldown: 5
