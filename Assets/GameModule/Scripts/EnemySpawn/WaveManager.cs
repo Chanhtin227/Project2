@@ -22,8 +22,11 @@ public class WaveManager : MonoBehaviour
     private float lastSpawnTime = 0f;
     private bool waveCompleted = false;
 
+    private bool gameFinished = false;
+
     void Update()
     {
+        if (gameFinished) return;
         // Dọn list quái chết (null)
         aliveEnemies.RemoveAll(e => e == null);
 
@@ -73,9 +76,10 @@ public class WaveManager : MonoBehaviour
         waveCompleted = false;
         currentWaveIndex++;
 
-        if (currentWaveIndex >= waves.Count)
+        if (currentWaveIndex == waves.Count)
         {
             Debug.Log("=== All waves finished! ===");
+            gameFinished = true;
         }
         else
         {

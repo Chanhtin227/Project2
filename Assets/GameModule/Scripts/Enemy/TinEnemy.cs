@@ -94,10 +94,4 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(_anim.GetCurrentAnimatorClipInfo(0).Length); // Giả sử animation chết dài 1 giây
         Destroy(gameObject);
     }
-    
-    public void SetStats(EnemyStats newStats)
-    {
-        stats = newStats;
-        currentHP = stats.health;
-    }
 }
