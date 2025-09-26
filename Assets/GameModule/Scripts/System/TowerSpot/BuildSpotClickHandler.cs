@@ -8,16 +8,14 @@ public class BuildSpotClickHandler : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            // Kiểm tra xem có đang click vào UI không
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                return; // Không xử lý nếu đang click UI
+                return;
             }
 
-            // Kiểm tra xem có popup nào đang mở không
             if (UIManager.Instance.IsAnyPopupOpen())
             {
-                return; // Không xử lý nếu có popup đang mở
+                return;
             }
 
             Vector2 mousePos = Mouse.current.position.ReadValue();
@@ -30,7 +28,9 @@ public class BuildSpotClickHandler : MonoBehaviour
                 if (spot != null && !spot.isOccupied)
                 {
                     Debug.Log("Click vào BuildSpot");
+
                     UIManager.Instance.ShowBuildPanel(spot);
+                    gameObject.SetActive(true);
                 }
             }
         }
