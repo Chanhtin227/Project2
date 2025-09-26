@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [Header("Build UI")]
     public GameObject buildPanel;
     private BuildSpot currentSpot;
+    public BuildTowerInfoUI buildTowerInfoUI;
 
     [Header("Gameplay UI")]
     public GameObject gameplayUI;
@@ -113,18 +114,13 @@ public class UIManager : MonoBehaviour
     public void OnSelectTower(TowerData data)
     {
         if (currentSpot == null) return;
-
-        int cost = data.levels[0].cost;
-        if (GoldManager.Instance != null && GoldManager.Instance.TrySpend(cost))
+        if (buildTowerInfoUI != null)
         {
-            currentSpot.PlaceTower(data.prefab);
-            HideBuildPanel();
+            buildTowerInfoUI.Show(data, currentSpot);
         }
-        else
-        {
-            Debug.Log("Không đủ vàng để xây!");
-        }
+    
     }
+
     #endregion
 
     #region Gameplay UI
