@@ -65,14 +65,16 @@ public class Enemy : MonoBehaviour
     // Hàm nhận sát thương từ tower
     public void TakeDamage(int dmg)
     {
-        int finalDamage = Mathf.Max(0, dmg - stats.armor);
+        // Công thức giảm dần: 100 / (100 + armor)
+        float multiplier = 100f / (100f + stats.armor);
+        int finalDamage = Mathf.RoundToInt(dmg * multiplier);
         currentHP -= finalDamage;
-
         if (currentHP <= 0)
         {
             Die();
         }
     }
+
 
     // Xử lý khi quái chết
     private void Die()
@@ -86,10 +88,16 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         this.enabled = false;
     }
-    
+
     private IEnumerator DestroyAfterAnimation()
     {
         yield return new WaitForSeconds(_anim.GetCurrentAnimatorClipInfo(0).Length); // Giả sử animation chết dài 1 giây
         Destroy(gameObject);
+    }
+    
+    public void SetStats(EnemyStats newStats)
+    {
+        stats = newStats;
+        currentHP = stats.health;
     }
 }
