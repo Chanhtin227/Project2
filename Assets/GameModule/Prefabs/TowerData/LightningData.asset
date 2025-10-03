@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: LightningData
   m_EditorClassIdentifier: 
   towerName: Lightning Tower
-  icon: {fileID: -6221032456971345432, guid: dba57cee569c0834f823f252e2c3ec82, type: 3}
+  icon: {fileID: 21300000, guid: dba57cee569c0834f823f252e2c3ec82, type: 3}
   prefab: {fileID: 1708928340201248494, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
   levels:
   - name: Lightning 1
     damage: 20
     range: 3.5
-    fireRate: 0.5
+    fireRate: 1.75
     cost: 120
     maxHealth: 300
   - name: Lightning 2
     damage: 35
     range: 4
-    fireRate: 0.7
+    fireRate: 1.5
     cost: 200
     maxHealth: 480
   - name: Lightning 3

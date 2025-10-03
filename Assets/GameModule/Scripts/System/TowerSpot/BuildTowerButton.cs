@@ -7,6 +7,8 @@ public class BuildTowerButton : MonoBehaviour
     public TowerData towerData;
     public Button button;
     public TextMeshProUGUI costText;
+    // private float lastClickTime = 0f;
+    // private float doubleClickThreshold = 0.3f; // ngưỡng thời gian giữa 2 lần click để tính là double click
 
     private int towerCost;
 
@@ -21,11 +23,7 @@ public class BuildTowerButton : MonoBehaviour
             if (costText != null) costText.text = $"Cost: {towerCost}";
         }
 
-        // Gắn sự kiện click
-        button.onClick.AddListener(() =>
-        {
-            UIManager.Instance.OnSelectTower(towerData);
-        });
+        button.onClick.AddListener(onClick);
     }
 
     void Update()
@@ -38,5 +36,10 @@ public class BuildTowerButton : MonoBehaviour
             else
                 button.interactable = true;
         }
+    }
+
+    private void onClick()
+    {
+        UIManager.Instance.OnSelectTower(towerData);
     }
 }

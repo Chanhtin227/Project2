@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class SpeedButton : MonoBehaviour
 {
     public Button speedButton;
-    public Image iconImage;      // ảnh/icon bên trong button
+    public Image iconImage; 
     public float speedMultiplier = 2f;
 
     private bool isFast = false;

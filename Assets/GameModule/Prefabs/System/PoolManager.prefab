@@ -48,3 +48,6 @@ MonoBehaviour:
   - key: Lightning
     prefab: {fileID: 4779328024336981887, guid: 7eae53074706d9f4daef178cef95bf3f, type: 3}
     initialSize: 3
+  - key: Arrow
+    prefab: {fileID: 7054967361659360873, guid: 30507439b1374624f95c44999c06032e, type: 3}
+    initialSize: 3

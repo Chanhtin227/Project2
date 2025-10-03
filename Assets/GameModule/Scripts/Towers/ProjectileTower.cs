@@ -2,26 +2,25 @@ using UnityEngine;
 
 public class ProjectileTower : BaseTower
 {
-    public GameObject projectilePrefab;
+    [SerializeField] private Projectile projectilePrefab; // prefab đạn
     public float projectileSpeed = 8f;
-    public float splashRadius = 0f;
 
-   protected override void Shoot()
-{
-    if (projectilePrefab == null || firePoint == null || target == null)
+    protected override void Shoot()
     {
-        Debug.LogWarning("Shoot failed: missing prefab/firepoint/target");
-        return;
+        if (target == null) return;
+        Debug.Log("Tower shooting at: " + target.name);
+
+        Projectile p = PoolManager.Instance.Get<Projectile>("Arrow");
+        p.transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
+        p.gameObject.SetActive(true);
+        if (p != null)
+        {
+            p.Initialize(target, damage, projectileSpeed, enemyLayer);
+        }
     }
 
-    Debug.Log("Tower shooting at: " + target.name);
-
-    GameObject go = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-    Projectile p = go.GetComponent<Projectile>();
-    if (p != null)
+    public void shootEvent()
     {
-        p.Initialize(target, damage, projectileSpeed, splashRadius, enemyLayer);
+        Shoot();
     }
-}
-
 }

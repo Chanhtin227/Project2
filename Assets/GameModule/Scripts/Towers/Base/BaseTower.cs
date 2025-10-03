@@ -6,7 +6,8 @@ public abstract class BaseTower : MonoBehaviour
     public TowerData data;
     public int currentLevel = 0;
 
-    protected float range;
+    protected float range; 
+    public float Range => range;
     protected float damage;
     protected float fireRate;
 
@@ -23,10 +24,15 @@ public abstract class BaseTower : MonoBehaviour
 
     protected Transform target;
     float fireCooldown;
+    private Animator _anim;
 
     [Header("Visual (2D)")]
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Sprite[] levelSprites;
+    [SerializeField] private SpriteRenderer towerBaseRenderer; // phần trụ
+    [SerializeField] private Sprite[] baseSprites;             // sprite trụ theo cấp
+
+    [SerializeField] private Animator archerAnimator;          // Animator cho cung thủ (nếu có)
+    [SerializeField] private RuntimeAnimatorController[] archerAnimators; // anim theo cấp
+
 
     [Header("Sell Settings")]
     [Range(0f, 1f)]
@@ -43,6 +49,7 @@ public abstract class BaseTower : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    // thoi gina ban va thoi gian anim khong dong bo nen firerate bi phe
     protected virtual void Update()
     {
         UpdateTarget();
@@ -59,10 +66,18 @@ public abstract class BaseTower : MonoBehaviour
         {
             if (CanShoot())
             {
-                Shoot();
-                fireCooldown = 1f / fireRate;
+                if (archerAnimator != null)
+                {
+                    archerAnimator.SetTrigger("isShoot"); // chỉ gọi anim
+                }
+                else
+                {
+                    Shoot(); // fallback nếu không có animator
+                }
+                fireCooldown = fireRate;
             }
         }
+
     }
 
     void UpdateTarget()
@@ -143,12 +158,20 @@ public abstract class BaseTower : MonoBehaviour
 
     void UpdateVisual(int level)
     {
-        if (spriteRenderer != null && level < levelSprites.Length)
+        // Update base tower sprite
+        if (towerBaseRenderer != null && level < baseSprites.Length)
         {
-            spriteRenderer.sprite = levelSprites[level];
+            towerBaseRenderer.sprite = baseSprites[level];
+        }
+
+        // Update animation (nếu có)
+        if (archerAnimator != null && archerAnimators != null 
+            && level < archerAnimators.Length 
+            && archerAnimators[level] != null)
+        {
+            archerAnimator.runtimeAnimatorController = archerAnimators[level];
         }
     }
-
 
 
     public virtual void TakeDamage(float amount)
@@ -183,7 +206,7 @@ public abstract class BaseTower : MonoBehaviour
         Debug.Log($"{data.towerName} sold for {refund} gold (level {currentLevel + 1}).");
         if (buildSpot != null) buildSpot.isOccupied = false;
 
-        Destroy(gameObject); // hoặc trả về pool nếu dùng pooling
+        Destroy(gameObject);
     }
 
     protected virtual void Die()

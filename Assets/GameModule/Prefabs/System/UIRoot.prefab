@@ -4931,7 +4931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16e2dd710b93534b89ecc9e01e94708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 0}
+  towerData: {fileID: 11400000, guid: 576618c23cec2094783928fad4c6d6de, type: 2}
   button: {fileID: 5533591016002586301}
   costText: {fileID: 7002960848678912811}
 --- !u!1 &6699436415523056016
@@ -5927,7 +5927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16e2dd710b93534b89ecc9e01e94708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 0}
+  towerData: {fileID: 11400000, guid: 0a120e4257d84854a99789616e5f07ab, type: 2}
   button: {fileID: 5227763475571828968}
   costText: {fileID: 2036181141782202183}
 --- !u!1 &7423590404328912637
@@ -7506,6 +7506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6532493774527772524}
   - component: {fileID: 6324767560554651191}
+  - component: {fileID: 1901524443154151432}
   m_Layer: 0
   m_Name: UIRoot
   m_TagString: Untagged
@@ -7547,9 +7548,21 @@ MonoBehaviour:
   towerPopupUI: {fileID: 5704307286986469641}
   buildCanvas: {fileID: 6781869397368072840}
   upgradeCanvas: {fileID: 1062247490711576799}
-  buildPanel: {fileID: 1062256651766840184}
+  buildPanel: {fileID: 8829068187696350936}
   buildTowerInfoUI: {fileID: 194951203438320746}
   gameplayUI: {fileID: 1141613239346172784}
+--- !u!114 &1901524443154151432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345886803563284505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc19ffcc04f2dd64ea1de62747eccdec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8475047527588194758
 GameObject:
   m_ObjectHideFlags: 0
@@ -7821,7 +7834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16e2dd710b93534b89ecc9e01e94708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 0}
+  towerData: {fileID: 11400000, guid: 56a5a8c09e6a03e4dbbe9a3e0f219a8f, type: 2}
   button: {fileID: 8611134180467091542}
   costText: {fileID: 1629128355920093661}
 --- !u!1 &8624780740407910054

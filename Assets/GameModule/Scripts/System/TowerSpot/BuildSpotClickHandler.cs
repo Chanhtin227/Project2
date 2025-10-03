@@ -28,9 +28,7 @@ public class BuildSpotClickHandler : MonoBehaviour
                 if (spot != null && !spot.isOccupied)
                 {
                     Debug.Log("Click vào BuildSpot");
-
                     UIManager.Instance.ShowBuildPanel(spot);
-                    gameObject.SetActive(true);
                 }
             }
         }

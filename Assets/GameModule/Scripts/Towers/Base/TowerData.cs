@@ -9,11 +9,10 @@ public class TowerData : ScriptableObject
         public string name = "Level 1";
         public float damage = 10f;
         public float range = 3f;
-        public float fireRate = 1f;
+        public float fireRate = 1f; // thời gian giữa 2 phát (giây)
         public int cost = 50;
         public float maxHealth = 100f; // 🆕 Máu cho tower    
     }
-
 
     [Header("Tower Info")]
     public string towerName = "Basic Tower";

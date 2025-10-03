@@ -5,15 +5,13 @@ public class Projectile : MonoBehaviour
     private Transform target;
     private float speed;
     private float damage;
-    private float splashRadius;
     private LayerMask enemyLayer;
 
-    public void Initialize(Transform target, float damage, float speed, float splashRadius, LayerMask enemyLayer)
+    public void Initialize(Transform target, float damage, float speed, LayerMask enemyLayer)
     {
         this.target = target;
         this.damage = damage;
         this.speed = speed;
-        this.splashRadius = splashRadius;
         this.enemyLayer = enemyLayer;
     }
 
@@ -28,6 +26,9 @@ public class Projectile : MonoBehaviour
         // bay về phía target
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
+        
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
         if (dir.magnitude <= distanceThisFrame)
         {
@@ -40,20 +41,9 @@ public class Projectile : MonoBehaviour
 
     void HitTarget()
     {
-        if (splashRadius > 0)
-        {
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, splashRadius, enemyLayer);
-            foreach (var enemy in enemies)
-            {
-                // gây damage
-                enemy.GetComponent<enemy>()?.TakeDamage(damage);
-            }
-        }
-        else
-        {
-            target.GetComponent<enemy>()?.TakeDamage(damage);
-        }
+        target.GetComponent<Enemy>()?.TakeDamage((int)damage);
+        Debug.Log("Projectile hit: " + damage);
 
-        Destroy(gameObject);
+        PoolManager.Instance.Return(gameObject, "Arrow");
     }
 }

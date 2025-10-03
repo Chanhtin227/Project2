@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577104f6d627e69448ba42173902274a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGold: 200
+  currentGold: 1000
 --- !u!1 &7169614675689089551
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +249,22 @@ PrefabInstance:
     - target: {fileID: 978146587820802583, guid: e87eaf063377da4488222d0254f74383, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
+      propertyPath: pools.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
+      propertyPath: pools.Array.data[1].key
+      value: Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
+      propertyPath: pools.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
+      propertyPath: pools.Array.data[1].initialSize
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
