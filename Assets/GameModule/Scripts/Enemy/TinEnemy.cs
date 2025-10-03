@@ -4,8 +4,6 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyStats stats;
-    [SerializeField] private int pathId = 0;
-
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator _anim;
@@ -25,8 +23,6 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        path = MultiPathCheckpointsManager.main.GetPath(pathId);
-
         if (path != null && path.Length > 0)
         {
             checkpoint = path[index];
@@ -62,6 +58,17 @@ public class Enemy : MonoBehaviour
         else if (rb.linearVelocity.x < -0.1f) spriteRenderer.flipX = true;
     }
 
+    public void SetPath(Transform[] newPath)
+    {
+        path = newPath;
+        index = 0;
+        if (path != null && path.Length > 0)
+        {
+            checkpoint = path[0];
+            index = 0;
+        }
+    }
+
     // Hàm nhận sát thương từ tower
     public void TakeDamage(int dmg)
     {
@@ -93,11 +100,5 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(_anim.GetCurrentAnimatorClipInfo(0).Length); // Giả sử animation chết dài 1 giây
         Destroy(gameObject);
-    }
-    
-    public void SetStats(EnemyStats newStats)
-    {
-        stats = newStats;
-        currentHP = stats.health;
     }
 }

@@ -17,7 +17,7 @@ public class MusicSlider_Script : MonoBehaviour
             Music_Slider.minValue = 0;
             Music_Slider.maxValue = 100;
             Music_Slider.wholeNumbers = true;
-            Music_Slider.value = 50;
+            Music_Slider.value = 100;
         }
         Debug.Log("[MusicSlider] Start: slider assigned? " + (Music_Slider != null));
     }
@@ -43,7 +43,7 @@ public class MusicSlider_Script : MonoBehaviour
     {
         Debug.Log("[MusicSlider] OnPlusDown called");
         if (Music_Slider == null) { Debug.LogWarning("[MusicSlider] slider NULL in OnPlusDown"); return; }
-        Music_Slider.value = Mathf.Clamp(Music_Slider.value + 1, 0, 100);
+        Music_Slider.value = Mathf.Clamp(Music_Slider.value + 10, 0, 100);
         isIncreasing = true;
     }
 
@@ -57,7 +57,7 @@ public class MusicSlider_Script : MonoBehaviour
     {
         Debug.Log("[MusicSlider] OnMinusDown called");
         if (Music_Slider == null) { Debug.LogWarning("[MusicSlider] slider NULL in OnMinusDown"); return; }
-        Music_Slider.value = Mathf.Clamp(Music_Slider.value - 1, 0, 100);
+        Music_Slider.value = Mathf.Clamp(Music_Slider.value - 10, 0, 100);
         isDecreasing = true;
     }
 
