@@ -28,4 +28,5 @@ public class EnemyStats : ScriptableObject
     public EnemySpecialType specialType = EnemySpecialType.None;
     public float specialValue;
     public float cooldown;
+    public float duration;
 }
