@@ -45,20 +45,19 @@ public class SpellManager : MonoBehaviour
             case SpellEffectType.Slow:
             case SpellEffectType.Stun:
             case SpellEffectType.Debuff:
-                waitingForClick = true;
-                pendingSpell = spell;
+            waitingForClick = true;
+            pendingSpell = spell;
 
-                // UI overlay mờ + slow motion
-                UIManager.Instance.ShowSpellCastingUI(true);
+            // UI overlay mờ + slow motion
+            UIManager.Instance.ShowSpellCastingUI(true);
 
-                // Spawn indicator
-                if (indicatorPrefab != null)
-                {
-                    activeIndicator = Instantiate(indicatorPrefab);
-                    activeIndicator.GetComponent<SpellTargetIndicator>().Setup(spell);
-                }
-
-                break;
+            // Spawn indicator
+            if (indicatorPrefab != null)
+            {
+                activeIndicator = Instantiate(indicatorPrefab);
+                activeIndicator.GetComponent<SpellTargetIndicator>().Setup(spell);
+            }
+            break;
         }
     }
 

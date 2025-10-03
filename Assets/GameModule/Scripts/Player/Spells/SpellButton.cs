@@ -12,9 +12,6 @@ public class SpellButton : MonoBehaviour
 
     private void Start()
     {
-        // if (spellData != null && iconImage != null)
-        //     iconImage.sprite = spellData.icon;
-
         if (button != null)
             button.onClick.AddListener(OnClick);
 

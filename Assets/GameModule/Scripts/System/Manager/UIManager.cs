@@ -96,7 +96,7 @@ public class UIManager : MonoBehaviour
             SetCanvasSortOrder(buildCanvas, 200);
             SetCanvasSortOrder(upgradeCanvas, 100); 
 
-            Time.timeScale = 0.1f;
+            Time.timeScale = 0f;
         }
     }
 
@@ -104,6 +104,7 @@ public class UIManager : MonoBehaviour
     {
         if (buildPanel != null) buildPanel.SetActive(false);
         currentSpot = null;
+        buildTowerInfoUI.gameObject.SetActive(false);
         ShowDimBackground(false);
         
         // Reset sort order về mức bình thường
@@ -138,7 +139,7 @@ public class UIManager : MonoBehaviour
         if (show)
         {
             SetCanvasSortOrder(upgradeCanvas, 300); 
-            Time.timeScale = 0.1f;
+            Time.timeScale = 0f;
         }
         else
         {

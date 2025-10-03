@@ -26,7 +26,6 @@ public class SpellData : ScriptableObject
 {
     [Header("Basic Info")]
     public string spellName = "New Spell";
-    //public Sprite icon;
     public SpellType type;
     public SpellEffectType effectType;
 
