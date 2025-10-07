@@ -211,11 +211,11 @@ Transform:
   m_GameObject: {fileID: 212165317}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3999996, y: -5.39, z: 0}
+  m_LocalPosition: {x: 5.6085796, y: -2.60176, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1627385950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &212165320
 MonoBehaviour:
@@ -231,21 +231,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyPrefab: {fileID: 7457423281683462416, guid: 9f562c305340e9c47b954582b2403343, type: 3}
+    - enemyPrefab: {fileID: 3143815303975422533, guid: 7d23356c906059b4fbaa76cf68cd7b7e, type: 3}
       count: 2
       interval: 3
       spawner: {fileID: 294546654}
-    waveDelay: 15
+    waveDelay: 30
   - enemies:
-    - enemyPrefab: {fileID: 1532890269696961506, guid: e13d0854d0064924fa1bef75477ba4ba, type: 3}
-      count: 2
-      interval: 2
-      spawner: {fileID: 294546654}
-    waveDelay: 15
-  - enemies:
-    - enemyPrefab: {fileID: 7152334260295656997, guid: 8f015e86c692e594f93ac491e9b0311e, type: 3}
+    - enemyPrefab: {fileID: 5667111426248444110, guid: b33cb208a4785234e8f02f494cb2dcde, type: 3}
       count: 1
-      interval: 1
+      interval: 4
+      spawner: {fileID: 294546654}
+    waveDelay: 30
+  - enemies:
+    - enemyPrefab: {fileID: 2170649352429875653, guid: 0e8fa334d020429499993715361d82fa, type: 3}
+      count: 2
+      interval: 10
       spawner: {fileID: 294546654}
     waveDelay: 15
 --- !u!1 &245445061
@@ -789,6 +789,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6553772084780430886, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
+      propertyPath: currentLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -953,11 +957,11 @@ Transform:
   m_GameObject: {fileID: 511889525}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7600002, y: -5.34, z: 0}
+  m_LocalPosition: {x: 2.4485798, y: -2.5517602, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1627385950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &511889528
 MonoBehaviour:
@@ -973,21 +977,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyPrefab: {fileID: 4399280335657219964, guid: 7d9eb4b120ed41d4581a5fc09b2c7c71, type: 3}
-      count: 5
-      interval: 7
+    - enemyPrefab: {fileID: 785822535847043210, guid: f0a5c278915218f4f92bb68077943c6b, type: 3}
+      count: 2
+      interval: 4
       spawner: {fileID: 245445062}
-    waveDelay: 15
+    waveDelay: 30
   - enemies:
-    - enemyPrefab: {fileID: 7933328735546300619, guid: 8a859a44dbed4f645a4dfec3d64d2561, type: 3}
-      count: 3
-      interval: 2
+    - enemyPrefab: {fileID: 579770673405991802, guid: 783c21d8dd5f087448fbbc56d07470d2, type: 3}
+      count: 2
+      interval: 5
       spawner: {fileID: 245445062}
-    waveDelay: 15
+    waveDelay: 30
   - enemies:
-    - enemyPrefab: {fileID: 7533863346570303213, guid: f1581e8a9fbea044c89cfa3308bae960, type: 3}
-      count: 1
-      interval: 1
+    - enemyPrefab: {fileID: 6280539202765575754, guid: 00f8fd9febce4a9418c913500b769217, type: 3}
+      count: 2
+      interval: 5
       spawner: {fileID: 245445062}
     waveDelay: 15
 --- !u!1001 &612672238
@@ -1274,12 +1278,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700236486}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.27528, y: -1.0663, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.9333, y: 1.7219399, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1627385950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &700236489
 MonoBehaviour:
@@ -1295,21 +1299,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyPrefab: {fileID: 579770673405991802, guid: 783c21d8dd5f087448fbbc56d07470d2, type: 3}
-      count: 3
+    - enemyPrefab: {fileID: 5667111426248444110, guid: b33cb208a4785234e8f02f494cb2dcde, type: 3}
+      count: 2
       interval: 5
       spawner: {fileID: 1528111552}
-    waveDelay: 15
+    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 4399280335657219964, guid: 7d9eb4b120ed41d4581a5fc09b2c7c71, type: 3}
       count: 2
-      interval: 2
+      interval: 5
       spawner: {fileID: 1528111552}
-    waveDelay: 15
+    waveDelay: 30
   - enemies:
-    - enemyPrefab: {fileID: 6166072414200410447, guid: e2f00186bd6bc544b8ed5b8deac07a94, type: 3}
-      count: 1
-      interval: 1
+    - enemyPrefab: {fileID: 579770673405991802, guid: 783c21d8dd5f087448fbbc56d07470d2, type: 3}
+      count: 2
+      interval: 8
       spawner: {fileID: 1528111552}
     waveDelay: 15
 --- !u!1 &704814109
@@ -2808,6 +2812,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 331876072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1627385949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1627385950}
+  m_Layer: 0
+  m_Name: Waves
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1627385950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627385949}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.20858, y: -2.78824, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 700236488}
+  - {fileID: 511889527}
+  - {fileID: 2107590011}
+  - {fileID: 212165319}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1902580861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2966,11 +3005,11 @@ Transform:
   m_GameObject: {fileID: 2107590009}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7600002, y: -5.34, z: 0}
+  m_LocalPosition: {x: 2.4485798, y: -2.5517602, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1627385950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2107590012
 MonoBehaviour:
@@ -2986,21 +3025,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyPrefab: {fileID: 3379723863815711611, guid: b7d152fe17b4de44da6e257ec92d87a0, type: 3}
+    - enemyPrefab: {fileID: 4399280335657219964, guid: 7d9eb4b120ed41d4581a5fc09b2c7c71, type: 3}
       count: 3
-      interval: 2
+      interval: 7
       spawner: {fileID: 1608598736}
-    waveDelay: 15
+    waveDelay: 30
   - enemies:
-    - enemyPrefab: {fileID: 7533863346570303213, guid: f1581e8a9fbea044c89cfa3308bae960, type: 3}
+    - enemyPrefab: {fileID: 785822535847043210, guid: f0a5c278915218f4f92bb68077943c6b, type: 3}
       count: 2
-      interval: 2
+      interval: 4
       spawner: {fileID: 1608598736}
-    waveDelay: 15
+    - enemyPrefab: {fileID: 3143815303975422533, guid: 7d23356c906059b4fbaa76cf68cd7b7e, type: 3}
+      count: 3
+      interval: 6
+      spawner: {fileID: 1608598736}
+    waveDelay: 30
   - enemies:
-    - enemyPrefab: {fileID: 1532890269696961506, guid: e13d0854d0064924fa1bef75477ba4ba, type: 3}
-      count: 1
-      interval: 1
+    - enemyPrefab: {fileID: 579770673405991802, guid: 783c21d8dd5f087448fbbc56d07470d2, type: 3}
+      count: 2
+      interval: 7
       spawner: {fileID: 1608598736}
     waveDelay: 15
 --- !u!1001 &2127771428
@@ -3146,8 +3189,5 @@ SceneRoots:
   - {fileID: 277369097}
   - {fileID: 945419808}
   - {fileID: 266095036}
-  - {fileID: 700236488}
-  - {fileID: 511889527}
-  - {fileID: 2107590011}
-  - {fileID: 212165319}
+  - {fileID: 1627385950}
   - {fileID: 331876072}

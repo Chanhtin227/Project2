@@ -90,15 +90,9 @@ public class Enemy : MonoBehaviour
         // Cộng vàng cho người chơi
         Debug.Log($"{stats.enemyName} chết, nhận {stats.goldReward} vàng!");
 
-        StartCoroutine(DestroyAfterAnimation());
         GetComponent<Collider2D>().enabled = false;
         rb.linearVelocity = Vector2.zero;
         this.enabled = false;
-    }
-
-    private IEnumerator DestroyAfterAnimation()
-    {
-        yield return new WaitForSeconds(_anim.GetCurrentAnimatorClipInfo(0).Length); // Giả sử animation chết dài 1 giây
-        Destroy(gameObject);
+        Destroy(gameObject, 1.3f);
     }
 }
