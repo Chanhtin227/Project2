@@ -252,18 +252,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
       propertyPath: pools.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
-      propertyPath: pools.Array.data[1].key
-      value: Arrow
+      propertyPath: pools.Array.data[2].key
+      value: IceProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
       propertyPath: pools.Array.data[1].prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7054967361659360873, guid: 30507439b1374624f95c44999c06032e, type: 3}
     - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
-      propertyPath: pools.Array.data[1].initialSize
+      propertyPath: pools.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 8210375203846468362, guid: a78d4f581f6126142adcaab82f92ccd8, type: 3}
+    - target: {fileID: 8411913741985380787, guid: e87eaf063377da4488222d0254f74383, type: 3}
+      propertyPath: pools.Array.data[2].initialSize
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []

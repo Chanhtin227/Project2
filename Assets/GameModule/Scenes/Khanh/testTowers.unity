@@ -1135,6 +1135,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1152648955}
+    - target: {fileID: 2836532626225181164, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3731e3a5a6954cb4f89a1934ae28312b, type: 3}
+    - target: {fileID: 3552719728274279218, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68660ba89b96b2b4a823ac36a3d9f610, type: 2}
     - target: {fileID: 4651622315759730338, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
       propertyPath: towerData
       value: 
@@ -1214,11 +1222,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2812322268226906820, guid: 44c544d5e738e0e48a62bb66947dee82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.34
+      value: -5.72
       objectReference: {fileID: 0}
     - target: {fileID: 2812322268226906820, guid: 44c544d5e738e0e48a62bb66947dee82, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58
+      value: -1.33
       objectReference: {fileID: 0}
     - target: {fileID: 2812322268226906820, guid: 44c544d5e738e0e48a62bb66947dee82, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1282,9 +1290,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2710948378543157219, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: pools.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710948378543157219, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: pools.Array.data[2].key
+      value: IceProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710948378543157219, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
       propertyPath: pools.Array.data[1].prefab
       value: 
       objectReference: {fileID: 7054967361659360873, guid: 30507439b1374624f95c44999c06032e, type: 3}
+    - target: {fileID: 2710948378543157219, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: pools.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 8210375203846468362, guid: a78d4f581f6126142adcaab82f92ccd8, type: 3}
+    - target: {fileID: 2710948378543157219, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: pools.Array.data[2].initialSize
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4512293213315950311, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
       propertyPath: m_Name
       value: GameManagers
