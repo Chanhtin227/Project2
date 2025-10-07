@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class IceProjectile : MonoBehaviour
@@ -51,7 +52,7 @@ public class IceProjectile : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage((int)damage);
-            //enemy.ApplySlow(slowAmount, slowDuration);
+            enemy.ApplySlow(slowAmount, slowDuration);
             Debug.Log("Damaged: " + enemy.name + " for " + damage + " damage and slowed by " + (slowAmount * 100) + "% for " + slowDuration + " seconds.");
         }
 
