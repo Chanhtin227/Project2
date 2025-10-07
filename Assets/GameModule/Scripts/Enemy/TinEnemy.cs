@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private Transform checkpoint;
     private int index = 0;
     private int currentHP;
+    private bool isSlowed = false;
 
     void Awake()
     {
@@ -94,5 +95,22 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         this.enabled = false;
         Destroy(gameObject, 1.3f);
+    }
+
+    public void ApplySlow(float slowAmount, float duration)
+    {
+        if (isSlowed) return;
+        StartCoroutine(SlowRoutine(slowAmount, duration));
+    }
+    private IEnumerator SlowRoutine(float slowAmount, float duration)
+    {
+        isSlowed = true;
+        float originalSpeed = stats.moveSpeed;
+        stats.moveSpeed *= (1f - slowAmount);
+
+        yield return new WaitForSeconds(duration);
+
+        stats.moveSpeed = originalSpeed;
+        isSlowed = false;
     }
 }
