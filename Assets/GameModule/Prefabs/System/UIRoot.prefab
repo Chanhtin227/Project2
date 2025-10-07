@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16e2dd710b93534b89ecc9e01e94708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 0}
+  towerData: {fileID: 11400000, guid: 68660ba89b96b2b4a823ac36a3d9f610, type: 2}
   button: {fileID: 6268944408769731261}
   costText: {fileID: 5695581980974888365}
 --- !u!1 &937111733816115878
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1811576947420922024, guid: 3731e3a5a6954cb4f89a1934ae28312b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3731e3a5a6954cb4f89a1934ae28312b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2664,7 +2664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6221032456971345432, guid: dba57cee569c0834f823f252e2c3ec82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dba57cee569c0834f823f252e2c3ec82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8068,7 +8068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4933196074160547916
 RectTransform:
   m_ObjectHideFlags: 0

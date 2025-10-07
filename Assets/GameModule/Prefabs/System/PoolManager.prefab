@@ -51,3 +51,6 @@ MonoBehaviour:
   - key: Arrow
     prefab: {fileID: 7054967361659360873, guid: 30507439b1374624f95c44999c06032e, type: 3}
     initialSize: 3
+  - key: IceProjectile
+    prefab: {fileID: 8210375203846468362, guid: a78d4f581f6126142adcaab82f92ccd8, type: 3}
+    initialSize: 3
