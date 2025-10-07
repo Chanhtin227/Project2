@@ -36,5 +36,5 @@ MonoBehaviour:
     maxHealth: 600
   sellRefundPercentage: 0.5
   shootSfx: {fileID: 0}
-  upgradeSfx: {fileID: 0}
+  upgradeSfx: {fileID: 8300000, guid: d403b5d9774b1b9418f1326e65a432e6, type: 3}
   sellSfx: {fileID: 0}
