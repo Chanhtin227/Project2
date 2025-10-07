@@ -1702,6 +1702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints: {fileID: 496226891}
+  pathId: 0
 --- !u!4 &1308919900
 Transform:
   m_ObjectHideFlags: 0
@@ -2083,6 +2084,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2710948378543157219, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: pools.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 7054967361659360873, guid: 30507439b1374624f95c44999c06032e, type: 3}
     - target: {fileID: 2826691650677623447, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
       propertyPath: m_IsActive
       value: 1
