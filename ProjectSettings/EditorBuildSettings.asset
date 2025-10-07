@@ -8,12 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MenuScene.unity
     guid: 6b76c91e85df6ea488272ace0363115d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameplayScene.unity
     guid: 836bcae5b7526854a8a0ed58053580f7
+  - enabled: 1
+    path: Assets/GameModule/Scenes/Khiem/MenuScene.unity
+    guid: d17d8399d76ec4d438efa0c3e63d599f
+  - enabled: 1
+    path: Assets/GameModule/Scenes/Khiem/GameplayScene.unity
+    guid: ea1c893cc68bb294b805fc2d89a9fc2d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
