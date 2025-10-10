@@ -30,8 +30,8 @@ public abstract class BaseTower : MonoBehaviour
     [SerializeField] private SpriteRenderer towerBaseRenderer; // phần trụ
     [SerializeField] private Sprite[] baseSprites;             // sprite trụ theo cấp
 
-    [SerializeField] private Animator archerAnimator;          // Animator cho cung thủ (nếu có)
-    [SerializeField] private RuntimeAnimatorController[] archerAnimators; // anim theo cấp
+    [SerializeField] public Animator archerAnimator;          // Animator cho cung thủ (nếu có)
+    [SerializeField] public RuntimeAnimatorController[] archerAnimators; // anim theo cấp
 
 
     [Header("Sell Settings")]

@@ -1934,6 +1934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 954398312}
     m_Modifications:
+    - target: {fileID: 558948057247311954, guid: eade9f5e604ca784884ebb50d6076688, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2585941157606019193, guid: eade9f5e604ca784884ebb50d6076688, type: 3}
       propertyPath: m_Name
       value: WinLosePanel
@@ -1976,6 +1980,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3005384721934297424, guid: eade9f5e604ca784884ebb50d6076688, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830485540020606201, guid: eade9f5e604ca784884ebb50d6076688, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
