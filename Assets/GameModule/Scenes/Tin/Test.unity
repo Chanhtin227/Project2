@@ -185,6 +185,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4181530830552010386, guid: 7ca9d9a93be41384ca7bd81963dbe729, type: 3}
   m_PrefabInstance: {fileID: 132537878}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &158075472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2892279921774040264, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+  m_PrefabInstance: {fileID: 277369097}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &158075473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158075472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef1e3ac712528349aa0e60d9387b9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 158075474}
+  waveManagers:
+  - {fileID: 700236489}
+  - {fileID: 511889528}
+  - {fileID: 2107590012}
+  - {fileID: 212165320}
+--- !u!114 &158075474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 923513012646864292, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+  m_PrefabInstance: {fileID: 277369097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158075472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &212165317
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,19 +269,19 @@ MonoBehaviour:
       count: 2
       interval: 3
       spawner: {fileID: 294546654}
-    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 5667111426248444110, guid: b33cb208a4785234e8f02f494cb2dcde, type: 3}
       count: 1
       interval: 4
       spawner: {fileID: 294546654}
-    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 2170649352429875653, guid: 0e8fa334d020429499993715361d82fa, type: 3}
       count: 2
       interval: 10
       spawner: {fileID: 294546654}
-    waveDelay: 15
+  OnWaveEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &245445061
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +483,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7259224452351853005, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259224452351853005, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 34.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259224452351853005, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -132.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259224452351853005, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -31.51
+      objectReference: {fileID: 0}
     - target: {fileID: 8345886803563284505, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
       propertyPath: m_Name
       value: UIRoot
@@ -456,7 +506,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2892279921774040264, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 158075473}
   m_SourcePrefab: {fileID: 100100000, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
 --- !u!1 &294546653
 GameObject:
@@ -684,6 +737,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2710948378543157219, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: pools.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 7054967361659360873, guid: 30507439b1374624f95c44999c06032e, type: 3}
     - target: {fileID: 4512293213315950311, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
       propertyPath: m_Name
       value: GameManagers
@@ -751,11 +808,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2447833108401674070, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.7380593
+      value: 3.67
       objectReference: {fileID: 0}
     - target: {fileID: 2447833108401674070, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0813673
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 2447833108401674070, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
       propertyPath: m_LocalPosition.z
@@ -817,11 +874,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2447833108401674070, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.9455025
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 2447833108401674070, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04564777
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2447833108401674070, guid: 17b5b00af3119004ba85cb8b43ee9757, type: 3}
       propertyPath: m_LocalPosition.z
@@ -981,19 +1038,19 @@ MonoBehaviour:
       count: 2
       interval: 4
       spawner: {fileID: 245445062}
-    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 579770673405991802, guid: 783c21d8dd5f087448fbbc56d07470d2, type: 3}
       count: 2
       interval: 5
       spawner: {fileID: 245445062}
-    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 6280539202765575754, guid: 00f8fd9febce4a9418c913500b769217, type: 3}
       count: 2
       interval: 5
       spawner: {fileID: 245445062}
-    waveDelay: 15
+  OnWaveEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &612672238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1303,19 +1360,19 @@ MonoBehaviour:
       count: 2
       interval: 5
       spawner: {fileID: 1528111552}
-    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 4399280335657219964, guid: 7d9eb4b120ed41d4581a5fc09b2c7c71, type: 3}
       count: 2
       interval: 5
       spawner: {fileID: 1528111552}
-    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 579770673405991802, guid: 783c21d8dd5f087448fbbc56d07470d2, type: 3}
       count: 2
       interval: 8
       spawner: {fileID: 1528111552}
-    waveDelay: 15
+  OnWaveEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &704814109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3029,7 +3086,6 @@ MonoBehaviour:
       count: 3
       interval: 7
       spawner: {fileID: 1608598736}
-    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 785822535847043210, guid: f0a5c278915218f4f92bb68077943c6b, type: 3}
       count: 2
@@ -3039,13 +3095,14 @@ MonoBehaviour:
       count: 3
       interval: 6
       spawner: {fileID: 1608598736}
-    waveDelay: 30
   - enemies:
     - enemyPrefab: {fileID: 579770673405991802, guid: 783c21d8dd5f087448fbbc56d07470d2, type: 3}
       count: 2
       interval: 7
       spawner: {fileID: 1608598736}
-    waveDelay: 15
+  OnWaveEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2127771428
 PrefabInstance:
   m_ObjectHideFlags: 0
