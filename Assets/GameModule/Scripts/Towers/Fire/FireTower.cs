@@ -45,7 +45,7 @@ public class FireTower : BaseTower
     {
         if (target == null) return;  // enemy có thể đã chết
 
-        // ✅ Lấy vị trí hiện tại của enemy mỗi lần bắn
+        //Lấy vị trí hiện tại của enemy mỗi lần bắn
         Vector3 enemyPos = target.position;
         Vector3 spawnPos = enemyPos + Vector3.up * spawnHeight;
 
