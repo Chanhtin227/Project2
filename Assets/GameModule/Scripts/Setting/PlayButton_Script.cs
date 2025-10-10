@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement; // cần cho SceneManager
 
-public class SceneLoader : MonoBehaviour
+public class LevelSceneManager : MonoBehaviour
 {
-    public void LoadSceneByName(string GameplayScene)
+    [Header("Keo Stage Menu vo day")]
+    public GameObject levelMenu;
+
+    // Bật/tắt panel (cho Setting_Button)
+    public void ToggleLevelMenu()
     {
-        SceneManager.LoadScene(GameplayScene);
+        if (levelMenu != null)
+        {
+            levelMenu.SetActive(!levelMenu.activeSelf);
+        }
     }
 
-    public void LoadSceneByIndex(int sceneIndex)
+    // Chỉ đóng panel (cho button_close_0)
+    public void CloseLevelMenu()
     {
-        SceneManager.LoadScene(sceneIndex);
+        if (levelMenu != null)
+        {
+            levelMenu.SetActive(false);
+
+        }
     }
 }
