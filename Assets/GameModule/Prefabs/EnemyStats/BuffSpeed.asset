@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: BuffSpeed
   health: 150
-  moveSpeed: 0.8
+  moveSpeed: 1.2
   armor: 2
   damageTower: 150
   goldReward: 0
   specialType: 3
   specialValue: 1.5
+  buffRadius: 2.5
   cooldown: 3
+  duration: 1.5

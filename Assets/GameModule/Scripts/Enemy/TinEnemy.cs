@@ -13,13 +13,50 @@ public class Enemy : MonoBehaviour
     private int index = 0;
     private int currentHP;
     private bool isSlowed = false;
+    private IEnemyAbility ability;
+    private float baseSpeed;
+    private float currentSpeedMultiplier = 1f;
+    private float currentMoveSpeed;
+    private float baseArmor;
+    private float currentArmor;
+
+    public void AddSpeedMultiplier(float speed)
+    {
+        currentSpeedMultiplier *= speed;
+        currentMoveSpeed = baseSpeed * currentSpeedMultiplier;
+    }
+
+    public void ResetSpeedMultiplier()
+    {
+        currentSpeedMultiplier = 1f;
+        currentMoveSpeed = baseSpeed;
+    }
+
+    public void AddArmorMultiplier(float armor)
+    {
+        currentArmor += armor;
+    }
+
+    public void ResetArmorMultiplier(float armor)
+    {
+        currentArmor -= armor;
+    }
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
+        baseSpeed = stats.moveSpeed;
+        currentMoveSpeed = baseSpeed;
+        baseArmor = stats.armor;
+        currentArmor = baseArmor;
         currentHP = stats.health;
+        ability = EnemyAbilityFactory.CreateAbility(stats.specialType);
+        if (ability != null)
+        {
+            ability.Init(this, stats);
+        }
     }
 
     void Start()
@@ -33,8 +70,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        ability?.Update();
         if (checkpoint == null) return;
-
         // Khi tới checkpoint
         if (Vector2.Distance(transform.position, checkpoint.position) <= 0.2f)
         {
@@ -53,7 +90,7 @@ public class Enemy : MonoBehaviour
         if (checkpoint == null) return;
 
         Vector2 direction = (checkpoint.position - transform.position).normalized;
-        rb.linearVelocity = direction * stats.moveSpeed;
+        rb.linearVelocity = direction * currentMoveSpeed;
 
         if (rb.linearVelocity.x > 0.1f) spriteRenderer.flipX = false;
         else if (rb.linearVelocity.x < -0.1f) spriteRenderer.flipX = true;
@@ -70,11 +107,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Hàm nhận sát thương từ tower
     public void TakeDamage(int dmg)
     {
         // Công thức giảm dần: 100 / (100 + armor)
-        float multiplier = 100f / (100f + stats.armor);
+        float multiplier = 100f / (100f + currentArmor);
         int finalDamage = Mathf.RoundToInt(dmg * multiplier);
         currentHP -= finalDamage;
         if (currentHP <= 0)
@@ -83,12 +119,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-    // Xử lý khi quái chết
     private void Die()
     {
+        ability?.OnDeath();
         _anim.SetTrigger("isDead");
-        // Cộng vàng cho người chơi
         Debug.Log($"{stats.enemyName} chết, nhận {stats.goldReward} vàng!");
 
         GetComponent<Collider2D>().enabled = false;
