@@ -161,7 +161,7 @@ public abstract class BaseTower : MonoBehaviour
             AudioManager.Instance.PlaySfx(data.upgradeSfx);
             Debug.Log($"{data.towerName} upgraded to level {currentLevel + 1}.");
             ApplyStats();
-            // 🔽 Cập nhật vị trí thanh máu
+            // Cập nhật vị trí thanh máu
             TowerHealthBar healthBar = GetComponentInChildren<TowerHealthBar>();
             if (healthBar != null)
             healthBar.UpdateOffset();
@@ -259,10 +259,8 @@ public abstract class BaseTower : MonoBehaviour
     {
         if (rangeVisualInstance != null)
         {
-            //float scaleFactor = 20f; // tăng gấp 10 lần để bù PPU = 512
             float scale = range *1.4f;
             rangeVisualInstance.transform.localScale = new Vector3(scale, scale, 1f);
-            Debug.Log($"[RangeVisual] Tower: {data.towerName}, Range: {range}, Scale: {scale}");
         }
     }
     #endregion
@@ -284,14 +282,12 @@ public abstract class BaseTower : MonoBehaviour
         }
         else
         {
-            // Nếu Manager chưa tồn tại, chờ 1 frame rồi đăng ký lại
             StartCoroutine(WaitForManagerAndRegister());
         }
     }
 
     private System.Collections.IEnumerator WaitForManagerAndRegister()
     {
-        // Chờ tới khi Manager sẵn sàng
         yield return new WaitUntil(() => TowerRangeManager.Instance != null);
         TowerRangeManager.Instance.RegisterTower(this);
     }
