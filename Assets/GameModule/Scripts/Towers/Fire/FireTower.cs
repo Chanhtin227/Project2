@@ -30,7 +30,6 @@ public class FireTower : BaseTower
 
         GameObject proj = PoolManager.Instance.Get(projectilePoolKey, firePoint.position, firePoint.rotation);
         
-        // QUAN TRỌNG: Đảm bảo object active TRƯỚC khi initialize
         proj.SetActive(true);
 
         int lvl = Mathf.Clamp(currentLevel, 0, immediateDamagePerLevel.Length - 1);

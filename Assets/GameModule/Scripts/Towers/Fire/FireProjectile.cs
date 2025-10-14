@@ -25,8 +25,6 @@ public class FireProjectile : MonoBehaviour
     {
         // Reset state mỗi khi object được enable từ pool
         hasHit = false;
-        // KHÔNG reset animator ở đây vì có thể gây lỗi
-        // Sẽ reset trong Initialize() thay thế
     }
 
     private void SafeResetAnimator()
@@ -51,7 +49,7 @@ public class FireProjectile : MonoBehaviour
             moveRoutine = null;
         }
         
-        // Dừng tất cả coroutines
+        // Dừng tất cả coroutine
         StopAllCoroutines();
         
         hasHit = false;
@@ -84,7 +82,6 @@ public class FireProjectile : MonoBehaviour
         this.projectileSpeed = projectileSpeed;
         this.hasHit = false;
 
-        // Reset animator ở đây thay vì OnEnable (an toàn hơn)
         SafeResetAnimator();
 
         if (moveRoutine != null) StopCoroutine(moveRoutine);
@@ -117,7 +114,6 @@ public class FireProjectile : MonoBehaviour
             yield return null;
         }
 
-        // Nếu không hit được (target chết hoặc quá xa) thì return về pool
         if (!hasHit)
             PoolManager.Instance.Return(gameObject, poolKey);
     }
@@ -147,7 +143,7 @@ public class FireProjectile : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(hitPos, spreadRadius, enemyLayer);
         foreach (var hit in hits)
         {
-            if (hit.transform == target) continue; // Bỏ qua target chính
+            if (hit.transform == target) continue;
             
             Enemy e = hit.GetComponent<Enemy>();
             if (e != null)
