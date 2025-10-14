@@ -255,6 +255,8 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 14c2b416289cb4048af948c5fc9afc97, type: 2}
   - {fileID: 9100000, guid: 14c2b416289cb4048af948c5fc9afc97, type: 2}
   - {fileID: 9100000, guid: 14c2b416289cb4048af948c5fc9afc97, type: 2}
+  sellRefundPercent: 0.5
+  rangeVisualPrefab: {fileID: 7988193048480615888, guid: c6c3ec6660068994d820a1babea46097, type: 3}
   projectilePrefab: {fileID: 7580830792082800052}
   projectileSpeed: 8
 --- !u!61 &8181326343245341121
@@ -549,7 +551,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tower: {fileID: 3850455794268921814}
   fillImage: {fileID: 7384605378836837766}
-  offset: {x: 0, y: 1.4, z: 0}
+  levelOffsets:
+  - {x: 0, y: 1.5, z: 0}
+  - {x: 0, y: 1.5, z: 0}
+  - {x: 0, y: 1.5, z: 0}
 --- !u!1 &7000453980518322176
 GameObject:
   m_ObjectHideFlags: 0
