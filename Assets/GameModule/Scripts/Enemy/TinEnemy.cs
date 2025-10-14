@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     private Transform checkpoint;
     private int index = 0;
     private int currentHP;
-    public float currentSpd;
     private bool isSlowed = false;
     private IEnemyAbility ability;
     private float baseSpeed;
@@ -140,12 +139,11 @@ public class Enemy : MonoBehaviour
     private IEnumerator SlowRoutine(float slowAmount, float duration)
     {
         isSlowed = true;
-        currentSpd = stats.moveSpeed;
-        currentSpd *= (1f - slowAmount);
+        currentMoveSpeed *= (1f - slowAmount);
 
         yield return new WaitForSeconds(duration);
 
-        currentSpd = stats.moveSpeed;
+        currentMoveSpeed = baseSpeed;
         isSlowed = false;
     }
 }
