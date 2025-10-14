@@ -2,84 +2,114 @@ using UnityEngine;
 
 public abstract class BaseTower : MonoBehaviour
 {
+    #region === Tower Data ===
     [Header("Tower Data")]
     public TowerData data;
     public int currentLevel = 0;
 
-    protected float range; 
+    protected float range;
     public float Range => range;
     protected float damage;
     protected float fireRate;
+    #endregion
 
+    #region === Health ===
     [Header("Health")]
     protected float maxHealth;
     public float currentHealth;
     public bool isDestroyed { get; private set; }
     public float CurrentHealth => currentHealth;
     public float MaxHealth => maxHealth;
+    #endregion
 
+    #region === Targeting ===
     [Header("Targeting")]
     public LayerMask enemyLayer;
     public Transform firePoint;
-
     protected Transform target;
     float fireCooldown;
-    private Animator _anim;
+    private bool isPlayingShootAnim = false;
+    #endregion
 
+    #region === Visuals ===
     [Header("Visual (2D)")]
-    [SerializeField] private SpriteRenderer towerBaseRenderer; // phần trụ
-    [SerializeField] private Sprite[] baseSprites;             // sprite trụ theo cấp
+    [SerializeField] private SpriteRenderer towerBaseRenderer;
+    [SerializeField] private Sprite[] baseSprites;
+    [SerializeField] public Animator archerAnimator;
+    [SerializeField] public RuntimeAnimatorController[] archerAnimators;
+    #endregion
 
-    [SerializeField] public Animator archerAnimator;          // Animator cho cung thủ (nếu có)
-    [SerializeField] public RuntimeAnimatorController[] archerAnimators; // anim theo cấp
-
-
+    #region === Build & Sell ===
     [Header("Sell Settings")]
-    [Range(0f, 1f)]
-
+    [Range(0f, 1f)] public float sellRefundPercent = 0.5f;
     public BuildSpot buildSpot { get; private set; }
+
     public void AssignBuildSpot(BuildSpot spot)
     {
         buildSpot = spot;
     }
+    #endregion
 
+    #region === Range Visual (Runtime) ===
+    [Header("Range Visual")]
+    public GameObject rangeVisualPrefab; // Prefab vòng tròn tầm đánh
+    private GameObject rangeVisualInstance;
+    #endregion
+
+    #region === Unity Lifecycle ===
     protected virtual void Start()
     {
         ApplyStats();
         currentHealth = maxHealth;
+        CreateRangeVisual();
     }
 
-    // thoi gina ban va thoi gian anim khong dong bo nen firerate bi phe
     protected virtual void Update()
     {
-        UpdateTarget();
         if (isDestroyed) return;
 
+        UpdateTarget();
         fireCooldown -= Time.deltaTime;
 
         if (target == null || Vector2.Distance(transform.position, target.position) > range)
             AcquireTarget();
 
-        if (target == null) return;
+        if (target == null)
+        {
+            isPlayingShootAnim = false;
+            return;
+        }
 
-        if (fireCooldown <= 0f)
+        if (fireCooldown <= 0f && !isPlayingShootAnim)
         {
             if (CanShoot())
             {
                 if (archerAnimator != null)
                 {
-                    archerAnimator.SetTrigger("isShoot"); // chỉ gọi anim
+                    isPlayingShootAnim = true;
+                    archerAnimator.SetTrigger("isShoot");
                 }
                 else
                 {
-                    Shoot(); // fallback nếu không có animator
+                    Shoot();
                 }
                 fireCooldown = fireRate;
             }
         }
 
+        if (isPlayingShootAnim && archerAnimator != null && archerAnimator.runtimeAnimatorController != null)
+        {
+            AnimatorStateInfo stateInfo = archerAnimator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("idle") ||
+                (stateInfo.IsName("Shoot") && stateInfo.normalizedTime >= 0.95f))
+            {
+                isPlayingShootAnim = false;
+            }
+        }
     }
+    #endregion
 
+    #region === Targeting Logic ===
     void UpdateTarget()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
@@ -96,14 +126,7 @@ public abstract class BaseTower : MonoBehaviour
             }
         }
 
-        if (nearestEnemy != null)
-        {
-            target = nearestEnemy;
-        }
-        else
-        {
-            target = null;
-        }
+        target = nearestEnemy;
     }
 
     void AcquireTarget()
@@ -126,9 +149,10 @@ public abstract class BaseTower : MonoBehaviour
     }
 
     protected virtual bool CanShoot() => true;
-
     protected abstract void Shoot();
+    #endregion
 
+    #region === Stats & Upgrade ===
     public void Upgrade()
     {
         if (currentLevel + 1 < data.levels.Length)
@@ -137,6 +161,10 @@ public abstract class BaseTower : MonoBehaviour
             AudioManager.Instance.PlaySfx(data.upgradeSfx);
             Debug.Log($"{data.towerName} upgraded to level {currentLevel + 1}.");
             ApplyStats();
+            // 🔽 Cập nhật vị trí thanh máu
+            TowerHealthBar healthBar = GetComponentInChildren<TowerHealthBar>();
+            if (healthBar != null)
+            healthBar.UpdateOffset();
         }
         else
         {
@@ -154,37 +182,43 @@ public abstract class BaseTower : MonoBehaviour
         currentHealth = maxHealth;
 
         UpdateVisual(currentLevel);
+        UpdateRangeVisualSize();
     }
 
     void UpdateVisual(int level)
     {
-        // Update base tower sprite
         if (towerBaseRenderer != null && level < baseSprites.Length)
-        {
             towerBaseRenderer.sprite = baseSprites[level];
-        }
 
-        // Update animation (nếu có)
-        if (archerAnimator != null && archerAnimators != null 
-            && level < archerAnimators.Length 
+        if (archerAnimator != null && archerAnimators != null
+            && level < archerAnimators.Length
             && archerAnimators[level] != null)
         {
             archerAnimator.runtimeAnimatorController = archerAnimators[level];
         }
     }
+    #endregion
 
-
+    #region === Combat & Health ===
     public virtual void TakeDamage(float amount)
     {
         if (isDestroyed) return;
 
         currentHealth -= amount;
         if (currentHealth <= 0)
-        {
             Die();
-        }
     }
 
+    protected virtual void Die()
+    {
+        isDestroyed = true;
+        Debug.Log($"{data.towerName} đã bị phá hủy!");
+        if (buildSpot != null) buildSpot.isOccupied = false;
+        Destroy(gameObject);
+    }
+    #endregion
+
+    #region === Sell & Refund ===
     public int GetRefund()
     {
         if (data == null || data.levels == null || currentLevel >= data.levels.Length)
@@ -193,7 +227,6 @@ public abstract class BaseTower : MonoBehaviour
         int currentCost = data.levels[currentLevel].cost;
         return Mathf.RoundToInt(currentCost * data.sellRefundPercentage);
     }
-
 
     public void Sell()
     {
@@ -208,18 +241,73 @@ public abstract class BaseTower : MonoBehaviour
 
         Destroy(gameObject);
     }
+    #endregion
 
-    protected virtual void Die()
+    #region === Range Visual Runtime ===
+    void CreateRangeVisual()
     {
-        isDestroyed = true;
-        Debug.Log($"{data.towerName} đã bị phá hủy!");
-        if (buildSpot != null) buildSpot.isOccupied = false;
-        Destroy(gameObject);
+        if (rangeVisualPrefab == null) return;
+
+        rangeVisualInstance = Instantiate(rangeVisualPrefab, transform);
+        rangeVisualInstance.transform.localPosition = Vector3.zero;
+
+        UpdateRangeVisualSize();
+        rangeVisualInstance.SetActive(true);
     }
 
-    void OnDrawGizmosSelected()
+    void UpdateRangeVisualSize()
+    {
+        if (rangeVisualInstance != null)
+        {
+            //float scaleFactor = 20f; // tăng gấp 10 lần để bù PPU = 512
+            float scale = range *1.4f;
+            rangeVisualInstance.transform.localScale = new Vector3(scale, scale, 1f);
+            Debug.Log($"[RangeVisual] Tower: {data.towerName}, Range: {range}, Scale: {scale}");
+        }
+    }
+    #endregion
+
+    #region === Gizmos (Editor Only) ===
+    public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+    #endregion
+
+    #region === Range Visual Manager Integration ===
+    protected virtual void OnEnable()
+    {
+        if (TowerRangeManager.Instance != null)
+        {
+            TowerRangeManager.Instance.RegisterTower(this);
+        }
+        else
+        {
+            // Nếu Manager chưa tồn tại, chờ 1 frame rồi đăng ký lại
+            StartCoroutine(WaitForManagerAndRegister());
+        }
+    }
+
+    private System.Collections.IEnumerator WaitForManagerAndRegister()
+    {
+        // Chờ tới khi Manager sẵn sàng
+        yield return new WaitUntil(() => TowerRangeManager.Instance != null);
+        TowerRangeManager.Instance.RegisterTower(this);
+    }
+
+
+    protected virtual void OnDisable()
+    {
+        if (TowerRangeManager.Instance != null)
+            TowerRangeManager.Instance.UnregisterTower(this);
+    }
+
+    public void SetRangeVisible(bool visible)
+    {
+        if (rangeVisualInstance != null)
+            rangeVisualInstance.SetActive(visible);
+    }
+    #endregion
+
 }
