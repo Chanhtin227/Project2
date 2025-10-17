@@ -174,11 +174,11 @@ public abstract class BaseTower : MonoBehaviour
     }
 
 
-    public virtual void TakeDamage(float amount)
+    public virtual void TakeDamage(float damage)
     {
         if (isDestroyed) return;
-
-        currentHealth -= amount;
+        currentHealth -= damage;
+        currentHealth = Mathf.Max(currentHealth, 0);
         if (currentHealth <= 0)
         {
             Die();
@@ -209,6 +209,10 @@ public abstract class BaseTower : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public bool IsDestroyed()
+    {
+        return currentHealth <= 0;
+    }
     protected virtual void Die()
     {
         isDestroyed = true;

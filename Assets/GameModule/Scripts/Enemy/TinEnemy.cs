@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator _anim;
-
     private Transform[] path;
     private Transform checkpoint;
     private int index = 0;
@@ -19,6 +18,7 @@ public class Enemy : MonoBehaviour
     private float currentMoveSpeed;
     private float baseArmor;
     private float currentArmor;
+    private bool isAttacking = false;
 
     public void AddSpeedMultiplier(float speed)
     {
@@ -40,6 +40,50 @@ public class Enemy : MonoBehaviour
     public void ResetArmorMultiplier(float armor)
     {
         currentArmor -= armor;
+    }
+
+    public bool IsDead()
+    {
+        return currentHP <= 0;
+    }
+
+    public void Heal(int amount)
+    {
+        currentHP += amount;
+        currentHP = Mathf.Min(currentHP, stats.health);
+    }
+
+    public void SetAttackStage(bool value)
+    {
+        isAttacking = value;
+        if (_anim != null)
+        {
+            _anim.SetBool("isAttack", value);
+        }
+    }
+
+    public void StopMove()
+    {
+        rb.linearVelocity = Vector2.zero;
+        currentMoveSpeed = 0;
+        _anim?.SetBool("isWalk", false);
+        isAttacking = true;
+    }
+
+    public void ResumeMove()
+    {
+        currentMoveSpeed = baseSpeed;
+        _anim?.SetBool("isWalk", true);
+        isAttacking = false;
+    }
+    public int GetCurrentHP()
+    {
+        return currentHP;
+    }
+
+    public int GetMaxHP()
+    {
+        return stats.health;
     }
 
     void Awake()
@@ -87,7 +131,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (checkpoint == null) return;
+        if (checkpoint == null || isAttacking) return;
 
         Vector2 direction = (checkpoint.position - transform.position).normalized;
         rb.linearVelocity = direction * currentMoveSpeed;
