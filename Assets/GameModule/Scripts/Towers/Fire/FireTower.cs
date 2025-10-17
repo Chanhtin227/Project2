@@ -5,10 +5,7 @@ public class FireTower : BaseTower
     [Header("Projectile")]
     [SerializeField] private string projectilePoolKey = "FireProjectile";
     public float projectileLifetime = 1.0f;
-
-    [Header("Fireball Drop Settings")]
-    public float spawnHeight = 3f;   // spawn cách đầu enemy bao nhiêu
-    public float fallSpeed = 6f;     // tốc độ rơi xuống
+    public float projectileSpeed;
 
     [Header("Immediate Damage (per level)")]
     public float[] immediateDamagePerLevel = { 15f, 25f, 40f };
@@ -29,32 +26,15 @@ public class FireTower : BaseTower
 
     protected override void Shoot()
     {
-        if (archerAnimator != null)
-        {
-            archerAnimator.SetTrigger("isShoot");
-        }
-        else
-        {
-            // fallback nếu không có anim
-            SpawnProjectileAtTarget();
-        }
-    }
+        if (target == null) return;
 
-    // Gọi từ Animation Event (qua FireTowerAnimatorRelay)
-    public void SpawnProjectileAtTarget()
-    {
-        if (target == null) return;  // enemy có thể đã chết
-
-        //Lấy vị trí hiện tại của enemy mỗi lần bắn
-        Vector3 enemyPos = target.position;
-        Vector3 spawnPos = enemyPos + Vector3.up * spawnHeight;
-
-        GameObject proj = PoolManager.Instance.Get(projectilePoolKey, spawnPos, Quaternion.identity);
+        GameObject proj = PoolManager.Instance.Get(projectilePoolKey, firePoint.position, firePoint.rotation);
+        
+        proj.SetActive(true);
 
         int lvl = Mathf.Clamp(currentLevel, 0, immediateDamagePerLevel.Length - 1);
 
         FireProjectile fireProj = proj.GetComponent<FireProjectile>();
-        fireProj.gameObject.SetActive(true);
         if (fireProj != null)
         {
             fireProj.Initialize(
@@ -68,10 +48,14 @@ public class FireTower : BaseTower
                 enemyLayer,
                 projectileLifetime,
                 projectilePoolKey,
-                fallSpeed
+                projectileSpeed
             );
         }
-
         AudioManager.Instance?.PlaySfx(data.shootSfx);
+    }
+    
+    public void shootEvent()
+    {
+        Shoot();
     }
 }

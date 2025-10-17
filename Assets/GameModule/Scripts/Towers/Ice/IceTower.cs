@@ -27,4 +27,5 @@ public class IceTower : BaseTower
 
         AudioManager.Instance?.PlaySfx(data.shootSfx);
     }
+    
 }

@@ -19,5 +19,7 @@ MonoBehaviour:
   damageTower: 150
   goldReward: 0
   specialType: 4
-  specialValue: 10
+  specialValue: 5
+  buffRadius: 2.5
   cooldown: 5
+  duration: 3

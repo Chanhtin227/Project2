@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public PoolManager poolManager;
     public GoldManager goldManager;
     public AudioManager audioManager;
+    public TowerRangeManager towerRangeManager;
     // thêm manager khác sau này nếu cần
 
     void Awake()
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
             if (poolManager == null) poolManager = GetComponentInChildren<PoolManager>();
             if (goldManager == null) goldManager = GetComponentInChildren<GoldManager>();
             if (audioManager == null) audioManager = GetComponentInChildren<AudioManager>();
+            if (towerRangeManager == null) towerRangeManager = GetComponentInChildren<TowerRangeManager>();
         }
         else
         {

@@ -59,22 +59,4 @@ public class IceProjectile : MonoBehaviour
         PoolManager.Instance.Return(gameObject, "IceProjectile");
     }
 }
-// add doan nay vao enemy
-// public void ApplySlow(float slowAmount, float duration)
-// {
-//     if (isSlowed) return;
-//     StartCoroutine(SlowRoutine(slowAmount, duration));
-// }
-
-// private IEnumerator SlowRoutine(float slowAmount, float duration)
-// {
-//     isSlowed = true;
-//     float originalSpeed = moveSpeed;
-//     moveSpeed *= (1f - slowAmount);
-
-//     yield return new WaitForSeconds(duration);
-
-//     moveSpeed = originalSpeed;
-//     isSlowed = false;
-// }
 

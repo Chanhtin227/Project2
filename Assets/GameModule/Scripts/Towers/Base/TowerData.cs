@@ -11,7 +11,7 @@ public class TowerData : ScriptableObject
         public float range = 3f;
         public float fireRate = 1f; // thời gian giữa 2 phát (giây)
         public int cost = 50;
-        public float maxHealth = 100f; // 🆕 Máu cho tower    
+        public float maxHealth = 100f; //Máu cho tower    
     }
 
     [Header("Tower Info")]

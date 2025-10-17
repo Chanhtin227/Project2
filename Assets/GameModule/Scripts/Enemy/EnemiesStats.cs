@@ -27,6 +27,7 @@ public class EnemyStats : ScriptableObject
     [Header("Special Ability")]
     public EnemySpecialType specialType = EnemySpecialType.None;
     public float specialValue;
+    public float buffRadius;
     public float cooldown;
     public float duration;
 }
