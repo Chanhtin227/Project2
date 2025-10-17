@@ -8,7 +8,7 @@ public class ClickThroughUI : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log($"Click on {gameObject.name} (highlight)");
 
-        // Gọi click cho các Button bên dưới
+        // Gọi click cho các Button  dưới
         var results = new System.Collections.Generic.List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
 

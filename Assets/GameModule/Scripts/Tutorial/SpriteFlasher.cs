@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ArrowFlash : MonoBehaviour
+public class SpriteFlasher : MonoBehaviour
 {
     public float speed = 2f; // tốc độ nhấp nháy
     private Image img;

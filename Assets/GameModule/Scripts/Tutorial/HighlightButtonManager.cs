@@ -9,6 +9,10 @@ public class HighlightButtonManager : MonoBehaviour
     public Button lightButton2;
     public Button lightButton3;
     public Button lightButton4;
+    public Button lightButton5;
+    public Button lightButton6;
+
+
 
     [Header("Tutorial Manager")]
     public TutorialManager tutorialManager;  // 👈 thêm dòng này
@@ -25,6 +29,11 @@ public class HighlightButtonManager : MonoBehaviour
             lightButton3.onClick.AddListener(OnHighlightAreaClicked);
         if (lightButton4 != null)
             lightButton4.onClick.AddListener(OnHighlightAreaClicked);
+        if (lightButton5 != null)
+            lightButton5.onClick.AddListener(OnHighlightAreaClicked);
+        if (lightButton6 != null)
+            lightButton6.onClick.AddListener(OnHighlightAreaClicked);
+
     }
 
     void OnHighlightAreaClicked()
@@ -38,7 +47,7 @@ public class HighlightButtonManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Chưa gắn TutorialManager trong Inspector!");
+            Debug.LogWarning("Chưa gắn TutorialManager trong Ins");
         }
     }
 }
