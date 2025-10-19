@@ -40,7 +40,7 @@ public class PoolManager : MonoBehaviour
 
     // --- API ---
 
-    // ✅ Bản chuẩn (tự động reset transform)
+    // Bản chuẩn (tự động reset transform)
     public GameObject Get(string key)
     {
         if (!poolDict.ContainsKey(key))
@@ -66,7 +66,7 @@ public class PoolManager : MonoBehaviour
         return obj;
     }
 
-    // ✅ Overload tiện cho spawn với vị trí và rotation
+    // Overload tiện cho spawn với vị trí và rotation
     public GameObject Get(string key, Vector3 position, Quaternion rotation)
     {
         var obj = Get(key);

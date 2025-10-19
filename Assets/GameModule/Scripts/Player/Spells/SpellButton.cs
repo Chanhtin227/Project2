@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,9 +56,13 @@ public class SpellButton : MonoBehaviour
     {
         if (SpellManager.Instance != null)
         {
-            SpellManager.Instance.CastSpell(spellData);
-            cooldownTimer = spellData.cooldown; // bắt đầu countdown
+            SpellManager.Instance.CastSpell(spellData, this);
         }
+    }
+
+    public void StartCooldown()
+    {
+        cooldownTimer = spellData.cooldown;
     }
 
     private void SetIconAlpha(float alpha)

@@ -9,6 +9,7 @@ public class SpellManager : MonoBehaviour
     private SpellData pendingSpell;
     public GameObject indicatorPrefab; // gán SpellIndicator prefab trong inspector
     private GameObject activeIndicator;
+    private SpellButton pendingButton; // lưu lại button
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class SpellManager : MonoBehaviour
     /// <summary>
     /// Được gọi từ SpellButton khi người chơi bấm spell
     /// </summary>
-    public void CastSpell(SpellData spell)
+    public void CastSpell(SpellData spell, SpellButton button)
     {
         Debug.Log("Cast Spell: " + spell.spellName);
 
@@ -47,6 +48,7 @@ public class SpellManager : MonoBehaviour
             case SpellEffectType.Debuff:
             waitingForClick = true;
             pendingSpell = spell;
+            pendingButton = button; // lưu lại button
 
             // UI overlay mờ + slow motion
             UIManager.Instance.ShowSpellCastingUI(true);
@@ -69,6 +71,7 @@ public class SpellManager : MonoBehaviour
             GameObject fx = Instantiate(spell.effectPrefab, pos, Quaternion.identity);
             SpellEffect effect = fx.AddComponent<SpellEffect>();
             effect.Setup(spell);
+            pendingButton.StartCooldown(); // bắt đầu cooldown trên button
         }
 
         waitingForClick = false;
@@ -77,6 +80,7 @@ public class SpellManager : MonoBehaviour
         // Reset UI và hủy indicator
         UIManager.Instance.ShowSpellCastingUI(false);
         if (activeIndicator != null) Destroy(activeIndicator);
+        
     }
 
 

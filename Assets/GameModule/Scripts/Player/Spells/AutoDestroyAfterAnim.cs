@@ -20,6 +20,7 @@ public class AutoDestroyAfterAnim : MonoBehaviour
         {
             float animLength = clipInfo[0].clip.length;
             Destroy(gameObject, animLength);
+            
         }
         else
         {
