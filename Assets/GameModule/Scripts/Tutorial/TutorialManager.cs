@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
+
 
 public class TutorialManager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject brightArea4;
     public GameObject brightArea5;
     public GameObject brightArea6;
+    public GameObject brightArea7;
     [Header("Build Spot")]
     public GameObject BuildSpot;
     public GameObject BuildSpot1;
@@ -38,14 +41,21 @@ public class TutorialManager : MonoBehaviour
     public Button TowerButton5;
     public Button TowerButton6;
     public Button PlaceButton;
-
-
-
-
+    [Header("Spell Button")]
+    public Button SpellButton;
+    public Button SpellButton1;
+    public Button SpellButton2;
+    public Button SpellButton3;
+    public Button SpellButton4;
+    public Button SpellButton5;
+    public Button SpellButton6;
+    public Button SpellButton7;
 
     [Header("Button References")]
     public Button startButton;
-    public Button settingButton;             // có thể để trống, không crash
+    public Button settingButton;// có thể để trống, không crash
+
+    private HashSet<Button> lockedButtons = new HashSet<Button>();
 
     private int currentStep = 0;
     private List<System.Action> tutorialSteps = new List<System.Action>();
@@ -58,6 +68,11 @@ public class TutorialManager : MonoBehaviour
         tutorialSteps.Add(TutorialStep3);
         tutorialSteps.Add(TutorialStep4);
         tutorialSteps.Add(TutorialStep5);
+        tutorialSteps.Add(TutorialStep6);
+        tutorialSteps.Add(TutorialStep7);
+        tutorialSteps.Add(TutorialStep8);
+        tutorialSteps.Add(TutorialStep9);
+
 
         if (FakeBuildSpot != null)
             FakeBuildSpot.onClick.AddListener(FakeBuildSpotClicked);
@@ -102,6 +117,48 @@ public class TutorialManager : MonoBehaviour
         StartTutorial();
     }
 
+    void Update()
+    {
+        // Force khóa button mỗi frame
+        foreach (Button btn in lockedButtons)
+        {
+            if (btn != null)
+                btn.interactable = false;
+        }
+    }
+
+    // Gọi khi bạn muốn tạm khóa 1 nút (bất kể SpellButton.cs đang làm gì)
+    public void LockButton(Button btn)
+    {
+        if (btn != null)
+        {
+            lockedButtons.Add(btn);
+            btn.interactable = false;
+        }
+    }
+
+    // Gọi khi bạn muốn mở khóa lại
+    public void UnlockButton(Button btn)
+    {
+        if (btn != null)
+        {
+            lockedButtons.Remove(btn);
+            // Khi unlock xong, SpellButton sẽ tự quản lý lại interactable theo cooldown
+        }
+    }
+
+    // Nếu muốn mở toàn bộ
+    public void UnlockAll()
+    {
+        foreach (Button btn in lockedButtons)
+        {
+            if (btn != null)
+                btn.interactable = true;
+        }
+        lockedButtons.Clear();
+    }
+
+
     void StartTutorial()
     {
         currentStep = 0;
@@ -119,6 +176,12 @@ public class TutorialManager : MonoBehaviour
 
         tutorialSteps[stepIndex].Invoke();
     }
+    
+    IEnumerator WaitAndNextStep(float waitTime)  //StartCoroutine(WaitAndNextStep(3f)); // vi du code cho doi 3s roi tu next step
+    {
+        yield return new WaitForSeconds(waitTime);
+        NextStep();
+    }
 
     // 🧭 Bước 1: chỉ nút Start
     void TutorialStep1()
@@ -134,15 +197,19 @@ public class TutorialManager : MonoBehaviour
         {
             // Đưa highlight đến đúng vị trí nút Start
             Vector3 newPos = startButton.transform.position;
-            newPos.y += 2f; // tăng cao thêm 50 pixel
+            newPos.y += 2f; // tăng cao thêm 2 pixel
             highlightObject.transform.position = newPos;
             brightArea.transform.position = startButton.transform.position;
         }
+       LockAllExcept(startButton,brightArea1.GetComponent<Button>(), brightArea2.GetComponent<Button>(), brightArea3.GetComponent<Button>(), brightArea4.GetComponent<Button>(), brightArea5.GetComponent<Button>(), brightArea6.GetComponent<Button>(), brightArea.GetComponent<Button>());
+
     }
 
     // 🧭 Bước 2: ví dụ — tắt overlay
     void TutorialStep2()
     {
+        UnlockAll();
+        LockAllExcept(startButton, FakeBuildSpot, FakeBuildSpot1, FakeBuildSpot2, FakeBuildSpot3, FakeBuildSpot4, brightArea1.GetComponent<Button>(), brightArea2.GetComponent<Button>(), brightArea3.GetComponent<Button>(), brightArea4.GetComponent<Button>(), brightArea5.GetComponent<Button>(), brightArea6.GetComponent<Button>(), brightArea.GetComponent<Button>());
         Debug.Log("Run 2 end step 1");
         highlightObject.transform.rotation = Quaternion.Euler(0, 0, -45f);
         Vector3 newPos = BuildSpot4.transform.position;
@@ -155,11 +222,6 @@ public class TutorialManager : MonoBehaviour
         brightArea3.SetActive(true);
         brightArea4.SetActive(true);
 
-        FakeBuildSpot.gameObject.SetActive(true);
-        FakeBuildSpot1.gameObject.SetActive(true);
-        FakeBuildSpot2.gameObject.SetActive(true);
-        FakeBuildSpot3.gameObject.SetActive(true);
-        FakeBuildSpot4.gameObject.SetActive(true);
 
 
 
@@ -173,6 +235,9 @@ public class TutorialManager : MonoBehaviour
     void TutorialStep3()
     {
         Debug.Log("Run 3 end step 2");
+
+        UnlockAll();
+        LockAllExcept(startButton,FakeBuildSpot, FakeBuildSpot1, FakeBuildSpot2, FakeBuildSpot3, FakeBuildSpot4, brightArea1.GetComponent<Button>(), brightArea2.GetComponent<Button>(), brightArea3.GetComponent<Button>(), brightArea4.GetComponent<Button>(), brightArea5.GetComponent<Button>(), brightArea6.GetComponent<Button>(), brightArea.GetComponent<Button>());
 
         FakeBuildSpot.gameObject.SetActive(false);
         FakeBuildSpot1.gameObject.SetActive(false);
@@ -193,7 +258,13 @@ public class TutorialManager : MonoBehaviour
         brightArea5.transform.position = TowerButton5.transform.position;
         brightArea6.transform.position = TowerButton6.transform.position;
 
-
+        brightArea.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);//step6 tra ve mac dinh
+        brightArea1.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        brightArea2.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        brightArea3.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        brightArea4.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        brightArea5.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        brightArea6.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
     }
 
     void TutorialStep4()
@@ -216,16 +287,107 @@ public class TutorialManager : MonoBehaviour
 
     void TutorialStep5()
     {
-        Debug.Log("Run 5 end step 2");
+        UnlockAll();
+        Debug.Log("Run 5 end step 4");
         brightArea6.SetActive(false);
         highlightObject.SetActive(false);
+        StartCoroutine(WaitAndNextStep(3.6f));
 
     }
 
-    //void BuildSpotClicked()
-    //{
-    //    NextStep();
-    //}
+    void TutorialStep6()
+    {
+        Debug.Log("Run 6 end step 5");
+
+        //FakeBuildSpot.gameObject.SetActive(true);
+        //FakeBuildSpot1.gameObject.SetActive(true);
+        //FakeBuildSpot2.gameObject.SetActive(true);
+        //FakeBuildSpot3.gameObject.SetActive(true);
+        //FakeBuildSpot4.gameObject.SetActive(true);
+
+        //LockAllExcept(startButton, brightArea1.GetComponent<Button>(), brightArea2.GetComponent<Button>(), brightArea3.GetComponent<Button>(), brightArea4.GetComponent<Button>(), brightArea5.GetComponent<Button>(), brightArea6.GetComponent<Button>(), brightArea.GetComponent<Button>());
+
+        highlightObject.transform.rotation = Quaternion.Euler(0, 0, 0f);
+        highlightObject.SetActive(true);
+        brightArea.transform.localScale = new Vector3(0.02115656f, 0.02115656f, 0.009255994f);
+        brightArea.SetActive(true);
+
+        if (startButton != null)
+        {
+            // vi tri den tren start
+            Vector3 newPos = startButton.transform.position;
+            newPos.y += 2f; // tăng cao thêm 2 pixel
+            highlightObject.transform.position = newPos;
+            brightArea.transform.position = startButton.transform.position;
+
+        }
+    }
+
+    void TutorialStep7()
+    {
+        Debug.Log("Run 7 end step 6");
+        brightArea.SetActive(false);
+        highlightObject.SetActive(false);
+        StartCoroutine(WaitAndNextStep(5f));
+    }
+
+    void TutorialStep8()
+    {
+        Debug.Log("Run 8 end step 7");
+        highlightObject.SetActive(true);
+
+        brightArea.SetActive(true);
+        brightArea1.SetActive(true);
+        brightArea2.SetActive(true);
+        brightArea3.SetActive(true);
+        brightArea4.SetActive(true);
+        brightArea5.SetActive(true);
+        brightArea6.SetActive(true);
+        brightArea7.SetActive(true);
+
+        brightArea1.transform.localScale = new Vector3(0.02115656f, 0.02115656f, 0.009255994f);
+        brightArea2.transform.localScale = new Vector3(0.02115656f, 0.02115656f, 0.009255994f);
+        brightArea3.transform.localScale = new Vector3(0.02115656f, 0.02115656f, 0.009255994f);
+        brightArea4.transform.localScale = new Vector3(0.02115656f, 0.02115656f, 0.009255994f);
+        brightArea5.transform.localScale = new Vector3(0.02115656f, 0.02115656f, 0.009255994f);
+        brightArea6.transform.localScale = new Vector3(0.02115656f, 0.02115656f, 0.009255994f); //bro im too lazy to write a function ts
+
+        brightArea.transform.position = SpellButton.transform.position;
+        brightArea1.transform.position = SpellButton1.transform.position;
+        brightArea2.transform.position = SpellButton2.transform.position;
+        brightArea3.transform.position = SpellButton3.transform.position;
+        brightArea4.transform.position = SpellButton4.transform.position;
+        brightArea5.transform.position = SpellButton5.transform.position;
+        brightArea6.transform.position = SpellButton6.transform.position;
+        brightArea7.transform.position = SpellButton7.transform.position;                       //coder sieu cap vip pro siu gon gang XD
+
+
+        if (SpellButton3 != null)
+        {
+            // vi tri den tren start
+            float midX = (SpellButton3.transform.position.x + SpellButton4.transform.position.x) / 2f; //giua spell4 va spell3
+            Vector3 newPos = new Vector3(midX, SpellButton4.transform.position.y, SpellButton4.transform.position.z);
+            newPos.y += 2f;
+            highlightObject.transform.position = newPos;
+     
+        }
+    }
+
+    void TutorialStep9()
+    {
+        Debug.Log("Run 9 end step 8");
+        //o day la 1 doan chu keu click vao enemy bat ki (spell)
+        highlightObject.SetActive(false);
+
+        brightArea.SetActive(false);
+        brightArea1.SetActive(false);
+        brightArea2.SetActive(false);
+        brightArea3.SetActive(false);
+        brightArea4.SetActive(false);
+        brightArea5.SetActive(false);
+        brightArea6.SetActive(false);
+        brightArea7.SetActive(false);
+    }
 
 
 
@@ -251,27 +413,9 @@ public class TutorialManager : MonoBehaviour
     {
         darkOverlay.SetActive(false);
         highlightObject.SetActive(false);
-        //       SetUIInteractable(true);
+
     }
 
-    // ⚡ Chặn / cho phép toàn bộ UI
-    //   void SetUIInteractable(bool state)
-    //   {
-    //       Button[] allButtons = FindObjectsOfType<Button>(true); // true = kể cả button đang bị tắt
-    //
-    //       foreach (Button btn in allButtons)
-    //       {
-    //           btn.interactable = state;
-    //       }
-    //   }
-
-
-    // ⚡ Bật/tắt tương tác 1 nút cụ thể
-    //   void SetButtonInteractable(Button btn, bool state)
-    //   {
-    //       if (btn != null)
-    //           btn.interactable = state;
-    //   }
 
     void OnDestroy()
     {
@@ -279,6 +423,23 @@ public class TutorialManager : MonoBehaviour
             startButton.onClick.RemoveListener(OnStartButtonClicked);
 
     }
+
+    public void LockAllExcept(params Button[] allowedButtons)//vi du LockAllExcept(StartButton);,LockAllExcept(SpellButton1, SpellButton2, SpellButton3);
+
+    {
+        // Tìm tất cả Button trong scene, không cần sắp xếp
+        Button[] allButtons = FindObjectsByType<Button>(FindObjectsSortMode.None);
+
+        lockedButtons.Clear();
+
+        foreach (Button btn in allButtons)
+        {
+            if (System.Array.IndexOf(allowedButtons, btn) == -1)
+                LockButton(btn);
+        }
+    }
+
+
 
     // ✅ Thêm mới: được gọi từ HighlightButtonManager khi nút 2light, 2light1,... được bấm
     public void OnHighlightButtonPressed()
