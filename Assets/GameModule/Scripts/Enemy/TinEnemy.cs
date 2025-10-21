@@ -183,12 +183,11 @@ public class Enemy : MonoBehaviour
     private IEnumerator SlowRoutine(float slowAmount, float duration)
     {
         isSlowed = true;
-        float originalSpeed = stats.moveSpeed;
-        stats.moveSpeed *= (1f - slowAmount);
+        currentMoveSpeed *= (1f - slowAmount);
 
         yield return new WaitForSeconds(duration);
 
-        stats.moveSpeed = originalSpeed;
+        currentMoveSpeed = baseSpeed;
         isSlowed = false;
     }
 }
