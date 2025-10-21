@@ -34,8 +34,13 @@ public class SpellData : ScriptableObject
     public float damage = 0f;          // dùng cho spell gây dmg
     public float damagePerSecond = 0f; // dùng cho DOT (damage over time)
     public float slowPercent = 0f;     // dùng cho slow (0.5 = giảm 50%)
+    public float slowDuration = 0f;    // thời gian giảm tốc
     public float radius = 2f;          // bán kính tác dụng
 
     [Header("Visual")]
     public GameObject effectPrefab;    // prefab hiệu ứng (explosion, ice, lightning...)
+
+    [Header("Unlock Settings")]
+    public bool isUnlocked = false;    // có thể mở dần theo level
+    public int unlockLevel = 1;        // level cần để mở
 }

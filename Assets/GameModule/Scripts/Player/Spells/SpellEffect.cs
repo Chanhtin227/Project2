@@ -26,15 +26,17 @@ public class SpellEffect : MonoBehaviour
             switch (data.effectType)
             {
                 case SpellEffectType.Damage:
-                    //enemy.TakeDamage(data.damage);
+                    enemy.TakeDamage(Mathf.RoundToInt(data.damage));
+                    Debug.Log($"[spell effect]: {data.spellName} dealt {data.damage} damage to {enemy.name}");
                     break;
                 case SpellEffectType.DOT:
                     // add logic DOT
                     break;
                 case SpellEffectType.Slow:
-                    // add logic slow
+                    enemy.ApplySlow(data.slowPercent, data.slowDuration);
+                    if (data.damage > 0)
+                        enemy.TakeDamage(Mathf.RoundToInt(data.damage));
                     break;
-
                 case SpellEffectType.Stun:
                     // add logic stun
                     break;

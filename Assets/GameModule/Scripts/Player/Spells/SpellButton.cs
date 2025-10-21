@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +5,8 @@ public class SpellButton : MonoBehaviour
 {
     public SpellData spellData;
     public Button button;
-    public Image iconImage;        // icon chính
-    public Image cooldownOverlay;  // ảnh overlay fill radial
+    public Image iconImage;
+    public Image cooldownOverlay;
 
     private float cooldownTimer = 0f;
 
@@ -25,28 +24,31 @@ public class SpellButton : MonoBehaviour
 
     private void Update()
     {
+        // Cooldown riêng
         if (cooldownTimer > 0)
         {
             cooldownTimer -= Time.deltaTime;
             float ratio = Mathf.Clamp01(cooldownTimer / spellData.cooldown);
-
-            if (cooldownOverlay != null)
-            {
-                cooldownOverlay.fillAmount = ratio;
-                cooldownOverlay.gameObject.SetActive(true);
-            }
-
+            cooldownOverlay.fillAmount = ratio;
+            cooldownOverlay.gameObject.SetActive(true);
             button.interactable = false;
             SetIconAlpha(0.5f);
         }
         else
         {
-            if (cooldownOverlay != null)
+            // Cooldown chung
+            if (SpellManager.Instance != null && SpellManager.Instance.globalCooldown > 0)
             {
-                cooldownOverlay.fillAmount = 0f;
-                cooldownOverlay.gameObject.SetActive(false);
+                if (SpellManager.Instance.globalCooldownTimer > 0)
+                {
+                    button.interactable = false;
+                    SetIconAlpha(0.5f);
+                    return;
+                }
             }
 
+            cooldownOverlay.fillAmount = 0f;
+            cooldownOverlay.gameObject.SetActive(false);
             button.interactable = true;
             SetIconAlpha(1f);
         }
@@ -55,9 +57,7 @@ public class SpellButton : MonoBehaviour
     private void OnClick()
     {
         if (SpellManager.Instance != null)
-        {
             SpellManager.Instance.CastSpell(spellData, this);
-        }
     }
 
     public void StartCooldown()

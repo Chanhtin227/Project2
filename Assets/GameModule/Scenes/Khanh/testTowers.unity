@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &109867579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7125d02be75cc42a272a464c1b0bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: ae92e7367026265448aab65c772a7975, type: 2}
+  stats: {fileID: 11400000, guid: 2357080a1f9069941a551a0fe2ccb0a1, type: 2}
 --- !u!212 &2065400386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1287,7 +1287,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1298,7 +1298,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &2065400389
 Animator:
   serializedVersion: 7
@@ -1387,6 +1387,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 2823132050088871084, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: spellData
+      value: 
+      objectReference: {fileID: 11400000, guid: 83c4bab708392ed43a489517475f1a6c, type: 2}
     - target: {fileID: 2836532626225181164, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1560,6 +1564,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManagers
       objectReference: {fileID: 0}
+    - target: {fileID: 4560301315553006678, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: allSpells.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560301315553006678, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: 'allSpells.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 762b64fb2648e7447b6ebf6fe37d741d, type: 2}
+    - target: {fileID: 4560301315553006678, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: 'allSpells.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 83c4bab708392ed43a489517475f1a6c, type: 2}
     - target: {fileID: 7867446776483220521, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.4745

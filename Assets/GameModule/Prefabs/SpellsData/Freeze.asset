@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfbbad060ce0aef488139996835964a5, type: 3}
-  m_Name: Fire
+  m_Name: Freeze
   m_EditorClassIdentifier: 
-  spellName: Fire
-  type: 0
-  effectType: 0
-  cooldown: 16
-  damage: 100
-  damagePerSecond: 15
-  slowPercent: 0
+  spellName: Freeze
+  type: 1
+  effectType: 2
+  cooldown: 18
+  damage: 0
+  damagePerSecond: 0
+  slowPercent: 0.4
+  slowDuration: 4
   radius: 3
-  effectPrefab: {fileID: 982651901004369454, guid: 1fc20bb498cba214e86dfa3627a802b6, type: 3}
+  effectPrefab: {fileID: 3463445859544858893, guid: 42b2f3612de1f894d9c606b6987ef003, type: 3}
   isUnlocked: 1
   unlockLevel: 0
