@@ -52,7 +52,7 @@ public abstract class BaseTower : MonoBehaviour
 
     #region === Range Visual (Runtime) ===
     [Header("Range Visual")]
-    public GameObject rangeVisualPrefab; // Prefab vòng tròn tầm đánh
+    public GameObject rangeVisualPrefab;
     private GameObject rangeVisualInstance;
     #endregion
 
@@ -161,10 +161,10 @@ public abstract class BaseTower : MonoBehaviour
             AudioManager.Instance.PlaySfx(data.upgradeSfx);
             Debug.Log($"{data.towerName} upgraded to level {currentLevel + 1}.");
             ApplyStats();
-            // Cập nhật vị trí thanh máu
+
             TowerHealthBar healthBar = GetComponentInChildren<TowerHealthBar>();
             if (healthBar != null)
-            healthBar.UpdateOffset();
+                healthBar.UpdateOffset();
         }
         else
         {
@@ -205,16 +205,28 @@ public abstract class BaseTower : MonoBehaviour
         if (isDestroyed) return;
 
         currentHealth -= amount;
+        currentHealth = Mathf.Max(currentHealth, 0);
+
         if (currentHealth <= 0)
             Die();
     }
 
     protected virtual void Die()
     {
+        if (isDestroyed) return;
+
         isDestroyed = true;
         Debug.Log($"{data.towerName} đã bị phá hủy!");
-        if (buildSpot != null) buildSpot.isOccupied = false;
+
+        if (buildSpot != null)
+            buildSpot.isOccupied = false;
+
         Destroy(gameObject);
+    }
+
+    public bool IsDestroyed()
+    {
+        return isDestroyed;
     }
     #endregion
 
@@ -237,7 +249,9 @@ public abstract class BaseTower : MonoBehaviour
         AudioManager.Instance.PlaySfx(data.sellSfx);
 
         Debug.Log($"{data.towerName} sold for {refund} gold (level {currentLevel + 1}).");
-        if (buildSpot != null) buildSpot.isOccupied = false;
+
+        if (buildSpot != null)
+            buildSpot.isOccupied = false;
 
         Destroy(gameObject);
     }
@@ -259,7 +273,7 @@ public abstract class BaseTower : MonoBehaviour
     {
         if (rangeVisualInstance != null)
         {
-            float scale = range *1.4f;
+            float scale = range * 1.4f;
             rangeVisualInstance.transform.localScale = new Vector3(scale, scale, 1f);
         }
     }
@@ -292,7 +306,6 @@ public abstract class BaseTower : MonoBehaviour
         TowerRangeManager.Instance.RegisterTower(this);
     }
 
-
     protected virtual void OnDisable()
     {
         if (TowerRangeManager.Instance != null)
@@ -305,5 +318,4 @@ public abstract class BaseTower : MonoBehaviour
             rangeVisualInstance.SetActive(visible);
     }
     #endregion
-
 }
