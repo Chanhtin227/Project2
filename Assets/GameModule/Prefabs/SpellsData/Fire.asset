@@ -15,9 +15,12 @@ MonoBehaviour:
   spellName: Fire
   type: 0
   effectType: 0
-  cooldown: 5
-  damage: 100
-  damagePerSecond: 0
+  cooldown: 16
+  damage: 60
+  damagePerSecond: 15
   slowPercent: 0
+  slowDuration: 0
   radius: 3
   effectPrefab: {fileID: 982651901004369454, guid: 1fc20bb498cba214e86dfa3627a802b6, type: 3}
+  isUnlocked: 0
+  unlockLevel: 0

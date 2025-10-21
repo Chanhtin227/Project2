@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfbbad060ce0aef488139996835964a5, type: 3}
+  m_Name: Zap
+  m_EditorClassIdentifier: 
+  spellName: Zap
+  type: 2
+  effectType: 3
+  cooldown: 20
+  damage: 50
+  damagePerSecond: 0
+  slowPercent: 0
+  slowDuration: 0
+  radius: 2
+  effectPrefab: {fileID: 3327693467705607509, guid: 2a6ab69f28d6256409c05eff133828ea, type: 3}
+  isUnlocked: 1
+  unlockLevel: 1

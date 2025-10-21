@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 278038008607641956}
   - component: {fileID: 735417594085645047}
   - component: {fileID: 1466628409028355994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireExp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
