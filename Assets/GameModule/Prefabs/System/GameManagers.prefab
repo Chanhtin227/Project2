@@ -244,6 +244,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 6509146022138871984, guid: 168f95a7ce5ec1245b8546bc8adf9744, type: 3}
+  globalCooldown: 5
+  globalCooldownTimer: 0
+  allSpells:
+  - {fileID: 11400000, guid: 762b64fb2648e7447b6ebf6fe37d741d, type: 2}
+  - {fileID: 11400000, guid: 83c4bab708392ed43a489517475f1a6c, type: 2}
+  - {fileID: 11400000, guid: f66c0ec887c0bd04e8ad38d65131cd15, type: 2}
+  - {fileID: 11400000, guid: a7bc4c312b709e04cae6960390b170fb, type: 2}
+  - {fileID: 11400000, guid: fdf9b796f7d00b04cbe8e2224b5591c2, type: 2}
+  unlockedSpells: 
 --- !u!1001 &5846279062250559056
 PrefabInstance:
   m_ObjectHideFlags: 0
