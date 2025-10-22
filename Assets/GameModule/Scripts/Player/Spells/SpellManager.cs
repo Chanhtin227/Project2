@@ -33,13 +33,20 @@ public class SpellManager : MonoBehaviour
         if (globalCooldownTimer > 0)
             globalCooldownTimer -= Time.deltaTime;
 
-        if (waitingForClick && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        if (waitingForClick && Mouse.current != null)
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            mousePos.z = 0f;
-            CastSpellAtPosition(pendingSpell, mousePos);
-            waitingForClick = false;
-            pendingSpell = null;
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                mousePos.z = 0f;
+                CastSpellAtPosition(pendingSpell, mousePos);
+            }
+
+            if ((Mouse.current.rightButton.wasPressedThisFrame) ||
+                (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame))
+            {
+                CancelCurrentSpell();
+            }
         }
     }
 
@@ -117,4 +124,18 @@ public class SpellManager : MonoBehaviour
         UIManager.Instance.ShowSpellCastingUI(false);
         if (activeIndicator != null) Destroy(activeIndicator);
     }
+
+    private void CancelCurrentSpell()
+    {
+        waitingForClick = false;
+        pendingSpell = null;
+
+        UIManager.Instance.ShowSpellCastingUI(false);
+
+        if (activeIndicator != null)
+            Destroy(activeIndicator);
+
+        Debug.Log("[SpellManager] Đã hủy chọn phép (ESC)");
+    }
+
 }

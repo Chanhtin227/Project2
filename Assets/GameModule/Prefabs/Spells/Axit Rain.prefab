@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8673287876044280503}
   - component: {fileID: 7982238287736275402}
-  - component: {fileID: 4641444784168930336}
   - component: {fileID: 5673805707157513590}
   - component: {fileID: 5664022314073831478}
+  - component: {fileID: 3633859620043775706}
   m_Layer: 8
   m_Name: Axit Rain
   m_TagString: Untagged
@@ -45,18 +45,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a097cdd337bdb6489b1f82e67cdbf7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4641444784168930336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3518188714150758685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889a2f9a2b817224d863a6aca5850105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!95 &5673805707157513590
@@ -136,3 +124,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3633859620043775706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3518188714150758685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7063cbfe85d0b13439a9720c45bb8c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5

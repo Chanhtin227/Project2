@@ -1028,6 +1028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2065400387}
   - component: {fileID: 2065400386}
+  - component: {fileID: 2065400391}
   - component: {fileID: 2065400385}
   - component: {fileID: 2065400388}
   - component: {fileID: 2065400389}
@@ -1075,7 +1076,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1217,6 +1218,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6388407, y: 0.821815}
   m_EdgeRadius: 0
+--- !u!114 &2065400391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065400384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840ac5fc4fb28f4bad57c6a525a4d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  outlineMat: {fileID: 2100000, guid: 175208b27192c0742aaf823d4963b495, type: 2}
 --- !u!1001 &1865238548519020292
 PrefabInstance:
   m_ObjectHideFlags: 0
