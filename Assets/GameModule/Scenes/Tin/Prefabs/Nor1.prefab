@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2654817687429681389}
   - component: {fileID: 3913473450003350643}
   - component: {fileID: 6009720518455074433}
+  - component: {fileID: -2863032095778661178}
   m_Layer: 7
   m_Name: Nor1
   m_TagString: Untagged
@@ -199,3 +200,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 46a7deececb20cb4caf91bc4146a3a5e, type: 2}
+--- !u!114 &-2863032095778661178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667111426248444110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840ac5fc4fb28f4bad57c6a525a4d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  outlineMat: {fileID: 2100000, guid: 175208b27192c0742aaf823d4963b495, type: 2}

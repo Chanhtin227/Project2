@@ -907,6 +907,10 @@ MonoBehaviour:
       count: 1
       interval: 2
       spawner: {fileID: 245445062}
+    - enemyPrefab: {fileID: 4302562201522384558, guid: 084c8f09d62ff4448a530686c0eca647, type: 3}
+      count: 1
+      interval: 2
+      spawner: {fileID: 245445062}
   OnWaveEnded:
     m_PersistentCalls:
       m_Calls: []
