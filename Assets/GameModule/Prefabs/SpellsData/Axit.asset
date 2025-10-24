@@ -22,5 +22,5 @@ MonoBehaviour:
   slowDuration: 0
   radius: 3.5
   effectPrefab: {fileID: 3518188714150758685, guid: dc9b91b52a6d78a42b29f0dee2273be2, type: 3}
-  isUnlocked: 0
+  isUnlocked: 1
   unlockLevel: 1

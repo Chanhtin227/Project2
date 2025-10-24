@@ -4,7 +4,7 @@ public enum EnemySpecialType
 {
     None,
     AttackTower,   
-    PoisonTower,  
+    ExplosiveDamage,  
     BuffSpeed,       
     BuffArmor,       
     HealOnDeath,    

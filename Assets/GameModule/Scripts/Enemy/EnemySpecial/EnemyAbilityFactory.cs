@@ -14,6 +14,8 @@ public static class EnemyAbilityFactory
                 return new HealOnDeath();
             case EnemySpecialType.AttackTower:
                 return new AttackTower();
+            case EnemySpecialType.ExplosiveDamage:
+                return new ExplosiveDamage();
             default:
                 return null;
         }
