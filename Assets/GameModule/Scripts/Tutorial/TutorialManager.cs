@@ -2,15 +2,25 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 
 public class TutorialManager : MonoBehaviour
 {
     [Header("UI Overlay")]
     public GameObject darkOverlay;           // ảnh đen phủ màn hình
-    public Text tutorialText;                // text hiển thị nội dung hướng dẫn
+    public Text tutorialText;
     public GameObject highlightObject;       // khung sáng quanh nút cần chỉ
     public Canvas canvas;                    // canvas chính của UI
+
+    [Header("Text typing effect")]
+    public float typingSpeed = 0.03f;     // thời gian giữa mỗi ký tự
+    private Coroutine typingCoroutine;    // lưu coroutine hiện tại
+    private string fullText = "";         // lưu toàn bộ nội dung text cần hiển thị
+    private bool isTyping = false;        // đang gõ chữ hay không
+
+
+
     [Header("Vung highlight")]
     public GameObject brightArea;
     public GameObject brightArea1;
@@ -39,7 +49,6 @@ public class TutorialManager : MonoBehaviour
     public Button TowerButton3;
     public Button TowerButton4;
     public Button TowerButton5;
-    public Button TowerButton6;
     public Button PlaceButton;
     [Header("Spell Button")]
     public Button SpellButton;
@@ -72,6 +81,7 @@ public class TutorialManager : MonoBehaviour
         tutorialSteps.Add(TutorialStep7);
         tutorialSteps.Add(TutorialStep8);
         tutorialSteps.Add(TutorialStep9);
+        tutorialSteps.Add(TutorialStep10);
 
 
         if (FakeBuildSpot != null)
@@ -159,6 +169,45 @@ public class TutorialManager : MonoBehaviour
     }
 
 
+    public void LockAllSpellButtons()
+    {
+        Button[] allButtons = FindObjectsOfType<Button>(true);
+        foreach (Button btn in allButtons)
+        {
+            if (btn.CompareTag("SpellButton"))
+            {
+                btn.interactable = false;
+
+                CanvasGroup cg = btn.GetComponent<CanvasGroup>();
+                if (cg == null)
+                    cg = btn.gameObject.AddComponent<CanvasGroup>();
+
+                cg.blocksRaycasts = false;
+                cg.interactable = false;
+            }
+        }
+    }
+
+    public void UnlockAllSpellButtons()
+    {
+        Button[] allButtons = FindObjectsOfType<Button>(true);
+        foreach (Button btn in allButtons)
+        {
+            if (btn.CompareTag("SpellButton"))
+            {
+                btn.interactable = true;
+
+                CanvasGroup cg = btn.GetComponent<CanvasGroup>();
+                if (cg != null)
+                {
+                    cg.blocksRaycasts = true;
+                    cg.interactable = true;
+                }
+            }
+        }
+    }
+
+
     void StartTutorial()
     {
         currentStep = 0;
@@ -186,11 +235,21 @@ public class TutorialManager : MonoBehaviour
     // 🧭 Bước 1: chỉ nút Start
     void TutorialStep1()
     {
+        brightArea.transform.localScale = new Vector3(0.0225f, 0.0225f, 0.009255994f);
+        brightArea1.transform.localScale = new Vector3(0.0225f, 0.0225f, 0.009255994f);
+        brightArea2.transform.localScale = new Vector3(0.0225f, 0.0225f, 0.009255994f);
+        brightArea3.transform.localScale = new Vector3(0.0225f, 0.0225f, 0.009255994f);
+        brightArea4.transform.localScale = new Vector3(0.0225f, 0.0225f, 0.009255994f);
+        brightArea5.transform.localScale = new Vector3(0.0225f, 0.0225f, 0.009255994f);
+        brightArea6.transform.localScale = new Vector3(0.0225f, 0.0225f, 0.009255994f);
+
+
         Debug.Log("Run 1");
 
         darkOverlay.SetActive(true);
         if (tutorialText != null)
-            tutorialText.text = "Bấm nút Start để bắt đầu!";
+            ShowTutorialText("To start the game, click the lower right button!");
+
 
         highlightObject.SetActive(true);
         if (startButton != null)
@@ -208,7 +267,12 @@ public class TutorialManager : MonoBehaviour
     // 🧭 Bước 2: ví dụ — tắt overlay
     void TutorialStep2()
     {
-        UnlockAll();
+        darkOverlay.SetActive(false);
+
+        if (tutorialText != null)
+            ShowTutorialText("Select a build spot to build your tower!");
+ 
+         UnlockAll();
         LockAllExcept(startButton, FakeBuildSpot, FakeBuildSpot1, FakeBuildSpot2, FakeBuildSpot3, FakeBuildSpot4, brightArea1.GetComponent<Button>(), brightArea2.GetComponent<Button>(), brightArea3.GetComponent<Button>(), brightArea4.GetComponent<Button>(), brightArea5.GetComponent<Button>(), brightArea6.GetComponent<Button>(), brightArea.GetComponent<Button>());
         Debug.Log("Run 2 end step 1");
         highlightObject.transform.rotation = Quaternion.Euler(0, 0, -45f);
@@ -236,6 +300,9 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("Run 3 end step 2");
 
+        if (tutorialText != null)
+            ShowTutorialText("Select a tower to build, each tower has its own strength!");
+
         UnlockAll();
         LockAllExcept(startButton,FakeBuildSpot, FakeBuildSpot1, FakeBuildSpot2, FakeBuildSpot3, FakeBuildSpot4, brightArea1.GetComponent<Button>(), brightArea2.GetComponent<Button>(), brightArea3.GetComponent<Button>(), brightArea4.GetComponent<Button>(), brightArea5.GetComponent<Button>(), brightArea6.GetComponent<Button>(), brightArea.GetComponent<Button>());
 
@@ -256,20 +323,23 @@ public class TutorialManager : MonoBehaviour
         brightArea3.transform.position = TowerButton3.transform.position;
         brightArea4.transform.position = TowerButton4.transform.position;
         brightArea5.transform.position = TowerButton5.transform.position;
-        brightArea6.transform.position = TowerButton6.transform.position;
 
-        brightArea.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);//step6 tra ve mac dinh
-        brightArea1.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
-        brightArea2.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
-        brightArea3.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
-        brightArea4.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
-        brightArea5.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
-        brightArea6.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        //brightArea.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);//step6 tra ve mac dinh
+        //brightArea1.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        //brightArea2.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        //brightArea3.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        //brightArea4.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        //brightArea5.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
+        //brightArea6.transform.localScale = new Vector3(0.02115656f / 4f * 3f, 0.02115656f / 4f * 3f, 0.009255994f);
     }
 
     void TutorialStep4()
     {
         Debug.Log("Run 4 end step 3");
+
+        if (tutorialText != null)
+            ShowTutorialText("Click Place button!");
+
         brightArea.SetActive(false);
         brightArea1.SetActive(false);
         brightArea2.SetActive(false);
@@ -288,7 +358,13 @@ public class TutorialManager : MonoBehaviour
     void TutorialStep5()
     {
         UnlockAll();
+
+        LockAllSpellButtons();
+
         Debug.Log("Run 5 end step 4");
+
+        ShowTutorialText("You can place more towers by repeating the process!");
+
         brightArea6.SetActive(false);
         highlightObject.SetActive(false);
         StartCoroutine(WaitAndNextStep(3.6f));
@@ -299,6 +375,7 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("Run 6 end step 5");
 
+        ShowTutorialText("Remember, you have limited build spot and money, so do it wisely!");
         //FakeBuildSpot.gameObject.SetActive(true);
         //FakeBuildSpot1.gameObject.SetActive(true);
         //FakeBuildSpot2.gameObject.SetActive(true);
@@ -335,6 +412,19 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("Run 8 end step 7");
         highlightObject.SetActive(true);
+        UnlockAllSpellButtons();
+
+        ShowTutorialText("Spells are also very important, you can unlock them by completeing stages!");
+
+        SpellButton.interactable = true;
+        SpellButton1.interactable = true;
+        SpellButton2.interactable = true;
+        SpellButton3.interactable = true;
+        SpellButton4.interactable = true;
+        SpellButton5.interactable = true;
+        SpellButton6.interactable = true;
+        SpellButton7.interactable = true;
+
 
         brightArea.SetActive(true);
         brightArea1.SetActive(true);
@@ -376,6 +466,10 @@ public class TutorialManager : MonoBehaviour
     void TutorialStep9()
     {
         Debug.Log("Run 9 end step 8");
+
+        ShowTutorialText("Each spell has special effect, click on enemies to use!");
+
+        StartCoroutine(WaitAndNextStep(5f));
         //o day la 1 doan chu keu click vao enemy bat ki (spell)
         highlightObject.SetActive(false);
 
@@ -389,10 +483,16 @@ public class TutorialManager : MonoBehaviour
         brightArea7.SetActive(false);
     }
 
+    void TutorialStep10()
+    {
+        Debug.Log("Run 10 end step 9");
 
+        ShowTutorialText("You can upgrade or sell towers by right clicking on it!");
 
-    // 📌 Khi người chơi bấm nút Start
-    void OnStartButtonClicked()
+    }
+
+        // 📌 Khi người chơi bấm nút Start
+        void OnStartButtonClicked()
     {
         Debug.Log("Start Button clicked!");
         //   NextStep();
@@ -439,6 +539,46 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    public void ShowTutorialText(string newText)
+    {
+        // Nếu đang gõ dở → dừng luôn và bắt đầu text mới
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        fullText = newText;
+        tutorialText.text = "";     // Xoá text cũ trước khi gõ mới
+
+        // Nếu text rỗng → ẩn luôn Text object cho gọn
+        if (string.IsNullOrEmpty(newText))
+        {
+            tutorialText.gameObject.SetActive(false);
+            return;
+        }
+        else
+        {
+            tutorialText.gameObject.SetActive(true);
+        }
+
+        typingCoroutine = StartCoroutine(TypeTextEffect(newText));
+    }
+
+    private IEnumerator TypeTextEffect(string textToType)
+    {
+        isTyping = true;
+        tutorialText.text = "";
+
+        foreach (char c in textToType)
+        {
+            tutorialText.text += c;
+            yield return new WaitForSecondsRealtime(typingSpeed);
+        }
+
+        isTyping = false;
+    }
+
+
 
 
     // ✅ Thêm mới: được gọi từ HighlightButtonManager khi nút 2light, 2light1,... được bấm
@@ -455,3 +595,4 @@ public class TutorialManager : MonoBehaviour
 
     }
 }
+
