@@ -1,3 +1,4 @@
+// SpellData.cs (thêm các trường mới)
 using UnityEngine;
 
 public enum SpellType
@@ -30,17 +31,21 @@ public class SpellData : ScriptableObject
     public SpellEffectType effectType;
 
     [Header("Spell Settings")]
-    public float cooldown = 5f;        // thời gian hồi chiêu
-    public float damage = 0f;          // dùng cho spell gây dmg
-    public float damagePerSecond = 0f; // dùng cho DOT (damage over time)
-    public float slowPercent = 0f;     // dùng cho slow (0.5 = giảm 50%)
-    public float slowDuration = 0f;    // thời gian giảm tốc
-    public float radius = 2f;          // bán kính tác dụng
+    public float cooldown = 5f;
+    public float damage = 0f;
+    public float damagePerSecond = 0f; // DOT
+    public float dotDuration = 5f;     // DOT tổng thời gian
+    public float slowPercent = 0f;
+    public float slowDuration = 0f;
+    public float radius = 2f;
+
+    [Header("Targeting")]
+    public bool singleTarget = false;
 
     [Header("Visual")]
-    public GameObject effectPrefab;    // prefab hiệu ứng (explosion, ice, lightning...)
+    public GameObject effectPrefab;
 
     [Header("Unlock Settings")]
-    public bool isUnlocked = false;    // có thể mở dần theo level
-    public int unlockLevel = 1;        // level cần để mở
+    public bool isUnlocked = false;
+    public int unlockLevel = 1;
 }

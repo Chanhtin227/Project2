@@ -19,6 +19,11 @@ public class Enemy : MonoBehaviour
     private float baseArmor;
     private float currentArmor;
     private bool isAttacking = false;
+    //add
+    private OutlineController outlineController;
+    private Coroutine dotCoroutine;
+    private bool isStunned = false;
+    private bool isParalyzed = false;
 
     public void AddSpeedMultiplier(float speed)
     {
@@ -101,6 +106,8 @@ public class Enemy : MonoBehaviour
         {
             ability.Init(this, stats);
         }
+        // add
+        outlineController = GetComponent<OutlineController>();
     }
 
     void Start()
@@ -190,4 +197,67 @@ public class Enemy : MonoBehaviour
         currentMoveSpeed = baseSpeed;
         isSlowed = false;
     }
+
+
+
+    //================================= add=====================================
+    public void SetOutline(bool show)
+    {
+        if (outlineController != null)
+            outlineController.ShowOutline(show);
+    }
+
+    // DOT áp dụng damage over time
+    public void ApplyDOT(float dps, float duration)
+    {
+        if (dotCoroutine != null)
+            StopCoroutine(dotCoroutine);
+        dotCoroutine = StartCoroutine(DOTRoutine(dps, duration));
+    }
+
+    private IEnumerator DOTRoutine(float dps, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration && !IsDead())
+        {
+            int dmg = Mathf.RoundToInt(dps * 1f); // tick mỗi 1s
+            TakeDamage(dmg);
+            yield return new WaitForSeconds(1f);
+            elapsed += 1f;
+        }
+        dotCoroutine = null;
+    }
+    
+    public void ApplyStun(float duration)
+    {
+        if (isStunned) return;
+        StartCoroutine(StunRoutine(duration));
+    }
+
+    public void ApplyParalyze(float duration)
+    {
+        if (isParalyzed) return;
+        StartCoroutine(ParalyzeRoutine(duration));
+    }
+
+    private IEnumerator StunRoutine(float duration)
+    {
+        isStunned = true;
+        currentMoveSpeed = 0f;
+        // có thể thêm animation "Stunned" ở đây
+        yield return new WaitForSeconds(duration);
+        currentMoveSpeed = baseSpeed;
+        isStunned = false;
+    }
+
+    private IEnumerator ParalyzeRoutine(float duration)
+    {
+        isParalyzed = true;
+        currentMoveSpeed *= 0.2f; // di chuyển chậm 80%
+        // có thể thêm hiệu ứng điện ở đây
+        yield return new WaitForSeconds(duration);
+        currentMoveSpeed = baseSpeed;
+        isParalyzed = false;
+    }
+
 }

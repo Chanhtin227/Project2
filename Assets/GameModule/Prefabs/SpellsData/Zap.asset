@@ -18,9 +18,11 @@ MonoBehaviour:
   cooldown: 20
   damage: 50
   damagePerSecond: 0
+  dotDuration: 5
   slowPercent: 0
   slowDuration: 0
   radius: 2
+  singleTarget: 1
   effectPrefab: {fileID: 3327693467705607509, guid: 2a6ab69f28d6256409c05eff133828ea, type: 3}
   isUnlocked: 1
   unlockLevel: 1
