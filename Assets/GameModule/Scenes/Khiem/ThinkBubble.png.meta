@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 4d8a691db18caca49a000c545df68165
+guid: ce493083e62913d40b7da055abdb35c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6917883077085831964
-    second: table_down_0
+      213: 4601882028770240479
+    second: ThinkBubble_0
+  - first:
+      213: -3821292566999107626
+    second: ThinkBubble_1
+  - first:
+      213: 5055049720667006847
+    second: ThinkBubble_2
+  - first:
+      213: 6438222931608013262
+    second: ThinkBubble_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,9 +55,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -96,30 +105,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: table_down_0
+      name: ThinkBubble_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1978
-        height: 192
+        x: 128
+        y: 114
+        width: 173
+        height: 149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ecdc907efdbeff90800000000000000
-      internalID: -6917883077085831964
+      spriteID: fd7aa17c25b2ddf30800000000000000
+      internalID: 4601882028770240479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThinkBubble_1
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 185
+        width: 642
+        height: 596
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d77d2908aa08fac0800000000000000
+      internalID: -3821292566999107626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThinkBubble_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 156
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f776b4a20f4272640800000000000000
+      internalID: 5055049720667006847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThinkBubble_3
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 61
+        width: 54
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec9054725a9295950800000000000000
+      internalID: 6438222931608013262
       vertices: []
       indices: 
       edges: []
@@ -138,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      table_down_0: -6917883077085831964
+      ThinkBubble_0: 4601882028770240479
+      ThinkBubble_1: -3821292566999107626
+      ThinkBubble_2: 5055049720667006847
+      ThinkBubble_3: 6438222931608013262
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
