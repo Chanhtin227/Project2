@@ -5075,14 +5075,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyPrefab: {fileID: 5150903562162966703, guid: cc048c36280ffb7449bcf92aba27950b, type: 3}
+    - enemyPrefab: {fileID: 8582874316563410513, guid: 5b2e937dd764381498eb7f02281f3eb5, type: 3}
       count: 2
       interval: 2
       spawner: {fileID: 1165879213}
   - enemies:
-    - enemyPrefab: {fileID: 5150903562162966703, guid: cc048c36280ffb7449bcf92aba27950b, type: 3}
-      count: 6
-      interval: 1.5
+    - enemyPrefab: {fileID: 779597161409817086, guid: c7f48bad60175c54ca30df1210aed390, type: 3}
+      count: 5
+      interval: 3
+      spawner: {fileID: 1165879213}
+  - enemies:
+    - enemyPrefab: {fileID: 7874970413053143960, guid: 97fc0ca1b263e1a4aa15e7b2821a7eb5, type: 3}
+      count: 10
+      interval: 4
       spawner: {fileID: 1165879213}
   OnWaveEnded:
     m_PersistentCalls:

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 02a48579ac347094cbed14a203459364
+guid: 8b0e6b65345b72f45a41a2b64987c967
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: attack (6)_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 45
-        width: 233
-        height: 239
+        x: 18
+        y: 30
+        width: 178
+        height: 364
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
