@@ -21,7 +21,18 @@ public class SoundButtonToggle : MonoBehaviour
         {
             buttonImage.sprite = buttonSoundOff; // đổi sang nút off
             isSoundOn = false;
-            // ở đây bạn có thể thêm code tắt nhạc
+            if (isSoundOn)
+            {
+                buttonImage.sprite = buttonSoundOff;
+                isSoundOn = false;
+                AudioManager.Instance.ToggleSfx(false);
+            }
+            else
+            {
+                buttonImage.sprite = buttonSound;
+                isSoundOn = true;
+                AudioManager.Instance.ToggleSfx(true);
+            }
         }
         else
         {

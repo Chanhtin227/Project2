@@ -21,7 +21,18 @@ public class MusicButtonToggle : MonoBehaviour
         {
             buttonImage.sprite = buttonMusicOff; // đổi sang nút off
             isMusicOn = false;
-            // ở đây bạn có thể thêm code tắt nhạc
+            if (isMusicOn)
+            {
+                buttonImage.sprite = buttonMusicOff;
+                isMusicOn = false;
+                AudioManager.Instance.ToggleMusic(false);
+            }
+            else
+            {
+                buttonImage.sprite = buttonMusic;
+                isMusicOn = true;
+                AudioManager.Instance.ToggleMusic(true);
+            }
         }
         else
         {
