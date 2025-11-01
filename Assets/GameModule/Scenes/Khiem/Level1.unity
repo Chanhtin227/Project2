@@ -361,7 +361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e780beea6cfc146981736eb160356d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves: []
+  waves:
+  - enemies:
+    - enemyPrefab: {fileID: 2170649352429875653, guid: 0e8fa334d020429499993715361d82fa, type: 3}
+      count: 2
+      interval: 5
+      spawner: {fileID: 116531315}
   OnWaveEnded:
     m_PersistentCalls:
       m_Calls: []
