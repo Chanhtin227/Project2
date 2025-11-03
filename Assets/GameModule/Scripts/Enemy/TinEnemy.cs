@@ -4,6 +4,8 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyStats stats;
+    public EnemyStats Stats => stats;
+
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator _anim;
@@ -89,6 +91,11 @@ public class Enemy : MonoBehaviour
     public int GetMaxHP()
     {
         return stats.health;
+    }
+
+    public Transform[] GetPath()
+    {
+        return path;
     }
 
     void Awake()
