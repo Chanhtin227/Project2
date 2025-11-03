@@ -20,4 +20,6 @@ MonoBehaviour:
   goldReward: 0
   specialType: 6
   specialValue: 1.1
+  buffRadius: 0
   cooldown: 0
+  duration: 0

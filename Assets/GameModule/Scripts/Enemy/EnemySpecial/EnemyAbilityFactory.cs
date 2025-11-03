@@ -16,6 +16,8 @@ public static class EnemyAbilityFactory
                 return new AttackTower();
             case EnemySpecialType.ExplosiveDamage:
                 return new ExplosiveDamage();
+            case EnemySpecialType.Boss:
+                return new Boss();
             default:
                 return null;
         }

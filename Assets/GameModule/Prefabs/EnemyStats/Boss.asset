@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Boss
   health: 1000
-  moveSpeed: 0.5
-  armor: 10
+  moveSpeed: 0.2
+  armor: 30
   damageTower: 0
   goldReward: 0
   specialType: 8
-  specialValue: 50
-  cooldown: 0
+  specialValue: 150
+  buffRadius: 5
+  cooldown: 10
+  duration: 3

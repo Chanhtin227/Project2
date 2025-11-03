@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using System.Linq;
 
 [System.Serializable]
 public class EnemySpawnInfo
@@ -74,6 +75,33 @@ public class WaveManager : MonoBehaviour
         {
             Debug.Log($"[{name}] All waves completed!");
         }
+    }
+
+    public Enemy GetRandomEnemyType(bool excludeBoss = false)
+    {
+        List<Enemy> candidates = new List<Enemy>();
+        foreach (var wave in waves)
+        {
+        foreach (var enemyInfo in wave.enemies)
+        {
+            if (enemyInfo.enemyPrefab == null) continue;
+
+            Enemy enemyComp = enemyInfo.enemyPrefab.GetComponent<Enemy>();
+            if (enemyComp == null) continue;
+
+            EnemyStats enemyStats = enemyComp.Stats;
+
+            if (excludeBoss && enemyStats.specialType == EnemySpecialType.Boss)
+                continue;
+
+            if (!candidates.Contains(enemyComp))
+                candidates.Add(enemyComp);
+        }
+        }
+        if (candidates.Count == 0) {
+            return null;
+        }
+        return candidates[Random.Range(0, candidates.Count)];
     }
 
     // Expose trạng thái để StartButton kiểm tra
