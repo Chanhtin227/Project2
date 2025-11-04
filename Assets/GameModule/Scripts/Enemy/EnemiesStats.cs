@@ -30,4 +30,6 @@ public class EnemyStats : ScriptableObject
     public float buffRadius;
     public float cooldown;
     public float duration;
+
+
 }

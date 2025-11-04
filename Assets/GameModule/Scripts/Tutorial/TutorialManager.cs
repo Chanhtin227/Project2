@@ -255,6 +255,7 @@ public class TutorialManager : MonoBehaviour
         if (startButton != null)
         {
             // Đưa highlight đến đúng vị trí nút Start
+            highlightObject.transform.rotation = Quaternion.Euler(0, 0, -90f);
             Vector3 newPos = startButton.transform.position;
             newPos.y += 2f; // tăng cao thêm 2 pixel
             highlightObject.transform.position = newPos;
@@ -275,7 +276,7 @@ public class TutorialManager : MonoBehaviour
          UnlockAll();
         LockAllExcept(startButton, FakeBuildSpot, FakeBuildSpot1, FakeBuildSpot2, FakeBuildSpot3, FakeBuildSpot4, brightArea1.GetComponent<Button>(), brightArea2.GetComponent<Button>(), brightArea3.GetComponent<Button>(), brightArea4.GetComponent<Button>(), brightArea5.GetComponent<Button>(), brightArea6.GetComponent<Button>(), brightArea.GetComponent<Button>());
         Debug.Log("Run 2 end step 1");
-        highlightObject.transform.rotation = Quaternion.Euler(0, 0, -45f);
+        highlightObject.transform.rotation = Quaternion.Euler(0, 0, -135f);
         Vector3 newPos = BuildSpot4.transform.position;
         newPos.y += 1f;
         newPos.x += 1f;
@@ -312,7 +313,7 @@ public class TutorialManager : MonoBehaviour
         FakeBuildSpot3.gameObject.SetActive(false);
         FakeBuildSpot4.gameObject.SetActive(false);
 
-        highlightObject.transform.rotation = Quaternion.Euler(0, 0, 90f);
+        highlightObject.transform.rotation = Quaternion.Euler(0, 0, 0f);
         Vector3 newPos = TowerButton.transform.position;
         newPos.x -= 2f;
         highlightObject.transform.position = newPos;
@@ -349,7 +350,7 @@ public class TutorialManager : MonoBehaviour
         brightArea6.transform.position = PlaceButton.transform.position;
 
 
-        highlightObject.transform.rotation = Quaternion.Euler(0, 0, 90f);
+        highlightObject.transform.rotation = Quaternion.Euler(0, 0, 0f);
         Vector3 newPos = PlaceButton.transform.position;
         newPos.x -= 2f;
         highlightObject.transform.position = newPos;
@@ -384,7 +385,7 @@ public class TutorialManager : MonoBehaviour
 
         //LockAllExcept(startButton, brightArea1.GetComponent<Button>(), brightArea2.GetComponent<Button>(), brightArea3.GetComponent<Button>(), brightArea4.GetComponent<Button>(), brightArea5.GetComponent<Button>(), brightArea6.GetComponent<Button>(), brightArea.GetComponent<Button>());
 
-        highlightObject.transform.rotation = Quaternion.Euler(0, 0, 0f);
+        highlightObject.transform.rotation = Quaternion.Euler(0, 0, -90f);
         highlightObject.SetActive(true);
         brightArea.transform.localScale = new Vector3(0.02115656f, 0.02115656f, 0.009255994f);
         brightArea.SetActive(true);

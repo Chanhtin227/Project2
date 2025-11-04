@@ -11,7 +11,7 @@ public class LowHpUpSpeed : IEnemyAbility
     //mỗi mốc 10% hp
     private const float intervalHp = 0.1f;
     //mõi mốc 10% speed
-    private const float intervalSpeed = 1.1f;
+    private const float intervalSpeed = 1.2f;
 
     public void Init(Enemy enemy, EnemyStats stats)
     {

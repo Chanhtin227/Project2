@@ -11,6 +11,7 @@ public abstract class BaseTower : MonoBehaviour
     public float Range => range;
     protected float damage;
     protected float fireRate;
+    private bool isDisabled = false;
     #endregion
 
     #region === Health ===
@@ -66,7 +67,7 @@ public abstract class BaseTower : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isDestroyed) return;
+        if (isDestroyed || isDisabled) return;
 
         UpdateTarget();
         fireCooldown -= Time.deltaTime;
@@ -150,6 +151,10 @@ public abstract class BaseTower : MonoBehaviour
 
     protected virtual bool CanShoot() => true;
     protected abstract void Shoot();
+    public void SetActiveStage(bool active)
+    {
+        isDisabled = !active;
+    }
     #endregion
 
     #region === Stats & Upgrade ===
