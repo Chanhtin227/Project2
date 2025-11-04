@@ -502,8 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879ad775066544a489ce0500abb0d98b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScale: 0.007
-  endScale: 0.017
+  startScale: 0.005
+  endScale: 0.007
   duration: 1
   loop: 1
   pingPong: 1

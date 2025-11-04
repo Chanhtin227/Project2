@@ -17,7 +17,7 @@ MonoBehaviour:
   moveSpeed: 1
   armor: 0
   damageTower: 50
-  goldReward: 0
+  goldReward: 10
   specialType: 0
   specialValue: 0
   buffRadius: 0
