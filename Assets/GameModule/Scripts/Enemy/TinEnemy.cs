@@ -5,7 +5,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyStats stats;
     public EnemyStats Stats => stats;
-
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator _anim;
@@ -181,8 +180,11 @@ public class Enemy : MonoBehaviour
     {
         ability?.OnDeath();
         _anim.SetTrigger("isDead");
+        if (GoldManager.Instance != null) 
+        {
+            GoldManager.Instance.AddGold(stats.goldReward);
+        }
         Debug.Log($"{stats.enemyName} chết, nhận {stats.goldReward} vàng!");
-
         GetComponent<Collider2D>().enabled = false;
         rb.linearVelocity = Vector2.zero;
         this.enabled = false;
