@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
     private Coroutine dotCoroutine;
     private bool isStunned = false;
     private bool isParalyzed = false;
+    [SerializeField] private GoldPopup goldPopupPrefab;
+
 
     public void AddSpeedMultiplier(float speed)
     {
@@ -180,16 +182,27 @@ public class Enemy : MonoBehaviour
     {
         ability?.OnDeath();
         _anim.SetTrigger("isDead");
-        if (GoldManager.Instance != null) 
+
+        if (GoldManager.Instance != null)
         {
             GoldManager.Instance.AddGold(stats.goldReward);
         }
+
+        // 🟡 Hiển thị popup vàng
+        if (goldPopupPrefab != null)
+        {
+            var popup = Instantiate(goldPopupPrefab, transform.position, Quaternion.identity);
+            popup.transform.SetParent(FindObjectOfType<Canvas>().transform, false);
+            popup.Setup(stats.goldReward);
+        }
+
         Debug.Log($"{stats.enemyName} chết, nhận {stats.goldReward} vàng!");
         GetComponent<Collider2D>().enabled = false;
         rb.linearVelocity = Vector2.zero;
         this.enabled = false;
         Destroy(gameObject, 1.3f);
     }
+
 
     public void ApplySlow(float slowAmount, float duration)
     {
