@@ -349,8 +349,6 @@ MonoBehaviour:
   towerRangeManager: {fileID: 6883152800105090611}
   baseHealth: 1000
   maxBaseHealth: 1000
-  winPanel: {fileID: 0}
-  losePanel: {fileID: 0}
   aliveCount: 0
 --- !u!114 &9175964872343655454
 MonoBehaviour:

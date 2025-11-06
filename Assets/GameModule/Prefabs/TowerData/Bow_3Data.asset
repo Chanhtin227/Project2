@@ -26,7 +26,7 @@ MonoBehaviour:
     damage: 60
     range: 2.75
     fireRate: 3.8
-    cost: 220
+    cost: 250
     maxHealth: 550
   - name: Crossbow Tower Lv3
     damage: 90
