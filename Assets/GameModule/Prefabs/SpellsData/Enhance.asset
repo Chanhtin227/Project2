@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfbbad060ce0aef488139996835964a5, type: 3}
-  m_Name: Zap
+  m_Name: Enhance
   m_EditorClassIdentifier: 
-  spellName: Zap
-  type: 2
-  effectType: 3
-  cooldown: 20
-  damage: 50
+  spellName: New Spell
+  type: 4
+  effectType: 4
+  cooldown: 5
+  damage: 0
   damagePerSecond: 0
   dotDuration: 5
   slowPercent: 0
   slowDuration: 0
   radius: 2
-  castSound: {fileID: 8300000, guid: 8569c9a668156cb4da78c82d125a87f4, type: 3}
-  singleTarget: 1
-  effectPrefab: {fileID: 3327693467705607509, guid: 2a6ab69f28d6256409c05eff133828ea, type: 3}
-  isUnlocked: 1
-  unlockLevel: 1
+  castSound: {fileID: 0}
+  singleTarget: 0
+  effectPrefab: {fileID: 0}
+  isUnlocked: 0
+  unlockLevel: 5

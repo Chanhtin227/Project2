@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpellButton : MonoBehaviour
 {
@@ -7,8 +8,11 @@ public class SpellButton : MonoBehaviour
     public Button button;
     public Image iconImage;
     public Image cooldownOverlay;
+    public GameObject lockIcon;
+    public TextMeshProUGUI lockText;
 
     private float cooldownTimer = 0f;
+    private bool isUnlocked = false;
 
     private void Start()
     {
@@ -20,10 +24,27 @@ public class SpellButton : MonoBehaviour
             cooldownOverlay.fillAmount = 0f;
             cooldownOverlay.gameObject.SetActive(false);
         }
+
+        // Kiểm tra trạng thái unlock
+        CheckUnlockStatus();
     }
 
     private void Update()
     {
+        // Kiểm tra unlock status mỗi frame
+        if (SpellManager.Instance != null)
+        {
+            bool nowUnlocked = SpellManager.Instance.IsSpellUnlocked(spellData.type);
+            if (nowUnlocked != isUnlocked)
+            {
+                isUnlocked = nowUnlocked;
+                UpdateLockVisual();
+            }
+        }
+
+        // Nếu spell bị khóa thì không xử lý cooldown
+        if (!isUnlocked) return;
+
         // Cooldown riêng
         if (cooldownTimer > 0)
         {
@@ -51,6 +72,35 @@ public class SpellButton : MonoBehaviour
             cooldownOverlay.gameObject.SetActive(false);
             button.interactable = true;
             SetIconAlpha(1f);
+        }
+    }
+
+    private void CheckUnlockStatus()
+    {
+        if (SpellManager.Instance != null)
+        {
+            isUnlocked = SpellManager.Instance.IsSpellUnlocked(spellData.type);
+            UpdateLockVisual();
+        }
+    }
+
+    private void UpdateLockVisual()
+    {
+        if (isUnlocked)
+        {
+            // Mở khóa
+            button.interactable = true;
+            SetIconAlpha(1f);
+            if (lockIcon != null) lockIcon.SetActive(false);
+            if (lockText != null) lockText.gameObject.SetActive(false);
+        }
+        else
+        {
+            // Bị khóa
+            button.interactable = false;
+            SetIconAlpha(0.3f);
+            if (lockIcon != null) lockIcon.SetActive(true);
+            if (lockText != null) lockText.gameObject.SetActive(true);
         }
     }
 

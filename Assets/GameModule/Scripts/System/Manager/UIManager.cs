@@ -95,8 +95,6 @@ public class UIManager : MonoBehaviour
 
             SetCanvasSortOrder(buildCanvas, 200);
             SetCanvasSortOrder(upgradeCanvas, 100); 
-
-            Time.timeScale = 0f;
         }
     }
 
@@ -109,7 +107,6 @@ public class UIManager : MonoBehaviour
         
         // Reset sort order về mức bình thường
         ResetCanvasSortOrder();
-        Time.timeScale = 1f;
     }
 
     public void OnSelectTower(TowerData data)
@@ -139,12 +136,10 @@ public class UIManager : MonoBehaviour
         if (show)
         {
             SetCanvasSortOrder(upgradeCanvas, 300); 
-            Time.timeScale = 0f;
         }
         else
         {
             ResetCanvasSortOrder();
-            Time.timeScale = 1f;
         }
     }
 

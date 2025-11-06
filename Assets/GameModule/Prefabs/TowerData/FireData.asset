@@ -20,7 +20,7 @@ MonoBehaviour:
     damage: 25
     range: 2
     fireRate: 2
-    cost: 150
+    cost: 100
     maxHealth: 280
   - name: Fire Tower Lv2
     damage: 40

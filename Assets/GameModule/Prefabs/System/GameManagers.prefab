@@ -347,6 +347,11 @@ MonoBehaviour:
   goldManager: {fileID: 7578989099059260800}
   audioManager: {fileID: 8137342561098992334}
   towerRangeManager: {fileID: 6883152800105090611}
+  baseHealth: 1000
+  maxBaseHealth: 1000
+  winPanel: {fileID: 0}
+  losePanel: {fileID: 0}
+  aliveCount: 0
 --- !u!114 &9175964872343655454
 MonoBehaviour:
   m_ObjectHideFlags: 0

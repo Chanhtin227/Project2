@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemy != null)
         {
             enemy.SetPath(MultiPathCheckpointsManager.main.GetPath(pathId));
+            GameManager.Instance?.RegisterEnemy();
         }
         
     }
