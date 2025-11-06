@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: e5d2806040389924a916e03ebbeb7095, type: 2}
+  goldPopupPrefab: {fileID: 7449113760407982819, guid: 5d1ff414f28727a44abd45a60883e48b, type: 3}
 --- !u!114 &-2057744335710373875
 MonoBehaviour:
   m_ObjectHideFlags: 0

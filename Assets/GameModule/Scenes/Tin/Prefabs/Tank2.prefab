@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: ae92e7367026265448aab65c772a7975, type: 2}
+  goldPopupPrefab: {fileID: 7449113760407982819, guid: 5d1ff414f28727a44abd45a60883e48b, type: 3}
 --- !u!95 &4561364210731623920
 Animator:
   serializedVersion: 7
