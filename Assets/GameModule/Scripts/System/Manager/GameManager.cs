@@ -15,16 +15,36 @@ public class GameManager : MonoBehaviour
     public int baseHealth = 1000;
     public int maxBaseHealth = 1000;
 
-    [Header("Win/Lose Panels")]
-    public GameObject winPanel;
-    public GameObject losePanel;
-
     private const string UNLOCKED_LEVEL_KEY = "UnlockedLevel";
-
     private bool gameEnded = false;
 
     public int aliveCount = 0;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            if (poolManager == null) poolManager = GetComponentInChildren<PoolManager>();
+            if (goldManager == null) goldManager = GetComponentInChildren<GoldManager>();
+            if (audioManager == null) audioManager = GetComponentInChildren<AudioManager>();
+            if (towerRangeManager == null) towerRangeManager = GetComponentInChildren<TowerRangeManager>();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        gameEnded = false;
+        aliveCount = 0;
+    }
+
+    // ----------------- ENEMY LOGIC -----------------
     public void RegisterEnemy()
     {
         aliveCount++;
@@ -49,99 +69,78 @@ public class GameManager : MonoBehaviour
         if (baseHealth <= 0)
         {
             baseHealth = 0;
-            ShowLosePanel();
+            HandleGameLose();
         }
     }
 
+    // ----------------- GAME CONDITIONS -----------------
     public void CheckWinCondition()
     {
         if (gameEnded) return;
 
         Debug.Log($"[GameManager] Checking win condition... AliveCount = {aliveCount}");
-
-        // Kiểm tra wave còn spawn không
         WaveManager[] waveManagers = FindObjectsOfType<WaveManager>();
+
         foreach (var wm in waveManagers)
         {
-            if (wm.IsSpawning())
+            if (wm.IsSpawning() || wm.IsWaitingForNext())
             {
-                Debug.Log($"[GameManager] {wm.name} đang spawn, chưa thắng.");
+                Debug.Log($"[GameManager] {wm.name} còn wave chưa hoàn thành, chưa thắng.");
                 return;
             }
         }
 
-        // Nếu không còn quái và đã hết wave => thắng
         if (aliveCount <= 0)
         {
-            ShowWinPanel();
+            Debug.Log("[GameManager] Tất cả wave hoàn thành và không còn quái!");
+            HandleGameWin();
         }
     }
 
-    private void ShowWinPanel()
+    private void HandleGameWin()
     {
         if (gameEnded) return;
-
         gameEnded = true;
-        Debug.Log("🎉 Victory!");
 
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextIndex = currentIndex + 1;
+        Debug.Log("Victory!");
+        UnlockNextLevel();
+
+        Time.timeScale = 0f;
+        UIEvents.OnWin?.Invoke();
+    }
+
+    private void HandleGameLose()
+    {
+        if (gameEnded) return;
+        gameEnded = true;
+
+        Debug.Log("Game Over!");
+        Time.timeScale = 0f;
+        UIEvents.OnLose?.Invoke();
+    }
+
+   private void UnlockNextLevel()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (!sceneName.StartsWith("Level")) return;
+
+        // Lấy số Level hiện tại
+        int currentLevelNumber = 1;
+        int.TryParse(sceneName.Replace("Level", ""), out currentLevelNumber);
+
+        int nextLevel = currentLevelNumber + 1;
 
         int unlocked = PlayerPrefs.GetInt(UNLOCKED_LEVEL_KEY, 1);
-        if (nextIndex > unlocked)
+        if (nextLevel > unlocked)
         {
-            PlayerPrefs.SetInt(UNLOCKED_LEVEL_KEY, nextIndex);
+            PlayerPrefs.SetInt(UNLOCKED_LEVEL_KEY, nextLevel);
             PlayerPrefs.Save();
-            Debug.Log($"🔓 Đã mở khóa Level {nextIndex}");
-        }
-
-        if (winPanel != null)
-            winPanel.SetActive(true);
-        else
-            Debug.LogError("Win Panel chưa được gán!");
-
-        Time.timeScale = 0f;
-    }
-
-    private void ShowLosePanel()
-    {
-        if (gameEnded) return;
-
-        gameEnded = true;
-        Debug.Log("💀 Game Over!");
-
-        if (losePanel != null)
-            losePanel.SetActive(true);
-        else
-            Debug.LogError("Lose Panel chưa được gán!");
-
-        Time.timeScale = 0f;
-    }
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-
-            if (poolManager == null) poolManager = GetComponentInChildren<PoolManager>();
-            if (goldManager == null) goldManager = GetComponentInChildren<GoldManager>();
-            if (audioManager == null) audioManager = GetComponentInChildren<AudioManager>();
-            if (towerRangeManager == null) towerRangeManager = GetComponentInChildren<TowerRangeManager>();
-        }
-        else
-        {
-            Destroy(gameObject);
+            Debug.Log($"Đã mở khóa Level {nextLevel}");
         }
     }
 
-    void Start()
-    {
-        gameEnded = false;
-        aliveCount = 0;
-    }
-
+    // ----------------- SCENE CONTROLS -----------------
     public void RestartLevel()
     {
         Time.timeScale = 1f;

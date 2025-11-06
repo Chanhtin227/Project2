@@ -27,7 +27,7 @@ public class LevelButton : MonoBehaviour
         string sceneName = "Level" + levelIndex;
 
         if (IsSceneInBuild(sceneName))
-            SceneManager.LoadScene(sceneName);
+            SceneLoader.LoadScene(sceneName);
         else
             Debug.LogError($"❌ Scene {sceneName} chưa có trong Build Settings!");
     }

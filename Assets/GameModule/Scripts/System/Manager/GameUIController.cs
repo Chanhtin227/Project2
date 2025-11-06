@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameUIController : MonoBehaviour
 {
@@ -11,33 +11,38 @@ public class GameUIController : MonoBehaviour
 
     private bool isPaused = false;
 
-    void Update()
+    private void OnEnable()
     {
-        if (Keyboard.current.rKey.wasPressedThisFrame && Keyboard.current.rKey.isPressed)
+        UIEvents.OnWin += ShowWinPanel;
+        UIEvents.OnLose += ShowLosePanel;
+    }
+
+    private void OnDisable()
+    {
+        UIEvents.OnWin -= ShowWinPanel;
+        UIEvents.OnLose -= ShowLosePanel;
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             PlayerPrefs.DeleteKey("UnlockedLevel");
             PlayerPrefs.Save();
-            Debug.Log("🧹 Dữ liệu mở khóa đã được reset (Level 1).");
+            Debug.Log("Dữ liệu mở khóa đã được reset (Level 1).");
         }
     }
 
-    // ------------------- PAUSE -------------------
+    // ---------------- PAUSE ----------------
     public void TogglePause()
     {
-        // Nếu panel chưa gán, cảnh báo tránh lỗi null
-        if (pausePanel == null)
-        {
-            Debug.LogError("⚠️ PausePanel chưa được gán trong Inspector!");
-            return;
-        }
+        if (pausePanel == null) return;
 
-        // Đảo trạng thái pause
         isPaused = !isPaused;
-
         pausePanel.SetActive(isPaused);
         Time.timeScale = isPaused ? 0f : 1f;
 
-        Debug.Log(isPaused ? "⏸ Game Paused" : "▶ Game Resumed");
+        Debug.Log(isPaused ? "Game Paused" : "Game Resumed");
     }
 
     public void ContinueGame()
@@ -49,16 +54,53 @@ public class GameUIController : MonoBehaviour
         isPaused = false;
     }
 
-    public void RestartLevel()
+    // ---------------- WIN / LOSE ----------------
+    private void ShowWinPanel()
+    {
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
+            Debug.Log("[UI] Hiển thị Win Panel");
+        }
+    }
+
+    private void ShowLosePanel()
+    {
+        if (losePanel != null)
+        {
+            losePanel.SetActive(true);
+            Debug.Log("[UI] Hiển thị Lose Panel");
+        }
+    }
+
+    // ---------------- BUTTONS ----------------
+    public void OnNextLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            ReturnToMenu();
+            return;
+        }
+
+        //Lấy tên scene kế tiếp
+        string nextScene = System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(nextIndex));
+
+        //Gọi SceneLoader thay vì LoadScene trực tiếp
+        SceneLoader.LoadScene(nextScene);
     }
+
+
+    public void OnRetry() => GameManager.Instance.RestartLevel();
+
+    public void OnBackToMenu() => ReturnToMenu();
 
     public void ReturnToMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MenuScene"); // ⚠️ nhớ đổi theo tên scene menu của bạn
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void QuitGame()
@@ -68,27 +110,5 @@ public class GameUIController : MonoBehaviour
 #else
         Application.Quit();
 #endif
-    }
-
-    // ------------------- WIN / LOSE -------------------
-    public void OnNextLevel()
-    {
-        Time.timeScale = 1f;
-        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        if (nextIndex < SceneManager.sceneCountInBuildSettings)
-            SceneManager.LoadScene(nextIndex);
-        else
-            ReturnToMenu();
-    }
-
-    public void OnRetry()
-    {
-        GameManager.Instance.RestartLevel();
-    }
-
-    public void OnBackToMenu()
-    {
-        ReturnToMenu();
     }
 }

@@ -22,6 +22,9 @@ EditorBuildSettings:
     guid: ca10d6f2831a6cf4da9f44a4646b9107
   - enabled: 1
     path: Assets/GameModule/Scenes/Khiem/Level1.unity
+    guid: 41b7ef78e4037ce498ad0a0f1ffe909e
+  - enabled: 1
+    path: Assets/GameModule/Scenes/Khiem/Level2.unity
     guid: 4ecf4c2136e164549aa60edd230cf65f
   - enabled: 0
     path: Assets/GameModule/Scenes/Khiem/tester.unity

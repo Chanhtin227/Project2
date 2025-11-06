@@ -197,7 +197,7 @@ public class Enemy : MonoBehaviour
         Debug.Log($"{stats.enemyName} chết, nhận {stats.goldReward} vàng!");
         GetComponent<Collider2D>().enabled = false;
         rb.linearVelocity = Vector2.zero;
-        GameManager.Instance?.UnregisterEnemy(); // ✅ giảm aliveCount
+        GameManager.Instance?.UnregisterEnemy(); // giảm aliveCount
                 
         this.enabled = false;
         Destroy(gameObject, 1.3f);

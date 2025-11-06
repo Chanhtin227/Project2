@@ -12,7 +12,7 @@ public class SpellButton : MonoBehaviour
     public TextMeshProUGUI lockText;
 
     private float cooldownTimer = 0f;
-    private bool isUnlocked = false;
+    public bool isUnlocked = false;
 
     private void Start()
     {

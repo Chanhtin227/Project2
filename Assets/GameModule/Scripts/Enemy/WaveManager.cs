@@ -25,7 +25,6 @@ public class WaveManager : MonoBehaviour
     private int currentWaveIndex = 0;
     private bool isSpawning = false;
     private bool waitingForNext = true;
-    private bool allWavesCompleted = false;
 
     // Event để thông báo wave này đã spawn xong
     public UnityEvent OnWaveEnded;
@@ -70,7 +69,6 @@ public class WaveManager : MonoBehaviour
         // Kiểm tra xem đã hết wave chưa
         if (currentWaveIndex >= waves.Count)
         {
-            allWavesCompleted = true;
             waitingForNext = false;
             Debug.Log($"[{name}] All waves completed!");
 

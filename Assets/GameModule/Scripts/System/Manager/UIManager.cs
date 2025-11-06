@@ -59,7 +59,6 @@ public class UIManager : MonoBehaviour
 
             Canvas.ForceUpdateCanvases();
             
-            // Set upgrade canvas có sort order cao hơn build canvas
             SetCanvasSortOrder(upgradeCanvas, 200);
             SetCanvasSortOrder(buildCanvas, 100);
 
