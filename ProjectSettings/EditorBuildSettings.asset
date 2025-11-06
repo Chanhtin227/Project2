@@ -18,12 +18,15 @@ EditorBuildSettings:
     path: Assets/GameModule/Scenes/Khiem/MenuScene.unity
     guid: d17d8399d76ec4d438efa0c3e63d599f
   - enabled: 1
+    path: Assets/GameModule/Scenes/Khiem/LoadingScene.unity
+    guid: ca10d6f2831a6cf4da9f44a4646b9107
+  - enabled: 1
     path: Assets/GameModule/Scenes/Khiem/Level1.unity
     guid: 4ecf4c2136e164549aa60edd230cf65f
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameModule/Scenes/Khiem/tester.unity
     guid: ea1c893cc68bb294b805fc2d89a9fc2d
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameModule/Scenes/Level/MapDungNham.unity
     guid: 116fa23b88d338d43b30f5cd35eac38c
   m_configObjects:

@@ -39,6 +39,9 @@ public class SpellData : ScriptableObject
     public float slowDuration = 0f;
     public float radius = 2f;
 
+    [Header("Audio")]
+    public AudioClip castSound;    // SFX khi cast
+
     [Header("Targeting")]
     public bool singleTarget = false;
 

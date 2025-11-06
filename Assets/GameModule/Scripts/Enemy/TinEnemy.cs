@@ -20,13 +20,11 @@ public class Enemy : MonoBehaviour
     private float baseArmor;
     private float currentArmor;
     private bool isAttacking = false;
-    //add
     private OutlineController outlineController;
     private Coroutine dotCoroutine;
     private bool isStunned = false;
     private bool isParalyzed = false;
     [SerializeField] private GoldPopup goldPopupPrefab;
-
 
     public void AddSpeedMultiplier(float speed)
     {
@@ -84,6 +82,7 @@ public class Enemy : MonoBehaviour
         _anim?.SetBool("isWalk", true);
         isAttacking = false;
     }
+
     public int GetCurrentHP()
     {
         return currentHP;
@@ -114,7 +113,6 @@ public class Enemy : MonoBehaviour
         {
             ability.Init(this, stats);
         }
-        // add
         outlineController = GetComponent<OutlineController>();
     }
 
@@ -124,19 +122,21 @@ public class Enemy : MonoBehaviour
         {
             checkpoint = path[index];
         }
-
     }
 
     void Update()
     {
         ability?.Update();
-        if (checkpoint == null) return;
-        // Khi tới checkpoint
+         if (checkpoint == null) return;
+
         if (Vector2.Distance(transform.position, checkpoint.position) <= 0.2f)
         {
             index++;
             if (index >= path.Length)
             {
+                // Enemy tới base
+                GameManager.Instance?.LoseBaseHealth(stats.damageTower);
+                GameManager.Instance?.UnregisterEnemy(); //giảm aliveCount
                 Destroy(gameObject);
                 return;
             }
@@ -168,7 +168,6 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        // Công thức giảm dần: 100 / (100 + armor)
         float multiplier = 100f / (100f + currentArmor);
         int finalDamage = Mathf.RoundToInt(dmg * multiplier);
         currentHP -= finalDamage;
@@ -188,7 +187,6 @@ public class Enemy : MonoBehaviour
             GoldManager.Instance.AddGold(stats.goldReward);
         }
 
-        // 🟡 Hiển thị popup vàng
         if (goldPopupPrefab != null)
         {
             var popup = Instantiate(goldPopupPrefab, transform.position, Quaternion.identity);
@@ -199,16 +197,27 @@ public class Enemy : MonoBehaviour
         Debug.Log($"{stats.enemyName} chết, nhận {stats.goldReward} vàng!");
         GetComponent<Collider2D>().enabled = false;
         rb.linearVelocity = Vector2.zero;
+        GameManager.Instance?.UnregisterEnemy(); // ✅ giảm aliveCount
+                
         this.enabled = false;
         Destroy(gameObject, 1.3f);
     }
 
+    private void CheckWinDelayed()
+    {
+        if (GameManager.Instance != null)
+        {
+            Debug.Log($"[Enemy] {stats.enemyName} đã chết, kiểm tra win condition");
+            GameManager.Instance.CheckWinCondition();
+        }
+    }
 
     public void ApplySlow(float slowAmount, float duration)
     {
         if (isSlowed) return;
         StartCoroutine(SlowRoutine(slowAmount, duration));
     }
+
     private IEnumerator SlowRoutine(float slowAmount, float duration)
     {
         isSlowed = true;
@@ -220,16 +229,12 @@ public class Enemy : MonoBehaviour
         isSlowed = false;
     }
 
-
-
-    //================================= add=====================================
     public void SetOutline(bool show)
     {
         if (outlineController != null)
             outlineController.ShowOutline(show);
     }
 
-    // DOT áp dụng damage over time
     public void ApplyDOT(float dps, float duration)
     {
         if (dotCoroutine != null)
@@ -242,7 +247,7 @@ public class Enemy : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration && !IsDead())
         {
-            int dmg = Mathf.RoundToInt(dps * 1f); // tick mỗi 1s
+            int dmg = Mathf.RoundToInt(dps * 1f);
             TakeDamage(dmg);
             yield return new WaitForSeconds(1f);
             elapsed += 1f;
@@ -266,7 +271,6 @@ public class Enemy : MonoBehaviour
     {
         isStunned = true;
         currentMoveSpeed = 0f;
-        // có thể thêm animation "Stunned" ở đây
         yield return new WaitForSeconds(duration);
         currentMoveSpeed = baseSpeed;
         isStunned = false;
@@ -275,11 +279,9 @@ public class Enemy : MonoBehaviour
     private IEnumerator ParalyzeRoutine(float duration)
     {
         isParalyzed = true;
-        currentMoveSpeed *= 0.2f; // di chuyển chậm 80%
-        // có thể thêm hiệu ứng điện ở đây
+        currentMoveSpeed *= 0.2f;
         yield return new WaitForSeconds(duration);
         currentMoveSpeed = baseSpeed;
         isParalyzed = false;
     }
-
 }

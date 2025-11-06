@@ -50,10 +50,6 @@ public class SpellManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Mở sẵn các spell đã tick "isUnlocked" trong SpellData.
-    /// Gọi một lần khi khởi tạo.
-    /// </summary>
     private void AutoUnlockSpells()
     {
         foreach (var spell in allSpells)
@@ -115,8 +111,15 @@ public class SpellManager : MonoBehaviour
             GameObject fx = Instantiate(spell.effectPrefab, pos, Quaternion.identity);
             SpellEffect effect = fx.AddComponent<SpellEffect>();
             effect.Setup(spell);
+
             pendingButton.StartCooldown();
             globalCooldownTimer = globalCooldown;
+        }
+
+        // Phát SFX khi cast
+        if (spell.castSound != null && AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySfx(spell.castSound);
         }
 
         waitingForClick = false;
@@ -137,5 +140,4 @@ public class SpellManager : MonoBehaviour
 
         Debug.Log("[SpellManager] Đã hủy chọn phép (ESC)");
     }
-
 }
