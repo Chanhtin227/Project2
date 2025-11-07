@@ -25,5 +25,5 @@ MonoBehaviour:
   castSound: {fileID: 0}
   singleTarget: 0
   effectPrefab: {fileID: 0}
-  isUnlocked: 0
+  isUnlocked: 1
   unlockLevel: 5
