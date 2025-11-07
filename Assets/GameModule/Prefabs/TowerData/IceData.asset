@@ -17,19 +17,19 @@ MonoBehaviour:
   prefab: {fileID: 5648060285473518126, guid: af3b26630526f574daf0cfb35a38cfcb, type: 3}
   levels:
   - name: Ice Tower Lv1
-    damage: 10
+    damage: 15
     range: 3
     fireRate: 1
     cost: 100
     maxHealth: 220
   - name: Ice Tower Lv2
-    damage: 18
+    damage: 24
     range: 4
     fireRate: 0.9
     cost: 260
     maxHealth: 340
   - name: Ice Tower Lv3
-    damage: 28
+    damage: 35
     range: 5
     fireRate: 0.8
     cost: 325

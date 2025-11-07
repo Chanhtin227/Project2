@@ -24,7 +24,7 @@ public class LoadingController : MonoBehaviour
         string nextScene = SceneLoader.targetScene;
         if (string.IsNullOrEmpty(nextScene))
         {
-            Debug.LogWarning("⚠️ Không có scene đích! Quay lại Menu.");
+            Debug.LogWarning("Không có scene đích! Quay lại Menu.");
             SceneManager.LoadScene("MenuScene");
             yield break;
         }
@@ -59,6 +59,14 @@ public class LoadingController : MonoBehaviour
                 }
 
                 loadingBar?.UpdateBar(1f);
+
+                // Reset trạng thái gameplay trước khi vào scene mới
+                if (nextScene.StartsWith("Level") && GameManager.Instance != null)
+                {
+                    GameManager.Instance.ResetGameState();
+                    Debug.Log("[Loading] Reset GameManager state trước khi vào scene gameplay mới");
+                }
+
                 Debug.Log("[Loading] Hoàn tất 100%, chuyển cảnh!");
                 op.allowSceneActivation = true;
             }

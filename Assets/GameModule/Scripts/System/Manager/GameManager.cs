@@ -40,9 +40,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameEnded = false;
-        aliveCount = 0;
+        ResetGameState(); // Reset khi khởi động game lần đầu
     }
+
+    // ----------------- RESET STATE -----------------
+    public void ResetGameState()
+    {
+        baseHealth = maxBaseHealth;
+        aliveCount = 0;
+        gameEnded = false;
+        Time.timeScale = 1f;
+
+        //Reset vàng
+        if (goldManager != null)
+            goldManager.ResetGold();
+
+        Debug.Log("[GameManager] Reset trạng thái game về mặc định");
+    }
+
 
     // ----------------- ENEMY LOGIC -----------------
     public void RegisterEnemy()
@@ -119,13 +134,12 @@ public class GameManager : MonoBehaviour
         UIEvents.OnLose?.Invoke();
     }
 
-   private void UnlockNextLevel()
+    private void UnlockNextLevel()
     {
         string sceneName = SceneManager.GetActiveScene().name;
 
         if (!sceneName.StartsWith("Level")) return;
 
-        // Lấy số Level hiện tại
         int currentLevelNumber = 1;
         int.TryParse(sceneName.Replace("Level", ""), out currentLevelNumber);
 
@@ -146,6 +160,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         gameEnded = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadNextLevel(string nextSceneName)
+    {
+        ResetGameState(); // Reset trước khi qua màn mới
+        SceneManager.LoadScene(nextSceneName);
     }
 
     public void QuitGame()

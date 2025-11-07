@@ -21,7 +21,7 @@ MonoBehaviour:
   dotDuration: 5
   slowPercent: 0
   slowDuration: 0
-  radius: 3.5
+  radius: 4
   castSound: {fileID: 8300000, guid: 228d84149680b0245a757336ba9c2154, type: 3}
   singleTarget: 0
   effectPrefab: {fileID: 3518188714150758685, guid: dc9b91b52a6d78a42b29f0dee2273be2, type: 3}

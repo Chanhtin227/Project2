@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip menuMusic;
     public AudioClip gameplayMusic;
     public AudioClip clickSound;
-
+    public AudioClip bossMusic;
 
     [Header("Volume Settings")]
     [Range(0f, 1f)] public float musicVolume = 1f;

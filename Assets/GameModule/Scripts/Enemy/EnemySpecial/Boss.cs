@@ -25,6 +25,8 @@ public class Boss : IEnemyAbility
         {
             originalColor = spriteRenderer.color;
         }
+        AudioManager.Instance.StopMusic(); 
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.bossMusic);
     }
 
     public void Update()
@@ -166,5 +168,7 @@ public class Boss : IEnemyAbility
         {
             spriteRenderer.color = originalColor;
         }
+        AudioManager.Instance.StopMusic();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic);
     }
 }

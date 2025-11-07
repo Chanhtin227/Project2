@@ -18,19 +18,19 @@ MonoBehaviour:
   levels:
   - name: Archer 1
     damage: 12
-    range: 2
+    range: 3
     fireRate: 1.5
     cost: 60
     maxHealth: 200
   - name: Archer 2
     damage: 20
-    range: 2.25
+    range: 3.25
     fireRate: 1.25
     cost: 120
     maxHealth: 300
   - name: Archer 3
     damage: 30
-    range: 2.25
+    range: 3.5
     fireRate: 1
     cost: 240
     maxHealth: 450

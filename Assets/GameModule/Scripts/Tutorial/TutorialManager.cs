@@ -59,7 +59,6 @@ public class TutorialManager : MonoBehaviour
     public Button SpellButton4;
     public Button SpellButton5;
     public Button SpellButton6;
-    public Button SpellButton7;
 
     [Header("Button References")]
     public Button startButton;
@@ -396,6 +395,7 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("Run 8 end step 7");
         highlightObject.SetActive(true);
+
         
         UnlockAllSpellButtons();
 
@@ -424,7 +424,6 @@ public class TutorialManager : MonoBehaviour
         brightArea4.transform.position = SpellButton4.transform.position;
         brightArea5.transform.position = SpellButton5.transform.position;
         brightArea6.transform.position = SpellButton6.transform.position;
-        brightArea7.transform.position = SpellButton7.transform.position;
 
         if (SpellButton3 != null)
         {

@@ -397,9 +397,9 @@ MonoBehaviour:
   iceProjectilePrefab: {fileID: 8210375203846468362, guid: a78d4f581f6126142adcaab82f92ccd8, type: 3}
   projectileSpeed: 7
   slowPercentPerLevel:
-  - 0.2
-  - 0.4
-  - 0.6
+  - 0.3
+  - 0.5
+  - 0.8
   slowDuration: 2
 --- !u!1 &6516200202510571630
 GameObject:

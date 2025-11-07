@@ -363,14 +363,174 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyPrefab: {fileID: 2170649352429875653, guid: 0e8fa334d020429499993715361d82fa, type: 3}
+    - enemyPrefab: {fileID: 8582874316563410513, guid: 5b2e937dd764381498eb7f02281f3eb5, type: 3}
       count: 2
+      interval: 5
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 779597161409817086, guid: c7f48bad60175c54ca30df1210aed390, type: 3}
+      count: 2
+      interval: 5
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 7360404279191042449, guid: 1d8ff7fa62d2edd48bb2e5da840e6d9d, type: 3}
+      count: 1
       interval: 5
       spawner: {fileID: 116531315}
   - enemies:
     - enemyPrefab: {fileID: 2170649352429875653, guid: 0e8fa334d020429499993715361d82fa, type: 3}
+      count: 1
+      interval: 5
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 2170649352429875653, guid: 0e8fa334d020429499993715361d82fa, type: 3}
+      count: 1
+      interval: 5
+      spawner: {fileID: 116531315}
+  - enemies:
+    - enemyPrefab: {fileID: 5669711944425785024, guid: 2afa7a649df8fc94d989ad19498b95ee, type: 3}
       count: 2
       interval: 5
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 7360404279191042449, guid: 1d8ff7fa62d2edd48bb2e5da840e6d9d, type: 3}
+      count: 2
+      interval: 5
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 261132366662590519, guid: bf8ace7ef394ec349a9f3079a7d3819a, type: 3}
+      count: 2
+      interval: 5
+      spawner: {fileID: 116531315}
+  - enemies:
+    - enemyPrefab: {fileID: 261132366662590519, guid: bf8ace7ef394ec349a9f3079a7d3819a, type: 3}
+      count: 2
+      interval: 1.5
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 1996904002120544954, guid: f01d2d7e03dabf74fb12bcac7ac933cb, type: 3}
+      count: 2
+      interval: 3
+      spawner: {fileID: 862981916}
+  - enemies:
+    - enemyPrefab: {fileID: 5669711944425785024, guid: 2afa7a649df8fc94d989ad19498b95ee, type: 3}
+      count: 2
+      interval: 3
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 7048485719465573100, guid: 00fecd7604c8ced469162d1eb1bba558, type: 3}
+      count: 2
+      interval: 3
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 1049012230844782342, guid: 3185b559a7405cc419fd518d5180ef7f, type: 3}
+      count: 1
+      interval: 3
+      spawner: {fileID: 116531315}
+  - enemies:
+    - enemyPrefab: {fileID: 779597161409817086, guid: c7f48bad60175c54ca30df1210aed390, type: 3}
+      count: 4
+      interval: 2
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 8582874316563410513, guid: 5b2e937dd764381498eb7f02281f3eb5, type: 3}
+      count: 4
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 7874970413053143960, guid: 97fc0ca1b263e1a4aa15e7b2821a7eb5, type: 3}
+      count: 4
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 1996904002120544954, guid: f01d2d7e03dabf74fb12bcac7ac933cb, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 862981916}
+  - enemies:
+    - enemyPrefab: {fileID: 7360404279191042449, guid: 1d8ff7fa62d2edd48bb2e5da840e6d9d, type: 3}
+      count: 4
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 5669711944425785024, guid: 2afa7a649df8fc94d989ad19498b95ee, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 7048485719465573100, guid: 00fecd7604c8ced469162d1eb1bba558, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 1996904002120544954, guid: f01d2d7e03dabf74fb12bcac7ac933cb, type: 3}
+      count: 4
+      interval: 2
+      spawner: {fileID: 862981916}
+  - enemies:
+    - enemyPrefab: {fileID: 7874970413053143960, guid: 97fc0ca1b263e1a4aa15e7b2821a7eb5, type: 3}
+      count: 10
+      interval: 1.5
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 7360404279191042449, guid: 1d8ff7fa62d2edd48bb2e5da840e6d9d, type: 3}
+      count: 2
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 7048485719465573100, guid: 00fecd7604c8ced469162d1eb1bba558, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 261132366662590519, guid: bf8ace7ef394ec349a9f3079a7d3819a, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 261132366662590519, guid: bf8ace7ef394ec349a9f3079a7d3819a, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 116531315}
+  - enemies:
+    - enemyPrefab: {fileID: 1996904002120544954, guid: f01d2d7e03dabf74fb12bcac7ac933cb, type: 3}
+      count: 3
+      interval: 1.5
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 7360404279191042449, guid: 1d8ff7fa62d2edd48bb2e5da840e6d9d, type: 3}
+      count: 5
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 5669711944425785024, guid: 2afa7a649df8fc94d989ad19498b95ee, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 261132366662590519, guid: bf8ace7ef394ec349a9f3079a7d3819a, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 261132366662590519, guid: bf8ace7ef394ec349a9f3079a7d3819a, type: 3}
+      count: 2
+      interval: 2
+      spawner: {fileID: 116531315}
+  - enemies:
+    - enemyPrefab: {fileID: 1996904002120544954, guid: f01d2d7e03dabf74fb12bcac7ac933cb, type: 3}
+      count: 5
+      interval: 1.5
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 7360404279191042449, guid: 1d8ff7fa62d2edd48bb2e5da840e6d9d, type: 3}
+      count: 5
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 5669711944425785024, guid: 2afa7a649df8fc94d989ad19498b95ee, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 261132366662590519, guid: bf8ace7ef394ec349a9f3079a7d3819a, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 261132366662590519, guid: bf8ace7ef394ec349a9f3079a7d3819a, type: 3}
+      count: 3
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 1049012230844782342, guid: 3185b559a7405cc419fd518d5180ef7f, type: 3}
+      count: 1
+      interval: 2
+      spawner: {fileID: 116531315}
+    - enemyPrefab: {fileID: 1049012230844782342, guid: 3185b559a7405cc419fd518d5180ef7f, type: 3}
+      count: 1
+      interval: 2
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 7360404279191042449, guid: 1d8ff7fa62d2edd48bb2e5da840e6d9d, type: 3}
+      count: 8
+      interval: 2
+      spawner: {fileID: 862981916}
+    - enemyPrefab: {fileID: 7360404279191042449, guid: 1d8ff7fa62d2edd48bb2e5da840e6d9d, type: 3}
+      count: 8
+      interval: 2
       spawner: {fileID: 116531315}
   OnWaveEnded:
     m_PersistentCalls:
@@ -3164,7 +3324,7 @@ Transform:
   m_GameObject: {fileID: 939041495}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03828, y: 0.58008003, z: 0}
+  m_LocalPosition: {x: 0.07, y: 0.18000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3188,7 +3348,7 @@ Transform:
   - {fileID: 115417860}
   - {fileID: 1806109577}
   - {fileID: 198752383}
-  m_Father: {fileID: 1335776017}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &939041497
 MonoBehaviour:
@@ -3376,6 +3536,10 @@ PrefabInstance:
     - target: {fileID: 4512293213315950311, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
       propertyPath: m_Name
       value: GameManagers
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578989099059260800, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
+      propertyPath: currentGold
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7867446776483220521, guid: 5f9965e036fd77c479e61931e90d15ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3878,7 +4042,6 @@ Transform:
   - {fileID: 198948076}
   - {fileID: 1603441610}
   - {fileID: 2082355130}
-  - {fileID: 939041496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1344957489
@@ -5125,7 +5288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4181530830552010386, guid: 7ca9d9a93be41384ca7bd81963dbe729, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.35
+      value: 3.29
       objectReference: {fileID: 0}
     - target: {fileID: 4181530830552010386, guid: 7ca9d9a93be41384ca7bd81963dbe729, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5186,3 +5349,4 @@ SceneRoots:
   - {fileID: 1335776017}
   - {fileID: 383137471}
   - {fileID: 138127695}
+  - {fileID: 939041496}

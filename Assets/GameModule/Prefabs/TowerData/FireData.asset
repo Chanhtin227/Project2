@@ -17,20 +17,20 @@ MonoBehaviour:
   prefab: {fileID: 4196700344951154701, guid: ba4282c4b93a5a746a37f6b1f2829223, type: 3}
   levels:
   - name: Fire Tower Lv1
-    damage: 25
-    range: 2
+    damage: 30
+    range: 2.5
     fireRate: 2
     cost: 100
     maxHealth: 280
   - name: Fire Tower Lv2
     damage: 40
-    range: 2
+    range: 2.75
     fireRate: 1.95
     cost: 225
     maxHealth: 400
   - name: Fire Tower Lv3
     damage: 70
-    range: 2.5
+    range: 3.25
     fireRate: 1.7
     cost: 350
     maxHealth: 700
