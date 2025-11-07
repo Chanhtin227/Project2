@@ -740,6 +740,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 224752236}
+    - target: {fileID: 8262262657882489052, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: winSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 9dd8da7c8f4cbfd4585d1357ff867fe7, type: 3}
+    - target: {fileID: 8262262657882489052, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
+      propertyPath: loseSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f2f266f00f889b4aa99b80f5f1f0975, type: 3}
     - target: {fileID: 8345886803563284505, guid: 133e90e568dfdf84fb5917bfe92d6e6f, type: 3}
       propertyPath: m_Name
       value: UIRoot

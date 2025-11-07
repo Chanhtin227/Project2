@@ -24,17 +24,17 @@ MonoBehaviour:
     maxHealth: 300
   - name: Lightning 2
     damage: 35
-    range: 2.5
+    range: 2
     fireRate: 1.5
     cost: 200
     maxHealth: 480
   - name: Lightning 3
     damage: 55
-    range: 2.75
+    range: 2.25
     fireRate: 1
     cost: 350
     maxHealth: 750
   sellRefundPercentage: 0.5
-  shootSfx: {fileID: 0}
+  shootSfx: {fileID: 8300000, guid: df99a94bf1a970a42af09b70963397c0, type: 3}
   upgradeSfx: {fileID: 8300000, guid: d403b5d9774b1b9418f1326e65a432e6, type: 3}
-  sellSfx: {fileID: 0}
+  sellSfx: {fileID: 8300000, guid: a14711684ca18a5459cba9cd5de25f14, type: 3}

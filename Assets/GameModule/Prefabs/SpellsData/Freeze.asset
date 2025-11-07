@@ -18,9 +18,12 @@ MonoBehaviour:
   cooldown: 18
   damage: 0
   damagePerSecond: 0
+  dotDuration: 5
   slowPercent: 1
   slowDuration: 4
   radius: 3
+  castSound: {fileID: 8300000, guid: 679852e1a6c415e4b9c0c21790f6af82, type: 3}
+  singleTarget: 0
   effectPrefab: {fileID: 3463445859544858893, guid: 42b2f3612de1f894d9c606b6987ef003, type: 3}
   isUnlocked: 1
   unlockLevel: 0

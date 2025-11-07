@@ -7544,6 +7544,8 @@ MonoBehaviour:
   pausePanel: {fileID: 634885955259701785}
   winPanel: {fileID: 4717157933292201117}
   losePanel: {fileID: 4747137196789496607}
+  winSFX: {fileID: 8300000, guid: 9dd8da7c8f4cbfd4585d1357ff867fe7, type: 3}
+  loseSFX: {fileID: 8300000, guid: 2f2f266f00f889b4aa99b80f5f1f0975, type: 3}
 --- !u!1 &8475047527588194758
 GameObject:
   m_ObjectHideFlags: 0

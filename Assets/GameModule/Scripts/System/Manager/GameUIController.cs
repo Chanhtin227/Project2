@@ -9,6 +9,10 @@ public class GameUIController : MonoBehaviour
     public GameObject winPanel;
     public GameObject losePanel;
 
+    [Header("SFX")]
+    public AudioClip winSFX;
+    public AudioClip loseSFX;
+
     private bool isPaused = false;
 
     private void OnEnable()
@@ -60,6 +64,7 @@ public class GameUIController : MonoBehaviour
         if (winPanel != null)
         {
             winPanel.SetActive(true);
+            AudioManager.Instance.PlaySfx(winSFX);
             Debug.Log("[UI] Hiển thị Win Panel");
         }
     }
@@ -69,6 +74,7 @@ public class GameUIController : MonoBehaviour
         if (losePanel != null)
         {
             losePanel.SetActive(true);
+            AudioManager.Instance.PlaySfx(loseSFX);
             Debug.Log("[UI] Hiển thị Lose Panel");
         }
     }
@@ -85,13 +91,9 @@ public class GameUIController : MonoBehaviour
             return;
         }
 
-        //Lấy tên scene kế tiếp
         string nextScene = System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(nextIndex));
-
-        //Gọi SceneLoader thay vì LoadScene trực tiếp
         SceneLoader.LoadScene(nextScene);
     }
-
 
     public void OnRetry() => GameManager.Instance.RestartLevel();
 
