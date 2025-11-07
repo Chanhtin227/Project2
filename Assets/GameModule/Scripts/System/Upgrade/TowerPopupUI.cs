@@ -12,56 +12,99 @@ public class TowerPopupUI : MonoBehaviour
 
     private BaseTower currentTower;
     private Camera cam;
+    private RectTransform rectTransform;
+    
+    [Header("Popup Settings")]
+    [SerializeField] private Vector2 offset = new Vector2(0, 80f); // Khoảng cách từ tower
+    [SerializeField] private float screenPadding = 20f; // Padding từ cạnh màn hình
 
     void Start()
     {
         cam = Camera.main;
+        rectTransform = GetComponent<RectTransform>();
+        
         upgradeButton.onClick.AddListener(OnUpgradeClicked);
         if (sellButton != null)
-        sellButton.onClick.AddListener(OnSellClicked);
+            sellButton.onClick.AddListener(OnSellClicked);
         closeButton.onClick.AddListener(Close);
     }
 
     void Update()
     {
-        // Nếu popup đang mở thì update text liên tục
         if (gameObject.activeSelf && currentTower != null)
         {
             UpdateUI();
+            UpdatePosition();
         }
     }
-
 
     public void Show(BaseTower tower)
     {
         currentTower = tower;
         Debug.Log("TowerPopupUI.Show được gọi với: " + tower.name);
         UpdateUI();
+        UpdatePosition();
+    }
 
+    private void UpdatePosition()
+    {
+        if (currentTower == null || rectTransform == null) return;
         if (cam == null) cam = Camera.main;
-        if (cam == null) cam = FindAnyObjectByType<Camera>();
+        if (cam == null) return;
+
         Canvas parentCanvas = GetComponentInParent<Canvas>();
-
-        if (parentCanvas != null && parentCanvas.renderMode == RenderMode.ScreenSpaceCamera)
+        
+        if (parentCanvas != null)
         {
-            Vector3 screenPoint = cam.WorldToScreenPoint(tower.transform.position);
+            Vector3 screenPoint = cam.WorldToScreenPoint(currentTower.transform.position);
             Vector2 localPoint;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                parentCanvas.transform as RectTransform,
-                screenPoint,
-                parentCanvas.worldCamera,
-                out localPoint
-            );
+            
+            if (parentCanvas.renderMode == RenderMode.ScreenSpaceCamera)
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                    parentCanvas.transform as RectTransform,
+                    screenPoint,
+                    parentCanvas.worldCamera,
+                    out localPoint
+                );
+            }
+            else
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                    parentCanvas.transform as RectTransform,
+                    screenPoint,
+                    null,
+                    out localPoint
+                );
+            }
 
-            transform.localPosition = localPoint + new Vector2(0, 80f);
+            Vector2 desiredPosition = localPoint + offset;
+            desiredPosition = ClampToScreen(desiredPosition, parentCanvas);
+            transform.localPosition = desiredPosition;
         }
-        else
-        {
-            Vector3 screenPos = cam.WorldToScreenPoint(tower.transform.position);
-            transform.position = screenPos + new Vector3(0, 80f, 0);
-        }
+    }
 
-        Time.timeScale = 0.2f;
+    private Vector2 ClampToScreen(Vector2 position, Canvas canvas)
+    {
+        if (rectTransform == null || canvas == null) return position;
+
+        RectTransform canvasRect = canvas.transform as RectTransform;
+        if (canvasRect == null) return position;
+
+        Vector2 popupSize = rectTransform.rect.size;
+        
+        Vector2 canvasSize = canvasRect.rect.size;
+        
+        float minX = -canvasSize.x / 2f + popupSize.x / 2f + screenPadding;
+        float maxX = canvasSize.x / 2f - popupSize.x / 2f - screenPadding;
+        float minY = -canvasSize.y / 2f + popupSize.y / 2f + screenPadding;
+        float maxY = canvasSize.y / 2f - popupSize.y / 2f - screenPadding;
+
+        // Clamp position
+        float clampedX = Mathf.Clamp(position.x, minX, maxX);
+        float clampedY = Mathf.Clamp(position.y, minY, maxY);
+
+        return new Vector2(clampedX, clampedY);
     }
 
     public void Close()
@@ -69,7 +112,6 @@ public class TowerPopupUI : MonoBehaviour
         gameObject.SetActive(false);
         currentTower = null;
         UIManager.Instance.ShowDimBackground(false);
-        Time.timeScale = 1f;
     }
 
     private void UpdateUI()
@@ -79,12 +121,11 @@ public class TowerPopupUI : MonoBehaviour
         var data = currentTower.data;
         int lvl = currentTower.currentLevel;
         
-        // Nếu còn level để nâng cấp
         if (lvl + 1 < data.levels.Length)
         {
             int cost = data.levels[lvl + 1].cost;
             costText.text = $"-{cost}";
-            // disable nếu không đủ tiền
+            
             if (GoldManager.Instance != null && GoldManager.Instance.currentGold < cost)
                 upgradeButton.interactable = false;
             else
@@ -121,6 +162,7 @@ public class TowerPopupUI : MonoBehaviour
             UpdateUI();
         }
     }
+    
     private void OnSellClicked()
     {
         Debug.Log("Sell button clicked!");

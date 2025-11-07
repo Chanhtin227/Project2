@@ -13,7 +13,7 @@ public class BuildSpotClickHandler : MonoBehaviour
                 return;
             }
 
-            if (UIManager.Instance.IsAnyPopupOpen())
+            if (UIManager.Instance != null && UIManager.Instance.IsAnyPopupOpen())
             {
                 return;
             }

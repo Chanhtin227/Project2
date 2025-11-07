@@ -26,7 +26,7 @@ MonoBehaviour:
     damage: 60
     range: 2.75
     fireRate: 3.8
-    cost: 220
+    cost: 250
     maxHealth: 550
   - name: Crossbow Tower Lv3
     damage: 90
@@ -35,6 +35,6 @@ MonoBehaviour:
     cost: 400
     maxHealth: 650
   sellRefundPercentage: 0.5
-  shootSfx: {fileID: 0}
+  shootSfx: {fileID: 8300000, guid: 0283cef080a19cd4581cb122f8565f47, type: 3}
   upgradeSfx: {fileID: 8300000, guid: d403b5d9774b1b9418f1326e65a432e6, type: 3}
-  sellSfx: {fileID: 0}
+  sellSfx: {fileID: 8300000, guid: a14711684ca18a5459cba9cd5de25f14, type: 3}

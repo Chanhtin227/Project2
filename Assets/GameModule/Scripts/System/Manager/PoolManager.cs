@@ -40,7 +40,6 @@ public class PoolManager : MonoBehaviour
 
     // --- API ---
 
-    // Bản chuẩn (tự động reset transform)
     public GameObject Get(string key)
     {
         if (!poolDict.ContainsKey(key))
